@@ -7,11 +7,12 @@ syntax: glob
 *.pdb
 *.unitypackage
 *.exe
-outfile.txt
+outFile.txt
 
 syntax: regexp
 ^Build/.*
 ^Library/.*
 ^Temp/.*
+^obj/.*
 ^.vscode/.*
 ^.vs/.*
