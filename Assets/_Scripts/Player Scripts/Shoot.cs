@@ -69,47 +69,7 @@ public class Shoot : MonoBehaviour {
         aimDir = controls.GetAim();
         moveDir = controls.GetMove();
 
-        /////// Shooting Animation Stuff /////////
-
-        
-
-        float angle = Vector3.Dot(transform.up, Vector3.up);
-        // Caculate the direction of the animation
-
-        float shootingAngle = ((aimDir.y + 1) / 2);
-
-        // If the angle is below zero the player is upside down
-        if (angle < 0)
-        {
-            // Checks what side they are shooting on and changes scale accordingly
-            if (aimDir.x < 0)
-            {
-                transform.localScale = new Vector3(-1f, 1f, 1f);
-            }
-            else
-            {
-                transform.localScale = new Vector3(1f, 1f, 1f); //(c# code)
-            }
-            // Swap 0 to 1, blend values for upside down
-            shootingAngle =  1 - shootingAngle;
-
-        }
-        else
-        {
-            // Flipped scale when not upside down
-            if (aimDir.x > 0)
-            {
-                transform.localScale = new Vector3(-1f, 1f, 1f);
-            }
-            else
-            {
-                transform.localScale = new Vector3(1f, 1f, 1f); //(c# code)
-            }
-        }
-
-        m_Animator.SetFloat("Aim Direction Y", shootingAngle);
         m_Animator.SetBool("Shooting Laser", false);
-
     }
 
     public void ShootLaser()
@@ -183,9 +143,6 @@ public class Shoot : MonoBehaviour {
         m_Shotgun.Shoot();
 
         float shootingAngle = (aimDir.y + 1) / 2;
-        
-
-
 
     }
 }
