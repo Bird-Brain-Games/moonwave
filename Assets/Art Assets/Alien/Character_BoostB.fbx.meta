@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: 3a945297923abcf43b8b9c53a4437528
+timeCreated: 1511807948
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Alien
+    100002: Arm_IK.L
+    100004: Arm_IK.R
+    100006: Bicep.L
+    100008: Bicep.R
+    100010: Bone
+    100012: Bone 1
+    100014: Character
+    100016: //RootNode
+    100018: Elbow_Control.L
+    100020: Elbow_Control.R
+    100022: Foot.L
+    100024: Foot.R
+    100026: Forearm.L
+    100028: Forearm.R
+    100030: Gun
+    100032: Gun.001
+    100034: Hand.L
+    100036: Hand.R
+    100038: Head
+    100040: Knee_Control.L
+    100042: Knee_Control.R
+    100044: Leg_IK.L
+    100046: Leg_IK.R
+    100048: Neck
+    100050: Shin.L
+    100052: Shin.R
+    100054: Spine_Base
+    100056: Spine_Mid
+    100058: Spine_Top
+    100060: Thigh.L
+    100062: Thigh.R
+    400000: Alien
+    400002: Arm_IK.L
+    400004: Arm_IK.R
+    400006: Bicep.L
+    400008: Bicep.R
+    400010: Bone
+    400012: Bone 1
+    400014: Character
+    400016: //RootNode
+    400018: Elbow_Control.L
+    400020: Elbow_Control.R
+    400022: Foot.L
+    400024: Foot.R
+    400026: Forearm.L
+    400028: Forearm.R
+    400030: Gun
+    400032: Gun.001
+    400034: Hand.L
+    400036: Hand.R
+    400038: Head
+    400040: Knee_Control.L
+    400042: Knee_Control.R
+    400044: Leg_IK.L
+    400046: Leg_IK.R
+    400048: Neck
+    400050: Shin.L
+    400052: Shin.R
+    400054: Spine_Base
+    400056: Spine_Mid
+    400058: Spine_Top
+    400060: Thigh.L
+    400062: Thigh.R
+    4300000: Alien
+    4300002: Gun.001
+    7400000: Character|CharacterAction
+    7400002: Character|GunAction
+    7400004: Gun|GunAction
+    9500000: //RootNode
+    13700000: Alien
+    13700002: Gun.001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default
+    second: {fileID: 2100000, guid: 07508dd3d53dec9438a0f0ec342be4b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: None
+    second: {fileID: 2100000, guid: c2c1507d1e166da45a8da23e4b734b62, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

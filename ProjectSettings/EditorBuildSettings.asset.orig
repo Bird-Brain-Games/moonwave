@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MainMenu/MainMenu.unity
+    guid: f792d20955b84824386a37e148087f95
+  - enabled: 1
+<<<<<<< working copy
+    path: Assets/MoonShot/_Scenes/Graham_Prototype.unity
+    guid: 6b449a055c5f10246ac6c6970581a45d
+  - enabled: 1
+    path: Assets/MoonShot/_Scenes/etc/1planet4suns.unity
+    guid: 916552df1943b77458ae413798e1107d
+  - enabled: 1
+    path: Assets/MoonShot/_Scenes/etc/BlackHole.unity
+    guid: 895bc3053e2d63a49890c91e53d9d3d5
+  - enabled: 1
+    path: Assets/MoonShot/_Scenes/etc/Orbit.unity
+    guid: 8c7955f7a75d75e4f95d7d09402ba633
+  - enabled: 1
+    path: Assets/MoonShot/_Scenes/etc/Rocket.unity
+    guid: 70727b74131e24845bf4e5bbafccd54e
+  - enabled: 1
+    path: Assets/MoonShot/_Scenes/etc/SolarFlare.unity
+    guid: 45f65f0af5076f34f91c670f3c38fcd2
+  - enabled: 1
+    path: Assets/MoonShot/_Scenes/etc/Wall.unity
+    guid: 9d9a6766efea6dc439ff5a6a92494f5e
+=======
+    path: Assets/MoonShot/_Scenes/Graham_Debug.unity
+    guid: d61de0352f28c8e4c8ebe7c7da529aa9
+>>>>>>> merge rev
