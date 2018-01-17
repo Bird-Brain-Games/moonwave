@@ -64,6 +64,7 @@ public class PlayerStats : MonoBehaviour {
     public int m_PlayerID;
     public PlayerStats m_HitLastBy;
     public int m_Score;
+    public int m_lives;
 
     // Killed by (Logging) [Jack]
     public int[] l_killedBy;
@@ -144,6 +145,10 @@ public class PlayerStats : MonoBehaviour {
     public int getScore()
     {
         return m_Score;
+    }
+    public int getLives()
+    {
+        return m_lives;
     }
     
     public bool GetShieldState()

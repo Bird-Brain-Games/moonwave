@@ -151,6 +151,7 @@ MonoBehaviour:
   m_PlayerID: 0
   m_HitLastBy: {fileID: 0}
   m_Score: 0
+  m_lives: 0
   l_killedBy: 
   m_shieldState: 0
   m_CriticalMultipier: 2

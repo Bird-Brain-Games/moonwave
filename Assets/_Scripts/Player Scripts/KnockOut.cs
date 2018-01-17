@@ -48,12 +48,16 @@ public class KnockOut : MonoBehaviour {
         // The player who died loses a point [Jack]
         m_PlayerStats.m_Score--;
 
+        // Subtract a life [Jack]
+        m_PlayerStats.m_lives--;
+
         // Reset m_HitLastBy for respawning [Jack]
         m_PlayerStats.m_HitLastBy = null;
 
-        
-        ResetPlayer();
-        
+        if (m_PlayerStats.m_lives > 0)
+        {
+            ResetPlayer();
+        }
 
         // Logging
         l_deaths++;
