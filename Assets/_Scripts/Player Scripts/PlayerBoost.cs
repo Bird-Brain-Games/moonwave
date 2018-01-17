@@ -136,7 +136,7 @@ public class PlayerBoost : MonoBehaviour
         //Setup Inertia canceling.
         Vector3 l_Inertia = (-1 * m_RigidBody.velocity);
         l_Inertia.Normalize();
-        l_Inertia = l_Inertia *= m_inertiaForce;
+        l_Inertia = l_Inertia * m_inertiaForce;
         if (m_RigidBody.velocity.magnitude > m_zeroVelocity)
         {
             m_RigidBody.AddForce(l_Inertia, ForceMode.Impulse);
