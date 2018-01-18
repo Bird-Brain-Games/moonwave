@@ -7,6 +7,7 @@ public class ScoreDisplay : MonoBehaviour {
 
     public Text playerScorePrefab;
     public bool stockMode;
+    public int playersInGame;
 
     int[] playerScores;
     int[] playerLives;
@@ -22,6 +23,7 @@ public class ScoreDisplay : MonoBehaviour {
         playerScores = manager.GetPlayerScores();
         playerColours = manager.GetPlayerColours();
         playerLives = manager.GetPlayerLives();
+        playersInGame = numPlayers;
 
 
         // Initialize the UI elements for displaying the score [Graham]

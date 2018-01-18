@@ -9,7 +9,7 @@ public class KnockOut : MonoBehaviour {
     PlayerStats m_PlayerStats;
     PlayerStateManager m_StateManager;
     Shield m_shield;
-
+    ScoreDisplay m_scoringType;
     // Logging    l_ is used to indicate a variable is a logging variable
     public int l_deaths;
 	// Use this for initialization
@@ -18,6 +18,7 @@ public class KnockOut : MonoBehaviour {
         m_PlayerStats = GetComponent<PlayerStats>();
         m_StateManager = GetComponent<PlayerStateManager>();
         m_shield = GetComponentInChildren<Shield>();
+        m_scoringType = GameObject.Find("Player Score Panel").GetComponent<ScoreDisplay>();
         l_deaths = 0;
     }
 	
@@ -54,10 +55,8 @@ public class KnockOut : MonoBehaviour {
         // Reset m_HitLastBy for respawning [Jack]
         m_PlayerStats.m_HitLastBy = null;
 
-        if (m_PlayerStats.m_lives > 0)
-        {
-            ResetPlayer();
-        }
+        ResetPlayer();
+        
 
         // Logging
         l_deaths++;
@@ -65,10 +64,21 @@ public class KnockOut : MonoBehaviour {
 
     public void ResetPlayer()
     {
-        m_rigidBody.ResetInertiaTensor();
-        m_rigidBody.velocity = Vector3.zero;
-        m_rigidBody.position = new Vector3(200, 200, 200);
-        m_shield.ResetShield();
-        m_StateManager.ResetPlayer();
+        if (!m_scoringType.stockMode || m_PlayerStats.m_lives > 0)
+        {
+            m_rigidBody.ResetInertiaTensor();
+            m_rigidBody.velocity = Vector3.zero;
+            m_rigidBody.position = new Vector3(200, 200, 200);
+            m_shield.ResetShield();
+            m_StateManager.ResetPlayer();
+        }
+        if (m_scoringType.stockMode && m_PlayerStats.m_lives < 1)
+        {
+            m_rigidBody.ResetInertiaTensor();
+            m_rigidBody.velocity = Vector3.zero;
+            m_rigidBody.position = new Vector3(200, 200, 200);
+            m_scoringType.playersInGame--;
+        }
+
     }
 }
