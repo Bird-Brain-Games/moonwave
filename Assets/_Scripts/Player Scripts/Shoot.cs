@@ -37,6 +37,11 @@ public class Shoot : MonoBehaviour {
     // Logging [Jack]
     public int l_bullets; // using l_ to indicate this data is for logging
 
+    // Power Up shot variables
+    public int m_shotType = 1;
+    const int NORMAL = 1;
+    const int TRIPLE = 2;
+
     PlayerStats m_playerStats;
 
     #endregion
@@ -74,10 +79,9 @@ public class Shoot : MonoBehaviour {
 
     public void ShootLaser()
     {
-        // If the timer allows us to shoot again
+       // If the timer allows us to shoot again
         if (m_shootTimer)
         {
-
             // SFX
             if (m_playerStats.m_PlayerID == 1) { FindObjectOfType<AudioManager>().Play("Pew"); }
             else if (m_playerStats.m_PlayerID == 2) { FindObjectOfType<AudioManager>().Play("Pew2"); }
@@ -88,7 +92,42 @@ public class Shoot : MonoBehaviour {
             m_timer = Time.time;
             m_startTime = Time.time;
 
-            // Bullet spread calculation [Jack]
+            // Based on Shot Type
+            switch(m_shotType)
+            {
+                case NORMAL:
+                    NormalShot();
+                break;
+
+                case TRIPLE:
+                    TripleShot();
+                break;
+            }
+
+            
+        // Log total shots fired [Jack]
+        l_bullets++; // Take a note of how many player shots
+        
+        // Tell the animator to fire the bullet
+        m_Animator.SetBool("Shooting Laser", true);
+        }
+    }
+
+    public void ShootShotgun()
+    {
+        
+        m_Shotgun.Shoot();
+
+        float shootingAngle = (aimDir.y + 1) / 2;
+
+    }
+
+    ///////////// Plasma Shot Types //////////////
+
+        public void NormalShot()
+    {
+
+           // Bullet spread calculation [Jack]
             m_randomX = Random.Range(-m_stray, m_stray);
             m_randomY = Random.Range(-m_stray, m_stray);
             m_randomY = m_randomY / 100;
@@ -111,38 +150,98 @@ public class Shoot : MonoBehaviour {
 
             //creating the bullet
             Quaternion rotation = Quaternion.LookRotation(transform.forward, forward);
-            Rigidbody clone = Instantiate(bullet, transform.position + (forward*2.5f), rotation);
+            Rigidbody clone = Instantiate(bullet, transform.position + (forward*2.5f), rotation);          
             clone.transform.Rotate(new Vector3(0.0f, 0.0f, 90.0f));
 
             //setting the bullets speed
             //forward *= m_bulletSpeed;
             clone.velocity = forward * m_bulletSpeed;
+                        
             // Initialize the bullet
             clone.GetComponent<Bullet>().Init(
                 forward, m_bulletImpact, m_playerStats);
+            
             Physics.IgnoreCollision(
                 clone.GetComponent<Collider>(), 
                 GetComponent<Collider>());
+            
 
             clone.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = (COLOUR)m_playerStats.m_PlayerID;
-
+            
+            
             //clone.GetComponent<Bullet>().setVelocity(clone.velocity);
             clone.GetComponent<MeshRenderer>().material.color = m_playerStats.ColourOfBullet;
+            
 
             // Log total shots fired [Jack]
             l_bullets++; // Take a note of how many player shots
-        }
-
-        // Tell the animator to fire the bullet
-        m_Animator.SetBool("Shooting Laser", true);
-    }
-
-    public void ShootShotgun()
-    {
         
-        m_Shotgun.Shoot();
+    }
+    
+    public void TripleShot()
+    {        
+        // Bullet spread calculation [Jack]
+        m_randomX = Random.Range(-m_stray, m_stray);
+        m_randomY = Random.Range(-m_stray, m_stray);
+        m_randomY = m_randomY / 100;
+        m_randomX = m_randomX / 100;
 
-        float shootingAngle = (aimDir.y + 1) / 2;
+        // Bullet Spread applied by adding the random values to the aim
+        if (aimDir.sqrMagnitude == 0f) 
+        {
+            if (moveDir.sqrMagnitude == 0f)
+                aimDir = transform.up;	// If not aiming or moving, fire straight up
+            else
+            {
+                aimDir = moveDir;
+            }
+                    
+        }
+        Vector3 forward = new Vector3(aimDir.x + m_randomX, aimDir.y + m_randomY);
+        forward.Normalize();
+        //Quaternion rotation = Quaternion.LookRotation(transform.f, aimDir);
+
+        //creating the bullet
+        Quaternion rotation = Quaternion.LookRotation(transform.forward, forward);
+        Rigidbody clone = Instantiate(bullet, transform.position + (forward*2.5f), rotation);
+        Rigidbody clone2 = Instantiate(bullet, transform.position + 
+            new Vector3(3f, 0f, 0f) + (forward * 2.0f), rotation);
+        Rigidbody clone3 = Instantiate(bullet, transform.position + 
+            new Vector3(-3f, 0f, 0f) + (forward * 2.0f), rotation);
+            
+        clone.transform.Rotate(new Vector3(0.0f, 0.0f, 90.0f));
+        clone2.transform.Rotate(new Vector3(0.0f, 0.0f, 83.0f));
+        clone3.transform.Rotate(new Vector3(0.0f, 0.0f, 97.0f));
+
+        //setting the bullets speed
+        //forward *= m_bulletSpeed;
+        clone.velocity = forward * m_bulletSpeed;
+        clone2.velocity = (forward + new Vector3( 0.1f, 0f, 0f)) * m_bulletSpeed;
+        clone3.velocity = (forward + new Vector3( -0.1f, 0f, 0f)) * m_bulletSpeed;
+
+        // Initialize the bullet
+        clone.GetComponent<Bullet>().Init(
+            forward, m_bulletImpact, m_playerStats);
+            
+        Physics.IgnoreCollision(
+            clone.GetComponent<Collider>(), 
+            GetComponent<Collider>());
+        Physics.IgnoreCollision(
+            clone2.GetComponent<Collider>(), 
+            GetComponent<Collider>());
+        Physics.IgnoreCollision(
+            clone3.GetComponent<Collider>(), 
+            GetComponent<Collider>());
+
+        clone.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = (COLOUR)m_playerStats.m_PlayerID;
+        clone2.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = (COLOUR)m_playerStats.m_PlayerID;
+        clone3.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = (COLOUR)m_playerStats.m_PlayerID;
+            
+        //clone.GetComponent<Bullet>().setVelocity(clone.velocity);
+        clone.GetComponent<MeshRenderer>().material.color = m_playerStats.ColourOfBullet;
+        clone2.GetComponent<MeshRenderer>().material.color = m_playerStats.ColourOfBullet;
+        clone3.GetComponent<MeshRenderer>().material.color = m_playerStats.ColourOfBullet;
 
     }
+
 }
