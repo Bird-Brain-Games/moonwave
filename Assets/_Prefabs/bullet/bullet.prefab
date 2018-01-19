@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 54031750831577956}
   - component: {fileID: 114478968912662006}
   - component: {fileID: 114172065599393602}
-  - component: {fileID: 114335830598576224}
   - component: {fileID: 65765878396565746}
   m_Layer: 10
   m_Name: bullet
@@ -129,17 +128,6 @@ MonoBehaviour:
   constantGravity: 1
   l_groundTime: 0
   l_hangTime: 0
---- !u!114 &114335830598576224
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1525999894464254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9828431777a06a74e91563154f1eb371, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114478968912662006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,5 +143,6 @@ MonoBehaviour:
   m_PlayerStats: {fileID: 0}
   m_particleManager: {fileID: 1238302421354964, guid: a2e37a3480edbd24292673e586a45499,
     type: 2}
-  fallGravMultiplier: 25.83
+  m_fallGravMultiplier: 20
   m_Gravity: {fileID: 0}
+  m_gravityEnabled: 1

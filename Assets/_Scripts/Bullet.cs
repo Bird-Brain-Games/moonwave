@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : Projectile {
+public class Bullet : Projectile
+{
     public GameObject m_particleManager;
     public BulletParticles m_bulletParticles { get; set; }
-    public float fallGravMultiplier;
+    public float m_fallGravMultiplier;
     public StickToPlanet m_Gravity;
+
+    public bool m_gravityEnabled;
 
     private void Awake()
     {
@@ -21,21 +24,25 @@ public class Bullet : Projectile {
 
 
 
-    
+
 
     private void Update()
     {
         m_bulletParticles.transform.position = transform.position;
-        m_Rigidbody.AddForce(m_Gravity.DriftingUpdate() * fallGravMultiplier / 100000000);
+        if (true == m_gravityEnabled)
+        {
+            m_Rigidbody.AddForce(m_Gravity.DriftingUpdate() * m_fallGravMultiplier / 100000000);
+        }
+        m_Direction = m_Rigidbody.velocity.normalized;
     }
 
     public void BulletOutOfBounds()
     {
-            //Debug.Log("bullet out of bounds");
-            Destroy(gameObject, 0.0f); 
+        //Debug.Log("bullet out of bounds");
+        Destroy(gameObject, 0.0f);
     }
 
-	void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         //sets what layer we have collided with
         int layer = collision.gameObject.layer;
@@ -50,17 +57,17 @@ public class Bullet : Projectile {
         else if (layer == m_PlayerLayer)
         {
             collideWithPlayer(collision);
-			Destroy(gameObject, 0);
+            Destroy(gameObject, 0);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
+
     }
 
     void collideWithPlayer(Collision other)
-	{
+    {
         if (other.transform.GetComponent<PlayerStats>().Invincible == false)
         {
             Shield m_shield = other.gameObject.GetComponentInChildren<Shield>();
@@ -84,7 +91,7 @@ public class Bullet : Projectile {
             // Tell the shield to be hit
             m_shield.ShieldHit(Shield.BULLET_TYPE.plasma);
         }
-	}
+    }
 
     private void OnDestroy()
     {
