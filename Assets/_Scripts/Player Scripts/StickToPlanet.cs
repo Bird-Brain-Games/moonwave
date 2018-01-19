@@ -193,7 +193,6 @@ public class StickToPlanet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
         if (tag.Equals("Player") || tag.Equals("Bullet"))
         {
             if (other.tag == "Planet")
@@ -210,6 +209,7 @@ public class StickToPlanet : MonoBehaviour
                 }
             }
         }
+
     }
 
     void OnTriggerExit(Collider other)

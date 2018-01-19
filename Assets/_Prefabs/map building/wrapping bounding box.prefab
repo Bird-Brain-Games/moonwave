@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 54296325167478946}
   m_Layer: 0
   m_Name: wrapping bounding box
-  m_TagString: Untagged
+  m_TagString: map objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 1888698648016980}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 104.5, y: 0.3, z: 0}
-  m_LocalScale: {x: 2.633052, y: -112.608406, z: 204.91354}
+  m_LocalScale: {x: 2.633052, y: 112.6084, z: 204.91354}
   m_Children:
   - {fileID: 4823931927806732}
   - {fileID: 4942843642520920}
