@@ -5,6 +5,8 @@ using UnityEngine;
 public class Bullet : Projectile {
     public GameObject m_particleManager;
     public BulletParticles m_bulletParticles { get; set; }
+    public float fallGravMultiplier;
+    public StickToPlanet m_Gravity;
 
     private void Awake()
     {
@@ -14,7 +16,7 @@ public class Bullet : Projectile {
         m_bulletParticles.transform.position = transform.position;
         m_bulletParticles.velocity = -GetComponent<Rigidbody>().velocity / 5;
         m_bulletParticles.random = -m_bulletParticles.velocity.normalized;
-
+        m_Gravity = GetComponent<StickToPlanet>();
     }
 
 
@@ -24,6 +26,7 @@ public class Bullet : Projectile {
     private void Update()
     {
         m_bulletParticles.transform.position = transform.position;
+        m_Rigidbody.AddForce(m_Gravity.DriftingUpdate() * fallGravMultiplier / 100000000);
     }
 
     public void BulletOutOfBounds()
@@ -51,7 +54,12 @@ public class Bullet : Projectile {
         }
     }
 
-	void collideWithPlayer(Collision other)
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
+    void collideWithPlayer(Collision other)
 	{
         if (other.transform.GetComponent<PlayerStats>().Invincible == false)
         {

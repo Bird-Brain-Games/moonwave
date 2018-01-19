@@ -194,7 +194,7 @@ public class StickToPlanet : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
 
-        if (tag == "Player")
+        if (tag.Equals("Player") || tag.Equals("Bullet"))
         {
             if (other.tag == "Planet")
             {
@@ -312,4 +312,6 @@ public class StickToPlanet : MonoBehaviour
             return (m_RigidBody.position - m_CurrentPlanet.transform.position).normalized;
         return Vector3.zero;
     }
+
+
 }
