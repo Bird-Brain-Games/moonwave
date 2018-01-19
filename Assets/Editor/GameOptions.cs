@@ -16,7 +16,7 @@ public class GameOptions : EditorWindow
     }
 
     //Create window
-    [MenuItem("Window/Game Options")]
+    [MenuItem("GameOptions/Game Options")]
     static void ShowWindow()
     {
         EditorWindow.GetWindow<GameOptions>().Show();
