@@ -8,7 +8,7 @@ public class AddPrefabToAllMaps : EditorWindow
 {
     Object prefab;
 
-    [MenuItem("Window/Add prefab to all maps")]
+    [MenuItem("Campbell's/Add prefab to all maps")]
     static void ShowWindow()
     {
         var window = GetWindowWithRect<AddPrefabToAllMaps>(new Rect(0, 0, 165, 100));
