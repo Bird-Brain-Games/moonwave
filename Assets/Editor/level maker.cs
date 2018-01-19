@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
+
 public class levelmaker : EditorWindow
 {
 
-    [MenuItem("Window/Level Maker")]
+    [MenuItem("Campbell's/Level Maker")]
     public static void ShowWindow()
     {
         EditorWindow.GetWindow<levelmaker>("Level Maker");
