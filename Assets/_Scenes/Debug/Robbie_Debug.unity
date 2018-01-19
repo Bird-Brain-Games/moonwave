@@ -375,11 +375,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickup: {fileID: 1725438933334298, guid: 19ab5a542fb0a8149a537259ea8b3783, type: 2}
-  m_xRange: 1
-  m_yRange: 1
-  m_timeMin: 0
-  m_timeMax: 0
-  m_delay: 5
+  m_xRange: 50
+  m_yRange: 20
+  m_delayMin: 1
+  m_delayMax: 5
+  pickupsON: 1
 --- !u!23 &965757422
 MeshRenderer:
   m_ObjectHideFlags: 0
