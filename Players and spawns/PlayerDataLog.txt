@@ -3192,3 +3192,111 @@ Total Bullets Shot: 273
 Total Boosts Used: 0
 Total Deaths: 0
 
+
+*******************************
+***** 2018/01/19 03:10:26 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 17.06346
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+
+*******************************
+***** 2018/01/19 03:13:15 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 27.44113
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+
+*******************************
+***** 2018/01/19 03:14:37 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 28.49485
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+
+*******************************
+***** 2018/01/19 03:15:29 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 24.1762
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+
+*******************************
+***** 2018/01/19 03:18:02 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 13.58687
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+
+*******************************
+***** 2018/01/19 03:18:49 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 17.52597
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+
+*******************************
+***** 2018/01/19 03:19:33 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 7.404292
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+
+*******************************
+***** 2018/01/19 03:20:23 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 14.32956
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+
+*******************************
+***** 2018/01/19 03:23:23 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 112.4767
+Total Time Grounded: 6.113861
+Total Bullets Shot: 582
+Total Boosts Used: 8
+Total Deaths: 0
+

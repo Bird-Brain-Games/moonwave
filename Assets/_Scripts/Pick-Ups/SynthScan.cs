@@ -23,19 +23,18 @@ public class SynthScan : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		// Move the scanner up and down around moon
-		
+		// Move the scanner down the pickup		
 		transform.Translate(0f, -0.45f, 0f);
 
-		// Set the Uniform for the moon
+		// Set the Uniform for the scanning shader
 		parentRend.material.SetFloat("_Scan", transform.localPosition.y);
 
 
-		// Kill the scanner
+		// Kill the scanner after it has scanned
 		 if (time - startTime > scanTime){
 			 
 			transform.parent.GetComponent<PickUp>().scanned = true;
-        	Destroy(gameObject, 0);  // Destroys the scanner after it has scanned
+        	Destroy(gameObject, 0);
         }
 
         time = Time.time;

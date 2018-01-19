@@ -7,17 +7,21 @@ public class PickUpSpawner : MonoBehaviour {
 	public GameObject pickup;
 	public float m_xRange;
 	public float m_yRange;
-	public float m_timeMin;
-	public float m_timeMax;
+	public float m_delayMin;
+	public float m_delayMax;
+
+	public bool pickupsON = true;
 
 	private bool m_timer;
 	private float m_startTime;
-	public float m_delay;
+	private float m_delay;
 	private float m_time;
+
 
 	// Use this for initialization
 	void Start () {
 		m_timer = false;
+		m_delay = Random.Range(m_delayMin, m_delayMax);
 		
 	}
 	
@@ -39,12 +43,16 @@ public class PickUpSpawner : MonoBehaviour {
 			m_timer = false;
 			m_startTime = Time.time;
 			m_time = Time.time;
+			m_delay = Random.Range(m_delayMin, m_delayMax);
 
-			Instantiate(
-			pickup, 
-			new Vector3(Random.Range(-m_xRange,m_xRange), Random.Range(-m_yRange,m_yRange), 0),
-			Quaternion.identity
-			);
+			if (pickupsON){
+
+				Instantiate(
+				pickup, 
+				new Vector3(Random.Range(-m_xRange,m_xRange), Random.Range(-m_yRange,m_yRange), 0),
+				Quaternion.identity
+				);
+			}
 		}
 
 	}

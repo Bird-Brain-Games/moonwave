@@ -7,12 +7,23 @@ public class PickUp : MonoBehaviour {
 
     public bool scanned = false;
 
+    private float rotateX;
+    private float rotateY;
+    private float rotateZ;
+
+
+    void Start (){
+        rotateX = Random.Range( -1f, 1f);
+        rotateY = Random.Range( -1f, 1f);
+        rotateZ = Random.Range( -1f, 1f);
+    }
+    
     void Update () {
 		
 		// Rotate to make it look fancy
         if (scanned){
 
-            transform.Rotate(new Vector3(1f, 0.7f, 1f));
+            transform.Rotate(new Vector3(rotateX, rotateY, rotateY));
         }
 			
 	}
