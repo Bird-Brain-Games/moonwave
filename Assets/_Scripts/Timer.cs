@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Timer : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class Timer : MonoBehaviour {
     bool m_Paused;
     public float m_MaxTime;
     float m_Time;
+    public UnityEvent outOfTime;
     
 
 	// Use this for initialization
@@ -29,6 +31,7 @@ public class Timer : MonoBehaviour {
             {
                 m_Time = 0.0f;
                 m_OutOfTime = true;
+                outOfTime.Invoke();
                 //TODO reset playerStateManagers
 
             }
