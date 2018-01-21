@@ -42,8 +42,17 @@ public class ShowResultsAnim : StateMachineBehaviour {
 			{
 				if (resultString.Length > 0)
 					resultString += " and ";
-				resultString += "p" + (i + 1).ToString();
-			}
+
+                // Hard code to put the color names on winning screen. No one answered me in chat so I had to do it like this sorry [Hugo]
+                if (i == 0)
+				    resultString += "red";
+                if (i == 1)
+                    resultString += "purple";
+                if (i == 2)
+                    resultString += "blue";
+                if (i == 3)
+                    resultString += "green";
+            }
 		}
 
 		// Put "win" or "wins" depending on how many people won [Graham]
