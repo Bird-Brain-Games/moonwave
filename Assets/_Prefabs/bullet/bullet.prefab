@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 114478968912662006}
   - component: {fileID: 114172065599393602}
   - component: {fileID: 65765878396565746}
+  - component: {fileID: 114217453469049188}
+  - component: {fileID: 114670389252880546}
   m_Layer: 10
   m_Name: bullet
   m_TagString: Bullet
@@ -128,6 +130,18 @@ MonoBehaviour:
   constantGravity: 1
   l_groundTime: 0
   l_hangTime: 0
+--- !u!114 &114217453469049188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525999894464254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566c3aef6f6e6b24898d0630440b9cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxDuration: 2.5
 --- !u!114 &114478968912662006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,3 +160,14 @@ MonoBehaviour:
   m_fallGravMultiplier: 20
   m_Gravity: {fileID: 0}
   m_gravityEnabled: 1
+--- !u!114 &114670389252880546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525999894464254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9828431777a06a74e91563154f1eb371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
