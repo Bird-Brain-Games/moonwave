@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class ScoreDisplay : MonoBehaviour {
 
     public Text playerScorePrefab;
+    public bool stockMode;
+    public int playersInGame;
 
     int[] playerScores;
+    int[] playerLives;
     public Color[] playerColours;
     Text[] playerScoreText;
     int numPlayers;
@@ -19,6 +22,8 @@ public class ScoreDisplay : MonoBehaviour {
         numPlayers = manager.GetNumPlayers();
         playerScores = manager.GetPlayerScores();
         playerColours = manager.GetPlayerColours();
+        playerLives = manager.GetPlayerLives();
+        playersInGame = numPlayers;
 
 
         // Initialize the UI elements for displaying the score [Graham]
@@ -40,12 +45,24 @@ public class ScoreDisplay : MonoBehaviour {
 	void LateUpdate () {
         manager = GameObject.Find("Players and spawns").GetComponent<PlayerManager>();
         playerScores = manager.GetPlayerScores();
+        playerLives = manager.GetPlayerLives();
 
-        // Update the player texts
-        for (int i = 0; i < numPlayers; i++)
+        if (stockMode)  // Display lives
         {
-            playerScoreText[i].color = manager.players[i].colour;
-            playerScoreText[i].text = playerScores[i].ToString();
+            for (int i = 0; i < numPlayers; i++)
+            {
+                playerScoreText[i].color = manager.players[i].colour;
+                playerScoreText[i].text = playerLives[i].ToString();
+            }
         }
+        else            // Display scores w/ timer
+        {
+            for (int i = 0; i < numPlayers; i++)
+            {
+                playerScoreText[i].color = manager.players[i].colour;
+                playerScoreText[i].text = playerScores[i].ToString();
+            }
+        }
+
     }
 }

@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour {
     public PlayerStats[] players;
     public int[] playerScores;
     public Color[] playerColours;
+    public int[] playerLives;
     int numPlayers;
     
 	// Use this for initialization
@@ -15,6 +16,7 @@ public class PlayerManager : MonoBehaviour {
         numPlayers = players.Length;
         playerScores = new int[numPlayers];
         playerColours = new Color[numPlayers];
+        playerLives = new int[numPlayers];
 
         // Get the player colours [Graham]
         for (int i = 0; i < numPlayers; i++)
@@ -38,6 +40,12 @@ public class PlayerManager : MonoBehaviour {
         {
             playerScores[i] = players[i].getScore();
         }
+
+        // Update the player Lives [Jack]
+        for (int i = 0; i < numPlayers; i++)
+        {
+            playerLives[i] = players[i].getLives();
+        }
 	}
 
     /// <summary>
@@ -56,6 +64,15 @@ public class PlayerManager : MonoBehaviour {
     public int[] GetPlayerScores()
     {
         return playerScores;
+    }
+
+    /// <summary>
+    /// Get the array of player lives
+    /// </summary>
+    /// <returns></returns>
+    public int[] GetPlayerLives()
+    {
+        return playerLives;
     }
 
     /// <summary>
