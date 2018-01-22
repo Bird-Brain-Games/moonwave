@@ -9,6 +9,8 @@ syntax: glob
 *.exe
 *.orig.*
 *.orig
+*.rej
+*.rej.*
 outFile.txt
 
 syntax: regexp
