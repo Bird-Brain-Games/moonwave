@@ -107,12 +107,15 @@ public class GameOptions : EditorWindow
         index = EditorGUILayout.Popup(index, scenes);
         if (GUILayout.Button("Change level"))
         {
-            EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
             if (Application.isPlaying)
+            {
                 EditorSceneManager.LoadScene("Assets/_Scenes/Completed Maps/" + scenes[index]);
+            }
             else
+            {
+                EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
                 EditorSceneManager.OpenScene("Assets/_Scenes/Completed Maps/" + scenes[index]);
-
+            }
         }
 
     }
