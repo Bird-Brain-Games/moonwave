@@ -52,7 +52,7 @@ public class ScoreDisplay : MonoBehaviour {
             for (int i = 0; i < numPlayers; i++)
             {
                 playerScoreText[i].color = manager.players[i].colour;
-                playerScoreText[i].text = playerLives[i].ToString();
+                playerScoreText[i].text = (playerLives[i] + 1).ToString() ;
             }
         }
         else            // Display scores w/ timer
