@@ -47,7 +47,7 @@ public class GameOptions : EditorWindow
         //display editable float if the wrap is active
         if (wrapping == true)
             bulletWrap.GetComponent<BulletDuration>().MaxDuration =
-                EditorGUILayout.DelayedFloatField("Bullet Duration", bulletWrap.GetComponent<BulletDuration>().MaxDuration);
+                EditorGUILayout.FloatField("Bullet Duration", bulletWrap.GetComponent<BulletDuration>().MaxDuration);
 
     }
     #endregion
@@ -71,8 +71,38 @@ public class GameOptions : EditorWindow
         bulletGravOptions.m_gravityEnabled = EditorGUILayout.Toggle("Bullet Gravity", bulletGravOptions.m_gravityEnabled);
 
         if (bulletGravOptions.m_gravityEnabled == true)
-            bulletGravOptions.m_fallGravMultiplier = EditorGUILayout.DelayedFloatField("BulletGravity ", bulletGravOptions.m_fallGravMultiplier);
+            bulletGravOptions.m_fallGravMultiplier = EditorGUILayout.FloatField("BulletGravity ", bulletGravOptions.m_fallGravMultiplier);
 
+    }
+    #endregion
+
+    #region StockMode
+    ScoreDisplay scoreDisplay;
+    PlayerStats playerStats;
+
+    void StockModeAwake()
+    {
+        GameObject temp = AssetDatabase.LoadAssetAtPath("Assets/_Prefabs/UI/Game UI.prefab", typeof(GameObject)) as GameObject;
+        scoreDisplay = temp.GetComponentInChildren<ScoreDisplay>();
+        temp = AssetDatabase.LoadAssetAtPath("Assets/_Prefabs/player/player.prefab", typeof(GameObject)) as GameObject;
+        playerStats = temp.GetComponent<PlayerStats>();
+    }
+
+    void StockModeGUI()
+    {
+        //recall awake function if the variable isnt loaded
+        if (null == scoreDisplay || null == playerStats)
+        {
+            StockModeAwake();
+        }
+        else
+        {
+            scoreDisplay.stockMode = EditorGUILayout.Toggle("Stock Mode", scoreDisplay.stockMode);
+            PrefabUtility.ResetToPrefabState(GameObject.Find("Game UI"));
+
+            if (scoreDisplay.stockMode == true)
+                playerStats.m_lives = EditorGUILayout.IntField("Player lives ", playerStats.m_lives + 1) - 1;
+        }
     }
     #endregion
 
@@ -136,6 +166,7 @@ public class GameOptions : EditorWindow
     {
         WrapAwake();
         BulletGravAwake();
+        StockModeAwake();
     }
 
     //Create window
@@ -149,6 +180,8 @@ public class GameOptions : EditorWindow
     {
         WrapOnGUI();
         BulletOnGUI();
+        StockModeGUI();
+
 
         Line("Level select");
 
