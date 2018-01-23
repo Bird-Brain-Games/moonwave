@@ -157,7 +157,7 @@ MonoBehaviour:
   m_PlayerStats: {fileID: 0}
   m_particleManager: {fileID: 1238302421354964, guid: a2e37a3480edbd24292673e586a45499,
     type: 2}
-  m_fallGravMultiplier: 20
+  m_fallGravMultiplier: 15
   m_Gravity: {fileID: 0}
   m_gravityEnabled: 1
 --- !u!114 &114670389252880546
