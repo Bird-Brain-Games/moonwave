@@ -101,7 +101,7 @@ public class GameOptions : EditorWindow
             PrefabUtility.ResetToPrefabState(GameObject.Find("Game UI"));
 
             if (scoreDisplay.stockMode == true)
-                playerStats.m_lives = EditorGUILayout.IntField("Player lives ", playerStats.m_lives + 1) - 1;
+                playerStats.m_lives = EditorGUILayout.IntField("Player lives ", playerStats.m_lives);
         }
     }
     #endregion
