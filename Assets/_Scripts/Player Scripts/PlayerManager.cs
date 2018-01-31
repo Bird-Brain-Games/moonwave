@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour {
     public Color[] playerColours;
     public int[] playerLives;
     int numPlayers;
+
+    Controls controls;
     
 	// Use this for initialization
 	void Awake () {
@@ -45,6 +47,17 @@ public class PlayerManager : MonoBehaviour {
         for (int i = 0; i < numPlayers; i++)
         {
             playerLives[i] = players[i].getLives();
+        }
+
+        // Character color lobby [Jack]
+        for (int i = 0; i < numPlayers; i++)
+        {
+            //Debug.Log("Initializing colours");
+            if (players[i].GetComponent<Controls>().GetJump())
+            {
+                playerColours[i] = players[i].selectColour();
+                Debug.Log("changing colour!");
+            }
         }
 	}
 

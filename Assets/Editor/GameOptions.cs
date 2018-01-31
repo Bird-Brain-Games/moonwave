@@ -98,7 +98,10 @@ public class GameOptions : EditorWindow
         else
         {
             scoreDisplay.stockMode = EditorGUILayout.Toggle("Stock Mode", scoreDisplay.stockMode);
-            PrefabUtility.ResetToPrefabState(GameObject.Find("Game UI"));
+            GameObject temp = GameObject.Find("Game UI");
+            
+            if (null != temp)
+                PrefabUtility.ResetToPrefabState(temp);
 
             if (scoreDisplay.stockMode == true)
                 playerStats.m_lives = EditorGUILayout.IntField("Player lives ", playerStats.m_lives);

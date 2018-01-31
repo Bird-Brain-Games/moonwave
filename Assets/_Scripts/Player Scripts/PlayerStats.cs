@@ -56,6 +56,8 @@ public class PlayerStats : MonoBehaviour {
     public float m_respawnTime;
     public Color colourdull;
     public Color colour { get; set; }
+    public ColourData colourData;
+    public int colourItr;
     //A colour for our bullets [cam]
     public Color ColourOfBullet { get; set; }
     public bool Invincible { get; set; }
@@ -123,15 +125,18 @@ public class PlayerStats : MonoBehaviour {
     }
     private void Start()
     {
-        ColourData temp = GetComponentInParent<bulletColour>().GetNextAvailableColour();
-        if (temp.isFree == true)
+        ColourData temp = GetComponentInParent<bulletColour>().SpawnColour();
+        if (temp.isFree == false)
         {
             Debug.Log("Setting Colour");
             ColourOfBullet = temp.colour;
             colour = temp.colour;
+            colourData = temp;
             GetComponentInChildren<SkinnedMeshRenderer>().material.color = colour;
             m_PlayerID = temp.playerID;
             GetComponentInParent<Unique>().GetComponentInChildren<BoostCollider>().setColour(colour);
+            colourdull = colour;
+            colourItr = colourData.itr;
         }
         
     }
@@ -176,4 +181,28 @@ public class PlayerStats : MonoBehaviour {
             return m_CriticalMultipier;
         }
     }
+
+    // Select the colour in lobby
+    public Color selectColour()
+    {
+        //if (colourData.itr == 6)
+        //{
+        //    colourData.itr = 0;
+        //}
+
+        ColourData temp = GetComponentInParent<bulletColour>().GetNextAvailableColour(colourItr);
+        if (!temp.isFree == true)
+        {
+            colourData = temp;
+            //Debug.Log("Setting Colour");
+            ColourOfBullet = temp.colour;
+            colour = temp.colour;
+            colourdull = temp.colour;
+            GetComponentInChildren<SkinnedMeshRenderer>().material.color = colour;
+            GetComponentInParent<Unique>().GetComponentInChildren<BoostCollider>().setColour(colour);
+            colourItr = colourData.itr;
+        }
+
+        return colour;
+    } 
 }
