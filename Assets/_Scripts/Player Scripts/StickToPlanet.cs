@@ -193,8 +193,7 @@ public class StickToPlanet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
-        if (tag == "Player")
+        if (tag.Equals("Player") || tag.Equals("Bullet"))
         {
             if (other.tag == "Planet")
             {
@@ -210,6 +209,7 @@ public class StickToPlanet : MonoBehaviour
                 }
             }
         }
+
     }
 
     void OnTriggerExit(Collider other)
@@ -272,7 +272,7 @@ public class StickToPlanet : MonoBehaviour
 
         }
 
-        else if (collision.gameObject.CompareTag("Hazard"))
+        else if (collision.gameObject.CompareTag("Hazard") && this.CompareTag("Player"))
         {
             // SFX
             FindObjectOfType<AudioManager>().Play("Lava Death");
@@ -312,4 +312,6 @@ public class StickToPlanet : MonoBehaviour
             return (m_RigidBody.position - m_CurrentPlanet.transform.position).normalized;
         return Vector3.zero;
     }
+
+
 }
