@@ -7,6 +7,10 @@ syntax: glob
 *.pdb
 *.unitypackage
 *.exe
+*.orig.*
+*.orig
+*.rej
+*.rej.*
 outFile.txt
 
 syntax: regexp

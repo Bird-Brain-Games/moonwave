@@ -9,48 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1108963718289254}
+  m_RootGameObject: {fileID: 1731607963545028}
   m_IsPrefabParent: 1
---- !u!1 &1108963718289254
+--- !u!1 &1731607963545028
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4834999780143830}
-  - component: {fileID: 33437284439697896}
-  - component: {fileID: 23875038881651688}
-  - component: {fileID: 114906342299122966}
+  - component: {fileID: 4888262672170716}
+  - component: {fileID: 33180161721279394}
+  - component: {fileID: 23376754057907864}
+  - component: {fileID: 114949734268378688}
+  - component: {fileID: 65256677021535510}
   m_Layer: 0
-  m_Name: shield
+  m_Name: Pick-Up Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4834999780143830
+--- !u!4 &4888262672170716
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1108963718289254}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 17.8}
-  m_LocalScale: {x: 10, y: 3, z: 15.499997}
+  m_GameObject: {fileID: 1731607963545028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6, y: -0.7, z: -1.40625}
+  m_LocalScale: {x: 190.86757, y: 105.30621, z: 105.30621}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!23 &23875038881651688
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23376754057907864
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1108963718289254}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_GameObject: {fileID: 1731607963545028}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -76,34 +77,39 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33437284439697896
+--- !u!33 &33180161721279394
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1108963718289254}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114906342299122966
+  m_GameObject: {fileID: 1731607963545028}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65256677021535510
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1731607963545028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114949734268378688
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1108963718289254}
+  m_GameObject: {fileID: 1731607963545028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a845933893896447a41233b14220a02, type: 3}
+  m_Script: {fileID: 11500000, guid: 40a2d8353ecdb424aaf5cdbfe29c2a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_shieldHealth: 50
-  m_maxShieldHealth: 50
-  m_percentSheild: 0
-  m_rechargeDelay: 5
-  m_rechargeRatePerSecond: 5
-  m_maxColor: {r: 1, g: 1, b: 1, a: 0}
-  m_currentColor: {r: 0, g: 0, b: 0, a: 0}
-  m_endColor: {r: 1, g: 0, b: 0, a: 0}
-  m_Explosion: {fileID: 1419220156410330, guid: 3e941e330f613f74c8356a0b2ff85aa7,
-    type: 2}
-  m_timeSinceLastHit: 0
-  m_hitUpdate: 0
-  m_canRecharge: 0
+  pickup: {fileID: 1725438933334298, guid: 19ab5a542fb0a8149a537259ea8b3783, type: 2}
+  m_xRange: 50
+  m_yRange: 20
+  m_delayMin: 1
+  m_delayMax: 5
+  pickupsON: 1

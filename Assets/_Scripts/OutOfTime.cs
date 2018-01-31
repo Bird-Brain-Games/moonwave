@@ -7,27 +7,37 @@ public class OutOfTime : MonoBehaviour {
 
     public GameObject timerObject;
     public GameObject backToMenuButton;
+    ScoreDisplay m_scoringType;
     Text m_Text;
     Timer timer;
     Animator m_Animator;
+
 
 	// Use this for initialization
 	void Awake () {
         timer = timerObject.GetComponent<Timer>();
         m_Animator = GetComponent<Animator>();
+        m_scoringType = GameObject.Find("Player Score Panel").GetComponent<ScoreDisplay>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
         // Update the animator time control (for transitions) [Graham]
-        m_Animator.SetFloat("time", timer.GetTime());
-
-        if (m_Animator.GetBool("InGame"))
+        if (!m_scoringType.stockMode) // If stock is turned off, turn on timer [Jack]
         {
-            // Hacky, but it works for now [Graham]
-            timer.Show();
-        }
+            m_Animator.SetFloat("time", timer.GetTime());
+
+            if (m_Animator.GetBool("InGame"))
+            {
+                // Hacky, but it works for now [Graham]
+                timer.Show();
+            }
+            
+        // If stock mode is turned ON, check to see if there is one player left for the win screen [Jack]
+        //else if (m_scoringType.playersInGame == 1)
+        //{
+
 
         
     }
