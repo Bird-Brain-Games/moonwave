@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerScoreboardDisplay : MonoBehaviour {
 
 	public PlayerScoreboardSection sectionPrefab;
-	public PlayerManager playerManager;
+	PlayerManager playerManager;
 	int[] playerScores;
 	PlayerScoreboardSection[] sections;
 	int numPlayers;
@@ -14,6 +14,7 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		playerManager = (PlayerManager)FindObjectOfType(typeof(PlayerManager));
 		numPlayers = playerManager.GetNumPlayers();
 		playerScores = new int[numPlayers];
 		sections = new PlayerScoreboardSection[numPlayers];
@@ -24,6 +25,16 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 			sections[i].image.color = playerManager.players[i].colour;
 
 		}
+
+		UpdateAllScores();
+	}
+
+	public void UpdateAllScores()
+	{
+		for(int i = 0; i < numPlayers; i++)
+		{
+			UpdateScores(i);
+		}
 	}
 
 	// Increase the score of a player by 1.
@@ -33,6 +44,6 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		// Safety, can't exceed array
 		if (playerNum > numPlayers) return;
 
-		sections[playerNum].score++;
+		sections[playerNum].Score += playerManager.players[playerNum].getScore();
 	}
 }

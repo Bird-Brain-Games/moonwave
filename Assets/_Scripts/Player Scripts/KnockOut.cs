@@ -35,7 +35,10 @@ public class KnockOut : MonoBehaviour {
         // The player who hit them out gets 2 points [Jack]
         if (m_PlayerStats.m_HitLastBy != null)
         {
-            m_PlayerStats.m_HitLastBy.m_Score += 2;
+            if (m_scoringType.stockMode)
+                m_PlayerStats.m_HitLastBy.m_Score += 1;
+            else
+                m_PlayerStats.m_HitLastBy.m_Score += 2;
 
             // Log who player was killed by [Jack]
             m_PlayerStats.l_killedBy[m_PlayerStats.m_HitLastBy.m_PlayerID]++;
@@ -44,10 +47,12 @@ public class KnockOut : MonoBehaviour {
         {
             // Log that the player killed themself [Jack]
             m_PlayerStats.l_killedBy[m_PlayerStats.m_PlayerID]++;
+            m_PlayerStats.m_Score--;
         }
 
         // The player who died loses a point [Jack]
-        m_PlayerStats.m_Score--;
+        if (!m_scoringType.stockMode)
+            m_PlayerStats.m_Score--;
 
         // Subtract a life [Jack]
         m_PlayerStats.m_lives--;
