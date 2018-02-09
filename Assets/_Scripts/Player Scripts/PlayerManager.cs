@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour {
     public Color[] playerColours;
     public int[] playerLives;
     int numPlayers;
+    public bool selectScreen;
 
     Controls controls;
     
@@ -50,13 +51,16 @@ public class PlayerManager : MonoBehaviour {
         }
 
         // Character color lobby [Jack]
-        for (int i = 0; i < numPlayers; i++)
+        if(selectScreen)
         {
-            //Debug.Log("Initializing colours");
-            if (players[i].GetComponent<Controls>().GetJump())
+            for (int i = 0; i < numPlayers; i++)
             {
-                playerColours[i] = players[i].selectColour();
-                Debug.Log("changing colour!");
+                //Debug.Log("Initializing colours");
+                if (players[i].GetComponent<Controls>().GetColorChange() != 0)
+                {
+                    playerColours[i] = players[i].selectColour();
+                    Debug.Log("changing colour!");
+                }
             }
         }
 	}
