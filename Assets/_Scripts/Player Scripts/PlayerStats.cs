@@ -58,6 +58,7 @@ public class PlayerStats : MonoBehaviour {
     public Color colour { get; set; }
     public ColourData colourData;
     public int colourItr;
+    public bool canChangeColour;
     //A colour for our bullets [cam]
     public Color ColourOfBullet { get; set; }
     public bool Invincible { get; set; }
@@ -111,6 +112,7 @@ public class PlayerStats : MonoBehaviour {
         l_killedBy = new int[4];
         stunTrigger = false;
         Invincible = false;
+        canChangeColour = true;
         // Making them small strings, easier to compare (probably change to ints) [Graham]
         PlayerOnPlanetStateString = "onPlanet";
         PlayerDriftStateString = "drift";

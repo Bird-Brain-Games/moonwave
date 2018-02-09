@@ -193,6 +193,10 @@ public class Controls : MonoBehaviour
     public Button boost;
     public Button shootShotgun;
 
+    // Select, selects colors, changeColors changes colors [jack]
+    public Button select;
+    public Aim changeColors;
+
     //This region uses the above variables to fetch the controller state
     #region controls
 
@@ -236,11 +240,41 @@ public class Controls : MonoBehaviour
     {
         return GetButtonStruct(jump, detect);
     }
+    //returns true or false using the select controls [jack]
+    public bool GetSelect(BUTTON_DETECTION detect = BUTTON_DETECTION.GET_BUTTON_DOWN)
+    {
+        return GetButtonStruct(select, detect);
+    }
+    //returns left or right using the select controls (left analog stick) [Jack]
+    public int GetColorChange()
+    {
+        float result;
+        result = getAnalogInput(changeColors.aimX);
+
+        if(result > 0.300 && GetComponent<PlayerStats>().canChangeColour)
+        {
+            GetComponent<PlayerStats>().canChangeColour = false;
+            return 1;
+        }
+        if (result < -0.300 && GetComponent<PlayerStats>().canChangeColour)
+        {
+            GetComponent<PlayerStats>().canChangeColour = false;
+            return -1;
+        }
+        if (result >= -0.300 && result <= 0.300)
+        {
+            GetComponent<PlayerStats>().canChangeColour = true;
+            return 0;
+        }
+        else
+            return 0;
+    }
     //returns true or false using the boost controls.
     public bool GetBoost(BUTTON_DETECTION detect = BUTTON_DETECTION.GET_BUTTON)
     {
         return GetButtonStruct(boost, detect);
     }
+    
 
 
 
