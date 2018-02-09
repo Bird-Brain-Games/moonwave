@@ -863,6 +863,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114227200349815838, guid: 3e589af603a5aea4da835cdfe6eeb049,
+        type: 2}
+      propertyPath: scoreBoard
+      value: 
+      objectReference: {fileID: 1782037307}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e589af603a5aea4da835cdfe6eeb049, type: 2}
   m_IsPrefabParent: 0
@@ -1162,6 +1167,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4175169465789868, guid: e3a3d8334fb4c9e4cad648d3368ee526,
     type: 2}
   m_PrefabInternal: {fileID: 1767115977}
+--- !u!1 &1782037307 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1876212185136478, guid: 1f81a9c0863451d47ac6b0048a1d80f0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1790757379}
 --- !u!1001 &1790757379
 Prefab:
   m_ObjectHideFlags: 0
