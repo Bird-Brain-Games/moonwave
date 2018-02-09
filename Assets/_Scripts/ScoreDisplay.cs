@@ -53,6 +53,8 @@ public class ScoreDisplay : MonoBehaviour {
             {
                 playerScoreText[i].color = manager.players[i].colour;
                 playerScoreText[i].text = (playerLives[i]).ToString() ;
+                if (playerLives[i] < 0) // If out of lives, just show an X
+                    playerScoreText[i].text = "X";
             }
         }
         else            // Display scores w/ timer

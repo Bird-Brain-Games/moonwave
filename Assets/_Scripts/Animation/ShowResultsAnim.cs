@@ -10,7 +10,19 @@ public class ShowResultsAnim : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Text resultText = animator.GetComponent<Text>();
+        showStockResults(animator);
+    }
+
+	void showStockResults(Animator animator)
+	{
+		Text resultText = animator.GetComponent<Text>();
+		resultText.text = "";
+		animator.SetBool("Results Showing", true);
+	}
+
+	void showScoreResults(Animator animator)
+	{
+		Text resultText = animator.GetComponent<Text>();
         PlayerManager players = GameObject.FindObjectOfType<PlayerManager>();
 
 		// Enable the "back to menu" button
@@ -43,15 +55,17 @@ public class ShowResultsAnim : StateMachineBehaviour {
 				if (resultString.Length > 0)
 					resultString += " and ";
 
-                // Hard code to put the color names on winning screen. No one answered me in chat so I had to do it like this sorry [Hugo]
-                if (i == 0)
-				    resultString += "red";
-                if (i == 1)
-                    resultString += "purple";
-                if (i == 2)
-                    resultString += "blue";
-                if (i == 3)
-                    resultString += "green";
+				resultString += players.players[i].colour.ToString();
+
+                // // Hard code to put the color names on winning screen. No one answered me in chat so I had to do it like this sorry [Hugo]
+                // if (i == 0)
+				//     resultString += "red";
+                // if (i == 1)
+                //     resultString += "purple";
+                // if (i == 2)
+                //     resultString += "blue";
+                // if (i == 3)
+                //     resultString += "green";
             }
 		}
 
@@ -67,5 +81,5 @@ public class ShowResultsAnim : StateMachineBehaviour {
 
 		// Change the text to show the winner(s) [Graham]	
 		resultText.text = resultString;
-    }
+	}
 }
