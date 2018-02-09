@@ -16,6 +16,7 @@ public class FinishAnim : StateMachineBehaviour {
         countText = animator.GetComponent<Text>();
         countText.enabled = true;
         countText.text = "Finsh!";
+        animator.SetBool("InGame", false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

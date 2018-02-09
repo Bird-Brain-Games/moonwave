@@ -33,34 +33,27 @@ public class OutOfTime : MonoBehaviour {
                 // Hacky, but it works for now [Graham]
                 timer.Show();
             }
-
-            // If the match is finished, tell the animator [Graham]
-            if (timer.OutOfTime())
-            {
-                timer.Hide();
-                m_Animator.SetTrigger("End Match");
-
-                // If the results are showing, tell the back to menu button to enable itself
-                // Shouldn't be in this file, but because it's locked to the animation, 
-                // It kinda has to go here. Sorry! [Graham]
-                if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Show Results") && // Somewhat unstable [Graham]
-                    !backToMenuButton.activeInHierarchy)   
-                    backToMenuButton.SetActive(true);
-            }
-        }
-
+            
         // If stock mode is turned ON, check to see if there is one player left for the win screen [Jack]
-        else if (m_scoringType.playersInGame == 1)
-        {
-            m_Animator.SetTrigger("End Match");
+        //else if (m_scoringType.playersInGame == 1)
+        //{
 
-                // If the results are showing, tell the back to menu button to enable itself
-                // Shouldn't be in this file, but because it's locked to the animation, 
-                // It kinda has to go here. Sorry! [Graham]
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Show Results") && // Somewhat unstable [Graham]
-                !backToMenuButton.activeInHierarchy)   
-                backToMenuButton.SetActive(true);
-        }
+
         
+    }
+
+    public void EndMatch()
+    {
+        // If the match is finished, tell the animator [Graham]
+        timer.Hide();
+        m_Animator.SetTrigger("End Match");
+
+        // If the results are showing, tell the back to menu button to enable itself
+        // Shouldn't be in this file, but because it's locked to the animation, 
+        // It kinda has to go here. Sorry! [Graham]
+        if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Show Results") && // Somewhat unstable [Graham]
+            !backToMenuButton.activeInHierarchy)   
+            backToMenuButton.SetActive(true);
+    
     }
 }
