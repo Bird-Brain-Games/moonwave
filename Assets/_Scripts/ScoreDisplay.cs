@@ -7,6 +7,7 @@ public class ScoreDisplay : MonoBehaviour {
 
     public Text playerScorePrefab;
     public bool stockMode;
+    public bool pointPerKill;
     public int playersInGame;
 
     int[] playerScores;

@@ -9,12 +9,14 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 	PlayerManager playerManager;
 	int[] playerScores;
 	PlayerScoreboardSection[] sections;
+	ScoreDisplay scoreDisplay;
 	int numPlayers;
 
 
 	// Use this for initialization
 	void Start () {
 		playerManager = (PlayerManager)FindObjectOfType(typeof(PlayerManager));
+		scoreDisplay = (ScoreDisplay)FindObjectOfType(typeof(ScoreDisplay));
 		numPlayers = playerManager.GetNumPlayers();
 		playerScores = new int[numPlayers];
 		sections = new PlayerScoreboardSection[numPlayers];
@@ -44,6 +46,10 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		// Safety, can't exceed array
 		if (playerNum > numPlayers) return;
 
-		sections[playerNum].Score += playerManager.players[playerNum].getScore();
+		if (scoreDisplay.stockMode && scoreDisplay.pointPerKill)
+			sections[playerNum].Score += playerManager.players[playerNum].getScore();
+		else if (scoreDisplay.stockMode)
+			sections[playerNum].Score += (playerManager.playerLives[playerNum] >= 0) ? 1 : 0;
+
 	}
 }
