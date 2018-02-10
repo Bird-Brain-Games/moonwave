@@ -193,7 +193,7 @@ public class PlayerStats : MonoBehaviour {
         //}
 
         ColourData temp = GetComponentInParent<bulletColour>().GetNextAvailableColour(colourItr);
-        if (!temp.isFree == true)
+        if (temp.isFree == true)
         {
             colourData = temp;
             //Debug.Log("Setting Colour");
@@ -215,7 +215,7 @@ public class PlayerStats : MonoBehaviour {
         //}
 
         ColourData temp = GetComponentInParent<bulletColour>().GetPreviousAvailableColour(colourItr);
-        if (!temp.isFree == true)
+        if (temp.isFree == true)
         {
             colourData = temp;
             //Debug.Log("Setting Colour");
@@ -228,5 +228,11 @@ public class PlayerStats : MonoBehaviour {
         }
 
         return colour;
+    }
+
+    public void confirmColor()
+    {
+        GetComponentInParent<bulletColour>().selectColor(colourItr);
+        Debug.Log("color confirmed");
     }
 }
