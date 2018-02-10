@@ -267,4 +267,10 @@ public class bulletColour : MonoBehaviour
             }
         }
     }
+
+    public void unselectColor(int startPoint)
+    {
+        if (colours[startPoint].isFree == false)
+            colours[startPoint].isFree = true;
+    }
 }

@@ -195,6 +195,7 @@ public class Controls : MonoBehaviour
 
     // Select, selects colors, changeColors changes colors [jack]
     public Button select;
+    public Button deselect;
     public Aim changeColors;
 
     //This region uses the above variables to fetch the controller state
@@ -245,6 +246,10 @@ public class Controls : MonoBehaviour
     {
         return GetButtonStruct(select, detect);
     }
+    public bool GetDeselect(BUTTON_DETECTION detect = BUTTON_DETECTION.GET_BUTTON_DOWN)
+    {
+        return GetButtonStruct(deselect, detect);
+    }
     //returns left or right using the select controls (left analog stick) [Jack]
     public int GetColorChange()
     {
@@ -258,7 +263,6 @@ public class Controls : MonoBehaviour
         }
         if (result < -0.300 && GetComponent<PlayerStats>().canChangeColour)
         {
-            Debug.Log("-1");
             GetComponent<PlayerStats>().canChangeColour = false;
             return -1;
         }

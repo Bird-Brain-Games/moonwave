@@ -64,7 +64,25 @@ public class KnockOut : MonoBehaviour {
 
     public void ResetPlayer()
     {
-        if (!m_scoringType.stockMode || m_PlayerStats.m_lives > 0)
+        if (!GetComponentInParent<PlayerManager>().selectScreen)
+        {
+            if (!m_scoringType.stockMode || m_PlayerStats.m_lives > 0)
+            {
+                m_rigidBody.ResetInertiaTensor();
+                m_rigidBody.velocity = Vector3.zero;
+                m_rigidBody.position = new Vector3(200, 200, 200);
+                m_shield.ResetShield();
+                m_StateManager.ResetPlayer();
+            }
+            if (m_scoringType.stockMode && m_PlayerStats.m_lives < 1)
+            {
+                m_rigidBody.ResetInertiaTensor();
+                m_rigidBody.velocity = Vector3.zero;
+                m_rigidBody.position = new Vector3(200, 200, 200);
+                m_scoringType.playersInGame--;
+            }
+        }
+        if (m_PlayerStats.playerConfirmed && GetComponentInParent<PlayerManager>().selectScreen)
         {
             m_rigidBody.ResetInertiaTensor();
             m_rigidBody.velocity = Vector3.zero;
@@ -72,13 +90,5 @@ public class KnockOut : MonoBehaviour {
             m_shield.ResetShield();
             m_StateManager.ResetPlayer();
         }
-        if (m_scoringType.stockMode && m_PlayerStats.m_lives < 1)
-        {
-            m_rigidBody.ResetInertiaTensor();
-            m_rigidBody.velocity = Vector3.zero;
-            m_rigidBody.position = new Vector3(200, 200, 200);
-            m_scoringType.playersInGame--;
-        }
-
     }
 }
