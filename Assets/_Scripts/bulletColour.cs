@@ -184,4 +184,40 @@ public class bulletColour : MonoBehaviour
 
 
     }
+
+    public ColourData GetPreviousAvailableColour(int startPoint) // iterate through an array of colors to see what colors can be picked from
+    {
+        colours[startPoint].isFree = true;
+
+        if (startPoint == 0)
+        {
+            startPoint = 7;
+        }
+
+        ColourData r_colours = new ColourData();
+        for (int i = startPoint - 1; i >= 0; i--)
+        {
+
+            if (colours[i].isFree == true)
+            {
+                colours[i].itr = i;
+                //if the colour is free then set it and return.
+                colours[i].isFree = false;
+                colours[i].playerID = i - 1;
+                r_colours = colours[i];
+                Debug.Log(colours[i].name);
+                Debug.Log(r_colours.playerID);
+
+                return r_colours;
+            }
+
+        }
+
+        //r_colours.isFree = false;
+        //r_colours.colour = white;
+        //r_colours.playerID = 10;
+        return r_colours;
+
+
+    }
 }

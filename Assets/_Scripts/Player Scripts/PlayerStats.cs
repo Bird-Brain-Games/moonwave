@@ -185,7 +185,7 @@ public class PlayerStats : MonoBehaviour {
     }
 
     // Select the colour in lobby
-    public Color selectColour()
+    public Color selectColourRight()
     {
         //if (colourData.itr == 6)
         //{
@@ -206,5 +206,27 @@ public class PlayerStats : MonoBehaviour {
         }
 
         return colour;
-    } 
+    }
+    public Color selectColourLeft()
+    {
+        //if (colourData.itr == 6)
+        //{
+        //    colourData.itr = 0;
+        //}
+
+        ColourData temp = GetComponentInParent<bulletColour>().GetPreviousAvailableColour(colourItr);
+        if (!temp.isFree == true)
+        {
+            colourData = temp;
+            //Debug.Log("Setting Colour");
+            ColourOfBullet = temp.colour;
+            colour = temp.colour;
+            colourdull = temp.colour;
+            GetComponentInChildren<SkinnedMeshRenderer>().material.color = colour;
+            GetComponentInParent<Unique>().GetComponentInChildren<BoostCollider>().setColour(colour);
+            colourItr = colourData.itr;
+        }
+
+        return colour;
+    }
 }
