@@ -35,10 +35,11 @@ public class PlayerManager : MonoBehaviour {
             // i + 1 to make Player1 actually Player1, etc
             players[i].m_PlayerID = i;
         }
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         // Update the score counters with the player scores [Graham]
         for (int i = 0; i < numPlayers; i++)
         {
@@ -54,6 +55,8 @@ public class PlayerManager : MonoBehaviour {
         // Character color lobby [Jack]
         if(selectScreen)
         {
+            GetComponentInParent<bulletColour>().freeColors();
+
             for (int i = 0; i < numPlayers; i++)
             {
                 colorDirection = players[i].GetComponent<Controls>().GetColorChange();
@@ -73,12 +76,15 @@ public class PlayerManager : MonoBehaviour {
                     Debug.Log("changing colour left!");
                 }
 
-                if (players[i].GetComponent<Controls>().GetSelect()
+                // Confirm color selection
+                if (players[i].GetComponent<Controls>().GetSelect())
                 {
-
+                    players[i].confirmColor();
                 }
 
             }
+
+
         }
 	}
 
