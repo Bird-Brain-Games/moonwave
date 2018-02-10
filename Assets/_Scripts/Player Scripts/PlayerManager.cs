@@ -11,6 +11,8 @@ public class PlayerManager : MonoBehaviour {
     int numPlayers;
     int colorDirection;
     public bool selectScreen;
+    Vector3 outOfBounds;
+    Vector3 spawnIn;
 
     Controls controls;
     
@@ -21,6 +23,9 @@ public class PlayerManager : MonoBehaviour {
         playerScores = new int[numPlayers];
         playerColours = new Color[numPlayers];
         playerLives = new int[numPlayers];
+        outOfBounds = new Vector3(300.0f, 300.0f, 300.0f);
+        spawnIn = new Vector3(-52, 0.5f, 0);
+        
 
         // Get the player colours [Graham]
         for (int i = 0; i < numPlayers; i++)
@@ -36,6 +41,11 @@ public class PlayerManager : MonoBehaviour {
             players[i].m_PlayerID = i;
         }
 
+        // Set the players to be a million lightyears away
+        for (int i = 0; i < numPlayers; i++)
+        {
+            players[i].transform.position = outOfBounds;
+        }
     }
 
     // Update is called once per frame
@@ -52,8 +62,13 @@ public class PlayerManager : MonoBehaviour {
             playerLives[i] = players[i].getLives();
         }
 
-        // Character color lobby [Jack]
-        if(selectScreen)
+        characterLobby();
+
+	}
+
+    void characterLobby()        // Character color selection lobby [Jack]
+    {
+        if (selectScreen)
         {
             GetComponentInParent<bulletColour>().freeColors();
 
@@ -62,31 +77,62 @@ public class PlayerManager : MonoBehaviour {
                 colorDirection = players[i].GetComponent<Controls>().GetColorChange();
                 //Debug.Log("Initializing colours");
 
-                // Color select to the right
-                if (colorDirection == 1)
+                // If the player has joined the lobby
+                if (players[i].playerSelecting == true)
                 {
-                    playerColours[i] = players[i].selectColourRight();
-                    Debug.Log("changing colour!");
+                    // Color select to the right
+                    if (colorDirection == 1)
+                    {
+                        playerColours[i] = players[i].selectColourRight();
+                        Debug.Log("changing colour!");
+                    }
+
+                    // Color select to the left
+                    if (colorDirection == -1)
+                    {
+                        playerColours[i] = players[i].selectColourLeft();
+                        Debug.Log("changing colour left!");
+                    }
+
+                    // Confirm color selection
+                    if (players[i].GetComponent<Controls>().GetSelect())
+                    {
+                        players[i].confirmColor();
+                        players[i].playerSelecting = false;
+                        players[i].playerConfirmed = true;
+                        players[i].transform.position = players[i].defaultSpawn;
+                        players[i].GetComponent<Rigidbody>().ResetInertiaTensor();
+                    }
+
+                    // Player quit lobby
+                    if (players[i].GetComponent<Controls>().GetDeselect())
+                    {
+                        players[i].playerSelecting = false;
+                    }
                 }
 
-                // Color select to the left
-                if (colorDirection == -1)
+                if (players[i].playerConfirmed == true)
                 {
-                    playerColours[i] = players[i].selectColourLeft();
-                    Debug.Log("changing colour left!");
+
+                    if (players[i].GetComponent<Controls>().GetDeselect())
+                    {
+                        players[i].unconfirmColor();
+                        players[i].playerSelecting = true;
+                        players[i].playerConfirmed = false;
+                        players[i].transform.position = outOfBounds;
+                    }
                 }
 
-                // Confirm color selection
-                if (players[i].GetComponent<Controls>().GetSelect())
+                // Join lobby
+                if (players[i].GetComponent<Controls>().GetSelect() && players[i].playerSelecting == false && players[i].playerConfirmed == false)
                 {
-                    players[i].confirmColor();
+                    players[i].playerSelecting = true;
                 }
-
             }
 
 
         }
-	}
+    }
 
     /// <summary>
     /// Get the number of players [Graham]

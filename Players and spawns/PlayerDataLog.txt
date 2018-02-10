@@ -7018,3 +7018,374 @@ Total Bullets Shot: 0
 Total Boosts Used: 0
 Total Deaths: 1
 
+
+*******************************
+***** 2018/02/10 12:59:45 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 3.015482
+Total Time Grounded: 18.848
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 2 ****
+Total Hang Time: 21.86351
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 3 ****
+Total Hang Time: 3.015482
+Total Time Grounded: 18.848
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 4 ****
+Total Hang Time: 7.328705
+Total Time Grounded: 14.00277
+Total Bullets Shot: 0
+Total Boosts Used: 1
+Total Deaths: 0
+
+
+*******************************
+***** 2018/02/10 01:16:22 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 3.018118
+Total Time Grounded: 6.322989
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 2 ****
+Total Hang Time: 9.341104
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 3 ****
+Total Hang Time: 3.018118
+Total Time Grounded: 6.322989
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 4 ****
+Total Hang Time: 5.158451
+Total Time Grounded: 4.182653
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+
+*******************************
+***** 2018/02/10 01:16:48 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 3.015383
+Total Time Grounded: 9.631045
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 2 ****
+Total Hang Time: 12.64643
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 3 ****
+Total Hang Time: 3.015383
+Total Time Grounded: 9.631045
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 4 ****
+Total Hang Time: 6.346372
+Total Time Grounded: 6.30006
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+
+*******************************
+***** 2018/02/10 01:18:16 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 3.013187
+Total Time Grounded: 9.144859
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 2 ****
+Total Hang Time: 12.15805
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 3 ****
+Total Hang Time: 3.013187
+Total Time Grounded: 9.144859
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 4 ****
+Total Hang Time: 6.432132
+Total Time Grounded: 5.72592
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+
+*******************************
+***** 2018/02/10 01:20:44 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 3.01898
+Total Time Grounded: 41.2407
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 2 ****
+Total Hang Time: 44.2597
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 3 ****
+Total Hang Time: 3.01898
+Total Time Grounded: 41.2407
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 4 ****
+Total Hang Time: 17.45753
+Total Time Grounded: 26.25056
+Total Bullets Shot: 0
+Total Boosts Used: 1
+Total Deaths: 0
+
+
+*******************************
+***** 2018/02/10 01:22:26 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 3.003566
+Total Time Grounded: 22.08208
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 2 ****
+Total Hang Time: 25.08565
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 3 ****
+Total Hang Time: 3.003566
+Total Time Grounded: 22.08208
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 4 ****
+Total Hang Time: 12.22384
+Total Time Grounded: 11.91553
+Total Bullets Shot: 0
+Total Boosts Used: 2
+Total Deaths: 0
+
+
+*******************************
+***** 2018/02/10 01:23:34 *****
+*******************************
+
+**** PLAYER 1 ****
+Total Hang Time: 3.008182
+Total Time Grounded: 16.66755
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 2 ****
+Total Hang Time: 19.67572
+Total Time Grounded: 0
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 3 ****
+Total Hang Time: 3.008182
+Total Time Grounded: 16.66755
+Total Bullets Shot: 0
+Total Boosts Used: 0
+Total Deaths: 0
+
+**** PLAYER 4 ****
+Total Hang Time: 9.686319
+Total Time Grounded: 9.55865
+Total Bullets Shot: 0
+Total Boosts Used: 1
+Total Deaths: 0
+
+
+*******************************
+***** 2018/02/10 01:26:31 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 01:27:36 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 01:37:52 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 01:37:54 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 01:40:06 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 01:41:16 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 01:42:39 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 01:43:53 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 01:46:27 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 01:47:56 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 01:58:37 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 01:59:47 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:04:53 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:06:27 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:08:09 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:09:32 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:12:57 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:14:10 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:15:01 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:18:20 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:18:28 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:21:54 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:24:14 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:26:52 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:27:53 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:28:06 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:29:07 *****
+*******************************
+
+
+*******************************
+***** 2018/02/10 02:31:50 *****
+*******************************
+
