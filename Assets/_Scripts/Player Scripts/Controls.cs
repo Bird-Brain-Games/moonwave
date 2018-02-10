@@ -258,6 +258,7 @@ public class Controls : MonoBehaviour
         }
         if (result < -0.300 && GetComponent<PlayerStats>().canChangeColour)
         {
+            Debug.Log("-1");
             GetComponent<PlayerStats>().canChangeColour = false;
             return -1;
         }

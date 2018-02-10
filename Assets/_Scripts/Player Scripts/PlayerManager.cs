@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour {
     public Color[] playerColours;
     public int[] playerLives;
     int numPlayers;
+    int colorDirection;
     public bool selectScreen;
 
     Controls controls;
@@ -55,12 +56,28 @@ public class PlayerManager : MonoBehaviour {
         {
             for (int i = 0; i < numPlayers; i++)
             {
+                colorDirection = players[i].GetComponent<Controls>().GetColorChange();
                 //Debug.Log("Initializing colours");
-                if (players[i].GetComponent<Controls>().GetColorChange() != 0)
+
+                // Color select to the right
+                if (colorDirection == 1)
                 {
-                    playerColours[i] = players[i].selectColour();
+                    playerColours[i] = players[i].selectColourRight();
                     Debug.Log("changing colour!");
                 }
+
+                // Color select to the left
+                if (colorDirection == -1)
+                {
+                    playerColours[i] = players[i].selectColourLeft();
+                    Debug.Log("changing colour left!");
+                }
+
+                if (players[i].GetComponent<Controls>().GetSelect()
+                {
+
+                }
+
             }
         }
 	}
