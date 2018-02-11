@@ -7,7 +7,6 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 
 	public PlayerScoreboardSection sectionPrefab;
 	PlayerManager playerManager;
-	int[] playerScores;
 	PlayerScoreboardSection[] sections;
 	ScoreDisplay scoreDisplay;
 	int numPlayers;
@@ -18,7 +17,6 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		playerManager = (PlayerManager)FindObjectOfType(typeof(PlayerManager));
 		scoreDisplay = (ScoreDisplay)FindObjectOfType(typeof(ScoreDisplay));
 		numPlayers = playerManager.GetNumPlayers();
-		playerScores = new int[numPlayers];
 		sections = new PlayerScoreboardSection[numPlayers];
 
 		for (int i = 0; i < numPlayers; i++)
@@ -33,6 +31,20 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 
 	public void UpdateAllScores()
 	{
+		// If we're running it inside the editor and not from the menu setup,
+		// Initialize the settings
+		if (Application.isEditor && MatchSettings.numPlayers == 0)
+        {
+			MatchSettings.numPlayers = numPlayers;
+			MatchSettings.pointsToWin = 1;
+
+			for(int i = 0; i < numPlayers; i++)
+			{
+				MatchSettings.playerScores.Add(0);
+				MatchSettings.playerColors.Add(sections[i].image.color);
+			}
+		}
+
 		for(int i = 0; i < numPlayers; i++)
 		{
 			UpdateScores(i);
@@ -47,9 +59,9 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		if (playerNum > numPlayers) return;
 
 		if (scoreDisplay.stockMode && scoreDisplay.pointPerKill)
-			sections[playerNum].Score += playerManager.players[playerNum].getScore();
+			sections[playerNum].Score += MatchSettings.playerScores[playerNum] + playerManager.players[playerNum].getScore();
 		else if (scoreDisplay.stockMode)
-			sections[playerNum].Score += (playerManager.playerLives[playerNum] >= 0) ? 1 : 0;
+			sections[playerNum].Score += MatchSettings.playerScores[playerNum] + ((playerManager.playerLives[playerNum] >= 0) ? 1 : 0);
 
 	}
 }
