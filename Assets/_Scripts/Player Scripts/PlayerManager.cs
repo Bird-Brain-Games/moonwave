@@ -10,7 +10,10 @@ public class PlayerManager : MonoBehaviour {
     public int[] playerLives;
     int numPlayers;
     int colorDirection;
+    int mapSelectDirection;
+    int mapID;
     public bool selectScreen;
+    public bool mapSelect;
     Vector3 outOfBounds;
     Vector3 spawnIn;
 
@@ -62,13 +65,24 @@ public class PlayerManager : MonoBehaviour {
             playerLives[i] = players[i].getLives();
         }
 
+        //mapSelectLobby();
         characterLobby();
 
 	}
 
+    void mapSelectLobby()
+    {
+        if (selectScreen && mapSelect)
+        {
+            mapSelectDirection = players[0].GetComponent<Controls>().GetColorChange();
+
+
+        }
+    }
+
     void characterLobby()        // Character color selection lobby [Jack]
     {
-        if (selectScreen)
+        if (selectScreen && !mapSelect)
         {
             GetComponentInParent<bulletColour>().freeColors();
 
@@ -97,11 +111,15 @@ public class PlayerManager : MonoBehaviour {
                     // Confirm color selection
                     if (players[i].GetComponent<Controls>().GetSelect())
                     {
+                        // Check to see if the color is free according to the array data before setting
+                        if (GetComponent<bulletColour>().colours[players[i].colourItr].isFree)
+                        {
+                            players[i].playerSelecting = false;
+                            players[i].playerConfirmed = true;
+                            players[i].transform.position = players[i].defaultSpawn;
+                            players[i].GetComponent<Rigidbody>().ResetInertiaTensor();
+                        }
                         players[i].confirmColor();
-                        players[i].playerSelecting = false;
-                        players[i].playerConfirmed = true;
-                        players[i].transform.position = players[i].defaultSpawn;
-                        players[i].GetComponent<Rigidbody>().ResetInertiaTensor();
                     }
 
                     // Player quit lobby
