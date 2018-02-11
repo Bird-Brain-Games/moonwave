@@ -45,14 +45,7 @@ public class OutOfTime : MonoBehaviour {
 
         if (m_Animator.GetBool("Results Showing"))  // I hate that this is polling every frame, but it has to in this system [Graham]
         {
-            if (!scoreBoard) Debug.LogError("Scoreboard not hooked up to Match Text yet (yuck)");
-            if (!scoreBoard.activeInHierarchy)
-            {
-                scoreBoard.SetActive(true);
-                PlayerScoreboardDisplay display = scoreBoard.GetComponentInChildren<PlayerScoreboardDisplay>();
-                //display.UpdateAllScores();
-            }
-            
+            scoreBoard.SetActive(true);
         }
     }
 
