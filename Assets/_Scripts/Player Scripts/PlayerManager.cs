@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour {
         // Set the players to be a million lightyears away
         for (int i = 0; i < numPlayers; i++)
         {
-            players[i].transform.position = outOfBounds;
+            if (selectScreen) players[i].transform.position = outOfBounds;
         }
     }
 
