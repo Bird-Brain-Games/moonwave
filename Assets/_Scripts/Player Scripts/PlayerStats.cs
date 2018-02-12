@@ -55,9 +55,21 @@ public class PlayerStats : MonoBehaviour {
 
     public float m_respawnTime;
     public Color colourdull;
+
+    // Color selction stuff
     public Color colour { get; set; }
     public ColourData colourData;
     public int colourItr;
+    public bool canChangeColour;
+
+    // Lobby states [Jack]
+    public bool playerSelecting;
+    public bool playerConfirmed;
+
+    // Spawn location [Jack]
+    public Transform spawnTransform;
+    public Vector3 defaultSpawn;
+
     //A colour for our bullets [cam]
     public Color ColourOfBullet { get; set; }
     public bool Invincible { get; set; }
@@ -71,8 +83,8 @@ public class PlayerStats : MonoBehaviour {
     // Killed by (Logging) [Jack]
     public int[] l_killedBy;
 
+    // Health variables
     public bool m_shieldState;
-
     public float m_CriticalMultipier;
 
     // Drift based variables
@@ -111,6 +123,15 @@ public class PlayerStats : MonoBehaviour {
         l_killedBy = new int[4];
         stunTrigger = false;
         Invincible = false;
+
+        // lobby system bools [Jack]
+        canChangeColour = true;
+        playerSelecting = false;
+        playerConfirmed = false;
+
+        // Set spawn location [Jack]
+        //spawnTransform.position = defaultSpawn;
+
         // Making them small strings, easier to compare (probably change to ints) [Graham]
         PlayerOnPlanetStateString = "onPlanet";
         PlayerDriftStateString = "drift";
@@ -183,7 +204,7 @@ public class PlayerStats : MonoBehaviour {
     }
 
     // Select the colour in lobby
-    public Color selectColour()
+    public Color selectColourRight()
     {
         //if (colourData.itr == 6)
         //{
@@ -191,7 +212,7 @@ public class PlayerStats : MonoBehaviour {
         //}
 
         ColourData temp = GetComponentInParent<bulletColour>().GetNextAvailableColour(colourItr);
-        if (!temp.isFree == true)
+        if (temp.isFree == true)
         {
             colourData = temp;
             //Debug.Log("Setting Colour");
@@ -204,5 +225,38 @@ public class PlayerStats : MonoBehaviour {
         }
 
         return colour;
-    } 
+    }
+    public Color selectColourLeft()
+    {
+        //if (colourData.itr == 6)
+        //{
+        //    colourData.itr = 0;
+        //}
+
+        ColourData temp = GetComponentInParent<bulletColour>().GetPreviousAvailableColour(colourItr);
+        if (temp.isFree == true)
+        {
+            colourData = temp;
+            //Debug.Log("Setting Colour");
+            ColourOfBullet = temp.colour;
+            colour = temp.colour;
+            colourdull = temp.colour;
+            GetComponentInChildren<SkinnedMeshRenderer>().material.color = colour;
+            GetComponentInParent<Unique>().GetComponentInChildren<BoostCollider>().setColour(colour);
+            colourItr = colourData.itr;
+        }
+
+        return colour;
+    }
+
+    public void confirmColor()
+    {
+        GetComponentInParent<bulletColour>().selectColor(colourItr);
+        Debug.Log("color confirmed");
+    }
+    public void unconfirmColor()
+    {
+        GetComponentInParent<bulletColour>().unselectColor(colourItr);
+        Debug.Log("color unselected");
+    }
 }

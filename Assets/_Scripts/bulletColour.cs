@@ -36,6 +36,9 @@ public class bulletColour : MonoBehaviour
     //White colour to return if the colour is already being used;
     Color white;
 
+    // When entering a new color select lobby, set this to true [jack]
+    bool newColors;
+
     // Use this for initialization
     void Awake()
     {
@@ -136,12 +139,14 @@ public class bulletColour : MonoBehaviour
                 r_colours = colours[i];
                 Debug.Log(colours[i].name);
                 Debug.Log(r_colours.playerID);
+                newColors = true;
 
                 return r_colours;
             }
 
         }
 
+        newColors = true;
         //r_colours.isFree = false;
         //r_colours.colour = white;
         //r_colours.playerID = 10;
@@ -151,7 +156,7 @@ public class bulletColour : MonoBehaviour
     }
     public ColourData GetNextAvailableColour(int startPoint) // iterate through an array of colors to see what colors can be picked from
     {
-        colours[startPoint].isFree = true;
+        //colours[startPoint].isFree = true;
 
         if (startPoint > 5)
         {
@@ -166,7 +171,7 @@ public class bulletColour : MonoBehaviour
             {
                 colours[i].itr = i ;
                 //if the colour is free then set it and return.
-                colours[i].isFree = false;
+                //colours[i].isFree = false;
                 colours[i].playerID = i - 1;
                 r_colours = colours[i];
                 Debug.Log(colours[i].name);
@@ -183,5 +188,89 @@ public class bulletColour : MonoBehaviour
         return r_colours;
 
 
+    }
+
+    public ColourData GetPreviousAvailableColour(int startPoint) // iterate through an array of colors to see what colors can be picked from
+    {
+        //colours[startPoint].isFree = true;
+
+        if (startPoint == 0)
+        {
+            startPoint = 7;
+        }
+
+        ColourData r_colours = new ColourData();
+        for (int i = startPoint - 1; i >= 0; i--)
+        {
+
+            if (colours[i].isFree == true)
+            {
+                colours[i].itr = i;
+                //if the colour is free then set it and return.
+                //colours[i].isFree = false;
+                colours[i].playerID = i - 1;
+                r_colours = colours[i];
+                Debug.Log(colours[i].name);
+                Debug.Log(r_colours.playerID);
+
+                return r_colours;
+            }
+
+        }
+
+        //r_colours.isFree = false;
+        //r_colours.colour = white;
+        //r_colours.playerID = 10;
+        return r_colours;
+
+
+    }
+
+    public void freeColors()
+    {
+        if (newColors)
+        {
+            for (int i = 0; i <= 6; i++)
+            {
+                colours[i].isFree = true;
+            }
+            newColors = false;
+        }
+    }
+
+    public void selectColor(int startPoint)
+    {
+        if (colours[startPoint].isFree == true)
+            colours[startPoint].isFree = false;
+        else
+        {
+            ColourData r_colours = new ColourData();
+            for (int i = startPoint + 1; i <= 6; i++)
+            {
+                if (startPoint > 5)
+                {
+                    startPoint = -1;
+                }
+
+                if (colours[i].isFree == true)
+                {
+                    colours[i].itr = i;
+                    //if the colour is free then set it and return.
+                    //colours[i].isFree = false;
+                    colours[i].playerID = i - 1;
+                    r_colours = colours[i];
+                    Debug.Log(colours[i].name);
+                    Debug.Log(r_colours.playerID);
+
+                }
+
+            }
+        }
+    }
+
+    public void unselectColor(int startPoint)
+    {
+        if (colours[startPoint].isFree == false)
+            colours[startPoint].isFree = true;
     }
 }
