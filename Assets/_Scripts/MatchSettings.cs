@@ -16,5 +16,13 @@ public static class MatchSettings {
 		playerColors = new List<Color>();
 		playerScores = new List<int>();
 	}
+
+	public static void Reset()
+	{
+		numPlayers = 0;
+		pointsToWin = 0;
+		playerColors.Clear();
+		playerScores.Clear();
+	}
 	
 }
