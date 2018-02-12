@@ -12,12 +12,12 @@ public class SelectOnInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		eventSystem.SetSelectedGameObject(selectedObject);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxisRaw("vertical") != 0 && !buttonSelected)
+		if (Input.GetAxisRaw("vertical") != 0 && !buttonSelected)       /// Needs to be changed
         {
             eventSystem.SetSelectedGameObject(selectedObject);
             buttonSelected = true;
