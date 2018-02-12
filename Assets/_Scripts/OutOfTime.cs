@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class OutOfTime : MonoBehaviour {
 
     public GameObject timerObject;
-    public GameObject backToMenuButton;
     public GameObject scoreBoard;
     ScoreDisplay m_scoringType;
     Text m_Text;
@@ -70,7 +69,6 @@ public class OutOfTime : MonoBehaviour {
         }
 
         Debug.Log("Match ended");
-        backToMenuButton.SetActive(true);
         matchActive = false;
 
 
