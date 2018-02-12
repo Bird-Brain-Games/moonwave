@@ -25,7 +25,6 @@ public class KnockOut : MonoBehaviour {
 
 	public void PlayerKnockedOut ()
     {
-        Debug.Log("death");
         // SFX
         if (m_PlayerStats.m_PlayerID == 1) { FindObjectOfType<AudioManager>().Play("Death"); }
         else if (m_PlayerStats.m_PlayerID == 2) { FindObjectOfType<AudioManager>().Play("Death2"); }
@@ -42,12 +41,14 @@ public class KnockOut : MonoBehaviour {
 
             // Log who player was killed by [Jack]
             m_PlayerStats.l_killedBy[m_PlayerStats.m_HitLastBy.m_PlayerID]++;
+            Debug.Log("Player " + m_PlayerStats.m_PlayerID + " was killed by player " + m_PlayerStats.m_HitLastBy.m_PlayerID);
         }
         else
         {
             // Log that the player killed themself [Jack]
             m_PlayerStats.l_killedBy[m_PlayerStats.m_PlayerID]++;
             m_PlayerStats.m_Score--;
+            Debug.Log("Player " + m_PlayerStats.m_PlayerID + " killed themselves");
         }
 
         // The player who died loses a point [Jack]
@@ -73,7 +74,7 @@ public class KnockOut : MonoBehaviour {
         {
             m_rigidBody.ResetInertiaTensor();
             m_rigidBody.velocity = Vector3.zero;
-            m_rigidBody.position = new Vector3(200, 200, 200);
+            m_rigidBody.position = new Vector3(2000, 2000, 2000);
             m_shield.ResetShield();
             m_StateManager.ResetPlayer();
         }

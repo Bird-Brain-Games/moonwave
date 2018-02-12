@@ -277,7 +277,14 @@ public class StickToPlanet : MonoBehaviour
             // SFX
             FindObjectOfType<AudioManager>().Play("Lava Death");
             Debug.Log("hazard");
-            GetComponent<KnockOut>().ResetPlayer();
+            //GetComponent<KnockOut>().PlayerKnockedOut();
+
+            // Story time.
+            // So if I call the knockout function, it tells it to set itself outside of the killbox, 
+            // which also calls the knockout function, so it takes the KO twice.
+            // So I'm setting it outside of the killbox so the killbox calls the function only once. :P 
+            // SO GOOD [Graham]
+            m_RigidBody.MovePosition(new Vector3(-6000, -6000, 0));
         }
     }
 

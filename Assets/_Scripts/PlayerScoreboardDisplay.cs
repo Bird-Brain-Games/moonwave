@@ -58,10 +58,12 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		// Safety, can't exceed array
 		if (playerNum > numPlayers) return;
 
+		// Choose how many points to add
 		if (scoreDisplay.stockMode && scoreDisplay.pointPerKill)
-			sections[playerNum].Score += MatchSettings.playerScores[playerNum] + playerManager.players[playerNum].getScore();
+			MatchSettings.playerScores[playerNum] += playerManager.players[playerNum].getScore();
 		else if (scoreDisplay.stockMode)
-			sections[playerNum].Score += MatchSettings.playerScores[playerNum] + ((playerManager.playerLives[playerNum] >= 0) ? 1 : 0);
+			MatchSettings.playerScores[playerNum] += ((playerManager.playerLives[playerNum] >= 0) ? 1 : 0);
 
+		sections[playerNum].Score = MatchSettings.playerScores[playerNum];
 	}
 }

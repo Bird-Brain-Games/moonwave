@@ -12,6 +12,8 @@ public class OutOfTime : MonoBehaviour {
     Text m_Text;
     Timer timer;
     Animator m_Animator;
+    PlayerStateManager[] players;
+    bool matchActive;
 
 
 	// Use this for initialization
@@ -19,6 +21,9 @@ public class OutOfTime : MonoBehaviour {
         timer = timerObject.GetComponent<Timer>();
         m_Animator = GetComponent<Animator>();
         m_scoringType = GameObject.Find("Player Score Panel").GetComponent<ScoreDisplay>();
+        players = FindObjectsOfType<PlayerStateManager>();
+        matchActive = true;
+        
 	}
 	
 	// Update is called once per frame
@@ -37,7 +42,7 @@ public class OutOfTime : MonoBehaviour {
         }
             
         //If stock mode is turned ON, check to see if there is one player left for the win screen [Jack]
-        else if (m_scoringType.playersInGame == 1)
+        else if (m_scoringType.playersInGame == 1 && matchActive)
         {
             EndMatch();
         }
@@ -54,6 +59,20 @@ public class OutOfTime : MonoBehaviour {
         // If the match is finished, tell the animator [Graham]
         timer.Hide();
         m_Animator.SetTrigger("End Match");
+
+        //  Cancel all the movements of players 
+        foreach (PlayerStateManager player in players)
+        {
+            player.GetComponent<Rigidbody>().ResetInertiaTensor();
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            player.GetComponent<Rigidbody>().MovePosition(new Vector3(-6000, -6000, 0));
+            player.gameObject.SetActive(false);
+        }
+
+        Debug.Log("Match ended");
+        backToMenuButton.SetActive(true);
+        matchActive = false;
+
 
         // If the results are showing, tell the back to menu button to enable itself
         // Shouldn't be in this file, but because it's locked to the animation, 
