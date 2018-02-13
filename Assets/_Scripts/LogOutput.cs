@@ -27,18 +27,18 @@ public class LogOutput : MonoBehaviour
 
         LogHeader(transform.name, "PlayerDataLog", dateAndTime); // Creates a new header in the file with the date and time
 
-        for (int i = 4; i < transform.childCount; i++) // Writes the data for each player to the file
-        {
-            Log(transform.name, "PlayerDataLog",
-                (i - 3).ToString(),
+        // for (int i = 4; i < transform.childCount; i++) // Writes the data for each player to the file
+        // {
+        //     Log(transform.name, "PlayerDataLog",
+        //         (i - 3).ToString(),
 
-                transform.GetChild(i).GetChild(0).GetComponent<StickToPlanet>().l_hangTime.ToString(),
-                transform.GetChild(i).GetChild(0).GetComponent<StickToPlanet>().l_groundTime.ToString(),
-                transform.GetChild(i).GetChild(0).GetComponent<Shoot>().l_bullets.ToString(),
-                transform.GetChild(i).GetChild(0).GetComponent<PlayerBoost>().l_boosts.ToString(),
-                transform.GetChild(i).GetChild(0).GetComponent<KnockOut>().l_deaths.ToString()
-                );
-        }
+        //         transform.GetChild(i).GetChild(0).GetComponent<StickToPlanet>().l_hangTime.ToString(),
+        //         transform.GetChild(i).GetChild(0).GetComponent<StickToPlanet>().l_groundTime.ToString(),
+        //         transform.GetChild(i).GetChild(0).GetComponent<Shoot>().l_bullets.ToString(),
+        //         transform.GetChild(i).GetChild(0).GetComponent<PlayerBoost>().l_boosts.ToString(),
+        //         transform.GetChild(i).GetChild(0).GetComponent<KnockOut>().l_deaths.ToString()
+        //         );
+        // }
     }
 
 }

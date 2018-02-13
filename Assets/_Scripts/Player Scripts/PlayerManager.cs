@@ -33,6 +33,10 @@ public class PlayerManager : MonoBehaviour {
         // Get the player colours [Graham]
         for (int i = 0; i < numPlayers; i++)
         {
+            if (MatchSettings.numPlayers > 0)
+            {
+                players[i].colour = MatchSettings.playerColors[i];
+            }
             //Debug.Log("Initializing colours");
             playerColours[i] = players[i].colour;
         }
