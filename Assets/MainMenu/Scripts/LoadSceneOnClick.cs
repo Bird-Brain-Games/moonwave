@@ -12,6 +12,6 @@ public class LoadSceneOnClick : MonoBehaviour {
 
     public void LoadRandom()
     {
-        SceneManager.LoadScene(Random.Range(1, SceneManager.sceneCountInBuildSettings - 2));
+        SceneManager.LoadScene(Random.Range(2, SceneManager.sceneCountInBuildSettings - 2));
     }
 }
