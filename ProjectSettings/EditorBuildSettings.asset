@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/MainMenu/MainMenu.unity
     guid: f792d20955b84824386a37e148087f95
   - enabled: 1
+    path: Assets/_Scenes/Prototypes/Character Lobby.unity
+    guid: 27e0dd2e176e40b4ba850ea6a80f8500
+  - enabled: 1
     path: Assets/_Scenes/Completed Maps/_Graham_Debug.unity
     guid: d61de0352f28c8e4c8ebe7c7da529aa9
   - enabled: 1
