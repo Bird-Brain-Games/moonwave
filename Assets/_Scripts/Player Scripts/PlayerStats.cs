@@ -147,17 +147,27 @@ public class PlayerStats : MonoBehaviour {
     private void Start()
     {
         ColourData temp = GetComponentInParent<bulletColour>().SpawnColour();
-        if (temp.isFree == false)
+        if (temp.isFree == false && MatchSettings.numPlayers == 0)  // on character select [Graham]
         {
             Debug.Log("Setting Colour");
             ColourOfBullet = temp.colour;
             colour = temp.colour;
             colourData = temp;
+
+
             GetComponentInChildren<SkinnedMeshRenderer>().material.color = colour;
             m_PlayerID = temp.playerID;
             GetComponentInParent<Unique>().GetComponentInChildren<BoostCollider>().setColour(colour);
             colourdull = colour;
             colourItr = colourData.itr;
+        }
+        else
+        {
+            Debug.Log("Setting Colour from match settings");
+            ColourOfBullet = colour;
+            colourdull = colour;
+            GetComponentInChildren<SkinnedMeshRenderer>().material.color = colour;
+            GetComponentInParent<Unique>().GetComponentInChildren<BoostCollider>().setColour(colour);
         }
         
     }

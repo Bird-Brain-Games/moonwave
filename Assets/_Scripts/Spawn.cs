@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour {
 
+    public GameObject spawnerContainer;
     Spawner_Available[] spawners;
     Vector3[] spawnPoints;
 	// Use this for initialization
 	void Start () {
-        spawners = GetComponentsInChildren<Spawner_Available>();
+        spawners = spawnerContainer.GetComponentsInChildren<Spawner_Available>();
         spawnPoints = new Vector3[spawners.Length];
         for (int i = 0; i < spawners.Length; i++)
         {

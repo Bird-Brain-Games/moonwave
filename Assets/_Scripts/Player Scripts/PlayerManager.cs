@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
 
+    public Unique playerPrefab; 
+    public Portrait portraitPrefab;
     public PlayerStats[] players;
     public int[] playerScores;
     public Color[] playerColours;
@@ -18,18 +20,32 @@ public class PlayerManager : MonoBehaviour {
     Vector3 spawnIn;
 
     Controls controls;
-    
-	// Use this for initialization
-	void Awake () {
-        players = GetComponentsInChildren<PlayerStats>();
-        numPlayers = players.Length;
-        playerScores = new int[numPlayers];
-        playerColours = new Color[numPlayers];
-        playerLives = new int[numPlayers];
-        outOfBounds = new Vector3(300.0f, 300.0f, 300.0f);
-        spawnIn = new Vector3(-52, 0.5f, 0);
-        
+    Spawn spawn;
 
+    void CreatePlayers()
+    {
+        // Create our players
+        numPlayers = MatchSettings.numPlayers;
+        if (numPlayers == 0)    // Debug 
+            numPlayers = 4;
+
+        players = new PlayerStats[numPlayers];
+        for (int i = 0; i < numPlayers; i++)
+        {
+            Unique temp = Instantiate(playerPrefab, transform);
+            if (temp == null)
+            {
+                Debug.LogError("Error creating player");
+            }
+
+            players[i] = temp.GetComponentInChildren<PlayerStats>();
+        }
+
+        
+    }
+
+    void SetUpPlayers()
+    {
         // Get the player colours [Graham]
         for (int i = 0; i < numPlayers; i++)
         {
@@ -49,10 +65,42 @@ public class PlayerManager : MonoBehaviour {
         }
 
         // Set the players to be a million lightyears away
-        for (int i = 0; i < numPlayers; i++)
+        if (selectScreen)
         {
-            if (selectScreen) players[i].transform.position = outOfBounds;
+            for (int i = 0; i < numPlayers; i++)
+            {
+                players[i].transform.position = outOfBounds;
+                Portrait temp = Instantiate(portraitPrefab, players[i].transform.parent);
+                temp.transform.Translate(new Vector3(i * 50f, 0f, 0f));
+            }
         }
+        else
+        {
+            // Reset the players
+            for (int i = 0; i < numPlayers; i++)
+            {
+                players[i].transform.position = spawn.getSpawnPoint();
+            }
+        }
+    }
+    
+	// Use this for initialization
+    void Awake()
+    {
+        spawn = GetComponent<Spawn>();
+        CreatePlayers();
+        
+        playerScores = new int[numPlayers];
+        playerColours = new Color[numPlayers];
+        playerLives = new int[numPlayers];
+        outOfBounds = new Vector3(300.0f, 300.0f, 300.0f);
+        spawnIn = new Vector3(-52, 0.5f, 0);
+    }
+
+	void Start () {
+        SetUpPlayers();
+
+        
     }
 
     // Update is called once per frame

@@ -54,6 +54,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca90f5daf1eb374a82d692eb3553a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerContainer: {fileID: 1581323589118138, guid: 5d54985e1a480d94aa14ca4516a7e585,
+    type: 2}
 --- !u!114 &114346659908000876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,9 +67,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8541c10bf1936e4aa1a53ce3454b9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 114479597318861408, guid: 2490242e35d78de449dd183e15f3cb8c,
+    type: 2}
+  portraitPrefab: {fileID: 114345401161699688, guid: 58e3ccef8ef53c748a6cc612cfa82e1e,
+    type: 2}
   players: []
   playerScores: 
   playerColours: []
+  playerLives: 
+  selectScreen: 0
+  mapSelect: 0
 --- !u!114 &114358470180524236
 MonoBehaviour:
   m_ObjectHideFlags: 1

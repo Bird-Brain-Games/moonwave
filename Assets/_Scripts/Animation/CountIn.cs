@@ -40,7 +40,7 @@ public class CountIn : StateMachineBehaviour {
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // SFX
-        FindObjectOfType<AudioManager>().Play("Time");
+        //FindObjectOfType<AudioManager>().Play("Time");
         
         // Start the timer and trigger the next animation [Graham]
         countText.text = "Time!";
