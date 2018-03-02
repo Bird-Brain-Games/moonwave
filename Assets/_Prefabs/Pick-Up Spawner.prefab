@@ -110,6 +110,6 @@ MonoBehaviour:
   pickup: {fileID: 1725438933334298, guid: 19ab5a542fb0a8149a537259ea8b3783, type: 2}
   m_xRange: 50
   m_yRange: 20
-  m_delayMin: 1
-  m_delayMax: 5
+  m_delayMin: 5
+  m_delayMax: 15
   pickupsON: 1
