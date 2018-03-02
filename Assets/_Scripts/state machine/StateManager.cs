@@ -22,12 +22,13 @@ public class StateManager : MonoBehaviour
     // So that all the updates can call first [G, C]
     public void ChangeState(string a_State)
     {
+        try{
         //Debug.Log("Changing to " + a_State + " from " + currentState.m_Name);
 
         currentState.StateExit();
         currentState = states[a_State];
         currentState.StateEnter();
-
+        } catch{}
     }
 
     public void AttachState(string key, State s)
@@ -44,39 +45,50 @@ public class StateManager : MonoBehaviour
 
     public void AttachDefaultState(string key, State s)
     {
+        try{
         AttachState(key, s);
         defaultState = states[key];
         defaultStateString = key;
+        } catch {}
     }
 
     public void ResetToDefaultState()
     {
-        ChangeState(defaultStateString);
+        try{
+            ChangeState(defaultStateString);
+        }
+        catch {}
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentState.StateUpdate();
+        try {
+            currentState.StateUpdate();
+        } catch{}
     }
 
     // Update called each physics update
     void FixedUpdate()
     {
-        currentState.StateFixedUpdate();
+        try {
+            currentState.StateFixedUpdate();
+        } catch{}
     }
 
     // Update called after other updates
     void LateUpdate()
     {
-        currentState.StateLateUpdate();
-        currentState.ChangeStateUpdate();
+        try {
+            currentState.StateLateUpdate();
+            currentState.ChangeStateUpdate();
+        } catch{}
     }
 
-    void OnCollisionEnter(Collision collision) {currentState.StateOnCollisionEnter(collision);}
-    void OnCollisionStay(Collision collision) {currentState.StateOnCollisionStay(collision);}
-    void OnCollisionExit(Collision collision) {currentState.StateOnCollisionExit(collision);}
-    void OnTriggerEnter(Collider other) {currentState.StateOnTriggerEnter(other);}
-    void OnTriggerStay(Collider other) {currentState.StateOnTriggerStay(other);}
-    void OnTriggerExit(Collider other) {currentState.StateOnTriggerExit(other);}
+    void OnCollisionEnter(Collision collision) {try {currentState.StateOnCollisionEnter(collision);} catch{}}
+    void OnCollisionStay(Collision collision) {try{currentState.StateOnCollisionStay(collision);} catch{}}
+    void OnCollisionExit(Collision collision) {try{currentState.StateOnCollisionExit(collision);} catch{}}
+    void OnTriggerEnter(Collider other) {try{currentState.StateOnTriggerEnter(other);} catch{}}
+    void OnTriggerStay(Collider other) {try{currentState.StateOnTriggerStay(other);} catch{}}
+    void OnTriggerExit(Collider other) {try{currentState.StateOnTriggerExit(other);} catch{}}
 }
