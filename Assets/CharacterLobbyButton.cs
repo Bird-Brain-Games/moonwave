@@ -23,12 +23,13 @@ public class CharacterLobbyButton : MonoBehaviour {
 
 		if (numReadyPlayers > 0)	// To be changed [Graham]
 		{
-			MatchSettings.numPlayers = numReadyPlayers;
+			MatchSettings.numPlayers = 4;	// TO BE CHANGED
 			MatchSettings.pointsToWin = 3;
 
 			foreach(PlayerStats stats in players)
 			{
 				MatchSettings.playerColors.Add(stats.colour);
+				MatchSettings.playerScores.Add(0);
 			}
 
 			// To be changed [Graham]
