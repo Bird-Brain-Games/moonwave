@@ -80,7 +80,7 @@ public class PlayerManager : MonoBehaviour {
             // Reset the players
             for (int i = 0; i < numPlayers; i++)
             {
-                players[i].transform.position = spawn.getSpawnPoint();
+                players[i].transform.position = spawn.getInitialSpawn(i);
             }
         }
     }
