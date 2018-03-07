@@ -173,6 +173,17 @@ public class PlayerStats : MonoBehaviour {
     }
     //Getters and Setters
 
+    public void setColour(Color newColour)
+    {
+        if (colour == newColour) return;
+        colour = newColour;
+
+        ColourOfBullet = colour;
+        colourdull = colour;
+        GetComponentInChildren<SkinnedMeshRenderer>().material.color = colour;
+        GetComponentInParent<Unique>().GetComponentInChildren<BoostCollider>().setColour(colour);
+    }
+
     public void ResetPlayer()
     {
 
