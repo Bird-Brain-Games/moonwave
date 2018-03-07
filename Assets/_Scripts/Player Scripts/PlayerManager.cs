@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour {
 
     public Unique playerPrefab; 
     public Portrait portraitPrefab;
+    public PortraitManager portraitManager;
     public PlayerStats[] players;
     public int[] playerScores;
     public Color[] playerColours;
@@ -70,8 +71,8 @@ public class PlayerManager : MonoBehaviour {
             for (int i = 0; i < numPlayers; i++)
             {
                 players[i].transform.position = outOfBounds;
-                Portrait temp = Instantiate(portraitPrefab, players[i].transform.parent);
-                temp.transform.Translate(new Vector3(i * 50f, 0f, 0f));
+                //Portrait temp = Instantiate(portraitPrefab, players[i].transform.parent);
+                //temp.transform.Translate(new Vector3(i * 50f, 0f, 0f));
             }
         }
         else
@@ -117,8 +118,8 @@ public class PlayerManager : MonoBehaviour {
             playerLives[i] = players[i].getLives();
         }
 
-        //mapSelectLobby();
-        characterLobby();
+        if (selectScreen)   characterLobby();
+        else if (mapSelect) mapSelectLobby();
 
 	}
 
@@ -134,73 +135,46 @@ public class PlayerManager : MonoBehaviour {
 
     void characterLobby()        // Character color selection lobby [Jack]
     {
-        if (selectScreen && !mapSelect)
+        for (int i = 0; i < numPlayers; i++)
         {
-            GetComponentInParent<bulletColour>().freeColors();
+            // Only get the controls once (should be a variable) [Graham]
+            Controls controls = players[i].GetComponent<Controls>();
 
-            for (int i = 0; i < numPlayers; i++)
+            if (portraitManager.IsReady(i))    // If the player is ready [Graham]
             {
-                colorDirection = players[i].GetComponent<Controls>().GetColorChange();
-                //Debug.Log("Initializing colours");
-
-                // If the player has joined the lobby
-                if (players[i].playerSelecting == true)
+                // Handle inputs
+                if (controls.GetDeselect())
                 {
-                    // Color select to the right
-                    if (colorDirection == 1)
-                    {
-                        playerColours[i] = players[i].selectColourRight();
-                        Debug.Log("changing colour!");
-                    }
-
-                    // Color select to the left
-                    if (colorDirection == -1)
-                    {
-                        playerColours[i] = players[i].selectColourLeft();
-                        Debug.Log("changing colour left!");
-                    }
-
-                    // Confirm color selection
-                    if (players[i].GetComponent<Controls>().GetSelect())
-                    {
-                        // Check to see if the color is free according to the array data before setting
-                        if (GetComponent<bulletColour>().colours[players[i].colourItr].isFree)
-                        {
-                            players[i].playerSelecting = false;
-                            players[i].playerConfirmed = true;
-                            players[i].transform.position = players[i].defaultSpawn;
-                            players[i].GetComponent<Rigidbody>().ResetInertiaTensor();
-                        }
-                        players[i].confirmColor();
-                    }
-
-                    // Player quit lobby
-                    if (players[i].GetComponent<Controls>().GetDeselect())
-                    {
-                        players[i].playerSelecting = false;
-                    }
-                }
-
-                if (players[i].playerConfirmed == true)
-                {
-
-                    if (players[i].GetComponent<Controls>().GetDeselect())
-                    {
-                        players[i].unconfirmColor();
-                        players[i].playerSelecting = true;
-                        players[i].playerConfirmed = false;
-                        players[i].transform.position = outOfBounds;
-                    }
-                }
-
-                // Join lobby
-                if (players[i].GetComponent<Controls>().GetSelect() && players[i].playerSelecting == false && players[i].playerConfirmed == false)
-                {
-                    players[i].playerSelecting = true;
+                    portraitManager.SetReady(i, false);
+                    players[i].transform.position = outOfBounds;
                 }
             }
+            else if (portraitManager.IsActive(i))        // If the player is active [Graham]
+            {
+                colorDirection = controls.GetColorChange();
 
-
+                // Handle inputs
+                if (colorDirection == 1)
+                    portraitManager.NextImage(i);
+                else if (colorDirection == -1)
+                    portraitManager.PrevImage(i);
+                else if (controls.GetDeselect())
+                    portraitManager.SetActive(i, false);
+                else if (controls.GetSelect())
+                {
+                    portraitManager.SetReady(i, true);
+                    players[i].setColour(portraitManager.GetColor(i));
+                    players[i].transform.position = players[i].defaultSpawn;
+                    players[i].GetComponent<Rigidbody>().ResetInertiaTensor();
+                    players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+                }
+            }
+            else                                    // If the player is neither active nor ready
+            {
+                if (controls.GetSelect())
+                    portraitManager.SetActive(i, true);
+            }
+            
         }
     }
 
