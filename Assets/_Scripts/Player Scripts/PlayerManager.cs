@@ -141,6 +141,8 @@ public class PlayerManager : MonoBehaviour {
                 {
                     portraitManager.SetReady(i, false);
                     players[i].transform.position = outOfBounds;
+                    players[i].playerSelecting = true;
+                    players[i].playerConfirmed = false;
                 }
             }
             else if (portraitManager.IsActive(i))        // If the player is active [Graham]
@@ -153,7 +155,11 @@ public class PlayerManager : MonoBehaviour {
                 else if (colorDirection == -1)
                     portraitManager.PrevImage(i);
                 else if (controls.GetDeselect())
+                {
                     portraitManager.SetActive(i, false);
+                    players[i].playerSelecting = false;
+                    players[i].playerConfirmed = false;
+                }
                 else if (controls.GetSelect())
                 {
                     portraitManager.SetReady(i, true);
@@ -161,12 +167,19 @@ public class PlayerManager : MonoBehaviour {
                     players[i].transform.position = players[i].defaultSpawn;
                     players[i].GetComponent<Rigidbody>().ResetInertiaTensor();
                     players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    players[i].playerSelecting = false;
+                    players[i].playerConfirmed = true;
+
                 }
             }
             else                                    // If the player is neither active nor ready
             {
                 if (controls.GetSelect())
+                {
                     portraitManager.SetActive(i, true);
+                    players[i].playerSelecting = true;
+                    players[i].playerConfirmed = false;
+                }
             }
             
         }
