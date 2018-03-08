@@ -106,21 +106,15 @@ public class PlayerManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        // Update the score counters with the player scores [Graham]
+        // Update the score counters and life counters [Graham][Jack]
         for (int i = 0; i < numPlayers; i++)
         {
             playerScores[i] = players[i].getScore();
-        }
-
-        // Update the player Lives [Jack]
-        for (int i = 0; i < numPlayers; i++)
-        {
             playerLives[i] = players[i].getLives();
         }
 
         if (selectScreen)   characterLobby();
         else if (mapSelect) mapSelectLobby();
-
 	}
 
     void mapSelectLobby()
