@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1158627420668800}
+  m_IsPrefabParent: 1
+--- !u!1 &1158627420668800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4353315790608980}
+  - component: {fileID: 114499118704605298}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4353315790608980
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158627420668800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114499118704605298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158627420668800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7de66c9e10e9648a3bc14d76082bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Shotgun
+    clip: {fileID: 8300000, guid: ac6b9e5ff92a501469b385b816cd9efe, type: 3}
+    volume: 0.203
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Battle Theme
+    clip: {fileID: 8300000, guid: c1e6a487f70c1e24cad18d9c8490c7ab, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Boost
+    clip: {fileID: 8300000, guid: b196747b189af7448a87ad073ec4fd34, type: 3}
+    volume: 0.33
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: cbcdd7960d5433a4fb84801c36315147, type: 3}
+    volume: 0.366
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pew
+    clip: {fileID: 8300000, guid: e28a4591e1cccc24a88d54217f8eee55, type: 3}
+    volume: 0.662
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Crit
+    clip: {fileID: 8300000, guid: 6a2229d0223c1eb4ba1e581c65dd7d30, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Shield Shatter
+    clip: {fileID: 8300000, guid: 527071a98d99d2f4f92c066547282b74, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Lava Death
+    clip: {fileID: 8300000, guid: 02d76f0918619c54ea2c27432344f6ad, type: 3}
+    volume: 1.27
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Charge
+    clip: {fileID: 8300000, guid: c68e4c051e2b44943abc09a0b8c6399e, type: 3}
+    volume: 0.31
+    pitch: 1.26
+    loop: 0
+    source: {fileID: 0}
+  - name: Death2
+    clip: {fileID: 8300000, guid: 4f4c09e7950c52d4ca95f6e8b3337859, type: 3}
+    volume: 0.366
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Death3
+    clip: {fileID: 8300000, guid: 20783ff049f87964d860ee006a381de5, type: 3}
+    volume: 0.366
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Death4
+    clip: {fileID: 8300000, guid: 09e8b4f136de30e45a17a76e0b969977, type: 3}
+    volume: 0.366
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pew2
+    clip: {fileID: 8300000, guid: e28a4591e1cccc24a88d54217f8eee55, type: 3}
+    volume: 0.5
+    pitch: 1.3
+    loop: 0
+    source: {fileID: 0}
+  - name: Pew3
+    clip: {fileID: 8300000, guid: e28a4591e1cccc24a88d54217f8eee55, type: 3}
+    volume: 0.436
+    pitch: 0.7
+    loop: 0
+    source: {fileID: 0}
+  - name: Pew4
+    clip: {fileID: 8300000, guid: e28a4591e1cccc24a88d54217f8eee55, type: 3}
+    volume: 0.5
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: 321_Start
+    clip: {fileID: 8300000, guid: e20e989088caac7409ca75238d5f802e, type: 3}
+    volume: 0.122
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Finish
+    clip: {fileID: 8300000, guid: d6ba3e36c16d7f14c86f5adfe424c9c2, type: 3}
+    volume: 0.32
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Menu Music
+    clip: {fileID: 8300000, guid: b9edfa1d3f9d8ab408584b32529c9d0d, type: 3}
+    volume: 0.957
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
