@@ -84,8 +84,8 @@ public class GameOptions : EditorWindow
     {
         GameObject temp = AssetDatabase.LoadAssetAtPath("Assets/_Prefabs/UI/Game UI.prefab", typeof(GameObject)) as GameObject;
         scoreDisplay = temp.GetComponentInChildren<ScoreDisplay>();
-        temp = AssetDatabase.LoadAssetAtPath("Assets/_Prefabs/player/player.prefab", typeof(GameObject)) as GameObject;
-        playerStats = temp.GetComponent<PlayerStats>();
+        temp = AssetDatabase.LoadAssetAtPath("Assets/_Prefabs/player/player hierarchy.prefab", typeof(GameObject)) as GameObject;
+        playerStats = temp.GetComponentInChildren<PlayerStats>();
     }
 
     void StockModeGUI()
@@ -107,6 +107,31 @@ public class GameOptions : EditorWindow
                 playerStats.m_lives = EditorGUILayout.IntField("Player lives ", playerStats.m_lives);
         }
     }
+    #endregion
+
+    #region PowerUps
+    //The toggle state
+    bool powerUps;
+    //The GameObject we are changing in this case it is a prefab
+    GameObject spawner;
+    void PowerUpAwake()
+    {
+        //Setup
+        powerUps = false;
+        spawner = AssetDatabase.LoadAssetAtPath("Assets/_Prefabs/map building/Pick-Up Spawner.prefab", typeof(GameObject)) as GameObject;
+    }
+    void PowerUpsOnGui()
+    {
+        //If the variable isnt loaded recall the awake function =
+        if (null == spawner)
+        {
+            PowerUpAwake();
+        }
+        //Display button
+        powerUps = EditorGUILayout.Toggle("Power ups", powerUps);
+        spawner.SetActive(powerUps);
+    }
+
     #endregion
 
     #region Map Select
@@ -170,6 +195,7 @@ public class GameOptions : EditorWindow
         WrapAwake();
         BulletGravAwake();
         StockModeAwake();
+        PowerUpAwake();
     }
 
     //Create window
@@ -184,7 +210,7 @@ public class GameOptions : EditorWindow
         WrapOnGUI();
         BulletOnGUI();
         StockModeGUI();
-
+        PowerUpsOnGui();
 
         Line("Level select");
 
