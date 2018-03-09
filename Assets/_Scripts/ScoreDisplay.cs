@@ -40,6 +40,15 @@ public class ScoreDisplay : MonoBehaviour {
             Debug.Log("Initializing colours");
         }
         
+
+        if (stockMode)
+        {
+            for (int i = 0; i < numPlayers; i++)
+            {
+                playerScoreText[i].enabled = false;
+            }
+        }
+
 	}
 	
 	// Late update is called once per frame, after the other updates. Used for UI. [Graham]

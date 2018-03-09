@@ -1146,6 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe88e45153439a444a89e2af2d7fb3ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moon: {fileID: 1451807195}
   readyUpText: {fileID: 500858510}
   portraits: {fileID: 936293979}
   levelSelectors: {fileID: 1676705993}
@@ -1547,7 +1548,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: bf20ac252e058314c83d81764c685356, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0826dbde8aaecf4eaec73e1dc109557, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1789,6 +1790,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1997ff5f7e4a20d4cbc0c467e4db042d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1451807195 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1937186469697286, guid: 0d98679bdf1691d41a31687c2aa2b4cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 283820775}
 --- !u!1 &1646713329
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,8 +1939,8 @@ MonoBehaviour:
   playerManager: {fileID: 1121711313}
   chosenStageImage: {fileID: 37045712}
   choosingImages:
-  - {fileID: 21300000, guid: ae1842b89cdbd924ca1316f3d9c95fc6, type: 3}
-  - {fileID: 21300000, guid: b2c503db566ae3c4190bcec292891e94, type: 3}
+  - {fileID: 21300000, guid: 6cbbd98265dffe24082af477165877e8, type: 3}
+  - {fileID: 21300000, guid: 864b474400f79c442a48380f147b2f73, type: 3}
   readyImages:
   - {fileID: 21300000, guid: 291da4dd21b3d8a44825fb45c02c55bc, type: 3}
   - {fileID: 21300000, guid: bb5c168e8522a714bba9e754d6234814, type: 3}

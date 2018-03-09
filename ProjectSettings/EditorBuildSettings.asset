@@ -12,29 +12,32 @@ EditorBuildSettings:
     path: Assets/_Scenes/Prototypes/Character Lobby.unity
     guid: 27e0dd2e176e40b4ba850ea6a80f8500
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/_Graham_Debug.unity
-    guid: d61de0352f28c8e4c8ebe7c7da529aa9
+    path: Assets/_Scenes/Completed Maps/Set1/1 Moon.unity
+    guid: e5c89d2c3e67a3b418a63df426b617ff
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/1planet4suns.unity
-    guid: 916552df1943b77458ae413798e1107d
+    path: Assets/_Scenes/Completed Maps/Set1/1-1 TL.unity
+    guid: 2049f3401a7c95d42b4126cce523c2b1
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/Death middle.unity
-    guid: c259a643d8909ef40819e68eee38e48b
+    path: Assets/_Scenes/Completed Maps/Set1/2 Moons.unity
+    guid: 787967f4e4b480d47af8c0ac76a72b3d
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/Simple Big.unity
-    guid: c6bf3f07f67baf24a9f3a7a65617ad8c
+    path: Assets/_Scenes/Completed Maps/Set1/4 Moons.unity
+    guid: 7a374e2d2f6aad742bb8680808ce6695
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/One Sun.unity
-    guid: dd6e227139827c24e87cf57b7a2e8a3c
+    path: Assets/_Scenes/Completed Maps/Set1/Cage.unity
+    guid: 38bb5c28c2609ef4aa74356147de85fd
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/One Planet.unity
-    guid: 5e5f5342b9b7f6c46ba6e44644fd085c
+    path: Assets/_Scenes/Completed Maps/Set2/1 Moon 4 Suns.unity
+    guid: 40db40a5d0c957d46bb13f8dc8ff024b
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/Graham_Debug_1.unity
-    guid: 71a34b19d413f694cbbf8afd94572246
+    path: Assets/_Scenes/Completed Maps/Set2/1 Sun 4 Moons.unity
+    guid: f5ed05c1f8f7ba842876ce21e54e0dba
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/DEATH.unity
-    guid: ae9573deafe3d224bb529ed6aad202b0
+    path: Assets/_Scenes/Completed Maps/Set2/4 Moons X.unity
+    guid: 229f0c1acdbb195408f23c57bbe87fe7
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/Empty.unity
-    guid: d5cb102333ff4504a9547e7214aa24f5
+    path: Assets/_Scenes/Completed Maps/Set2/DEATH.unity
+    guid: 49f5108451d60b44293c97ba1be2c3ce
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Set2/Floor and Sun.unity
+    guid: d4921c5e7bd2bba4e9e2af743091444a
