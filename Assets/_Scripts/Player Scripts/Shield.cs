@@ -156,5 +156,6 @@ public class Shield : MonoBehaviour
         m_timeSinceLastHit = 0f;
         //GetComponent<MeshRenderer>().enabled = true;
         m_playerStats.SetShieldState(true);
+        m_playerRenderer.materials[1].SetColor("_OutlineColor", m_playerColor);
     }
 }
