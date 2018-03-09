@@ -24,12 +24,17 @@ public class shieldRing : MonoBehaviour {
 		playerRigidBody = this.transform.parent.parent.GetComponent<Rigidbody>();
 		parentShield = this.transform.parent.GetComponent<Shield>();
 
-		playerColor = this.transform.parent.parent.GetComponent<PlayerStats>().colour;
-		playerColor = playerColor * 2.5f; // Brightens the colour
-		spriteRenderer.color = playerColor;
+		SetColor(this.transform.parent.parent.GetComponent<PlayerStats>().colour);
 		
 		this.transform.localScale = new Vector3(0.8f, 0.2f, 1);
 
+	}
+
+	public void SetColor(Color newColor)
+	{
+		playerColor = newColor;
+		playerColor = playerColor * 2.5f; // Brightens the colour
+		spriteRenderer.color = playerColor;
 	}
 	
 	// Update is called once per frame

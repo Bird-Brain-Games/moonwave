@@ -188,6 +188,11 @@ public class PlayerStats : MonoBehaviour {
         colourdull = colour;
         GetComponentInChildren<SkinnedMeshRenderer>().material.color = colour;
         GetComponentInParent<Unique>().GetComponentInChildren<BoostCollider>().setColour(colour);
+        GetComponentInChildren<Shield>().SetColor(newColour);
+        
+        foreach (shieldRing ring in GetComponentsInChildren<shieldRing>())
+            ring.SetColor(newColour);
+        
     }
 
     public void ResetPlayer()
