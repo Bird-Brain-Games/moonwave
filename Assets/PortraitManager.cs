@@ -30,18 +30,23 @@ public class PortraitManager : MonoBehaviour {
 		playerActive = new bool[numPlayers];
 		playerSelection = new int[numPlayers];
 
+		SetColors();
+		Reset();
+	}
+
+	public void Reset()
+	{
 		// Set all players as inactive
 		for(int i = 0; i < numPlayers; i++)
 		{
 			playerActive[i] = true;	// workaround so we can set it as false
 			SetActive(i, false);
+			SetReady(i, false);
 		}
 
 		// Set all images to available
 		available = new bool[choosingImages.Length];
 		for (int i = 0; i < available.Length; i++) available[i] = true;
-
-		SetColors();
 	}
 
 	void SetColors()

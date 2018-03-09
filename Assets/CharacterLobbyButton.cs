@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterLobbyButton : MonoBehaviour {
 
 	public PlayerManager playerManager;
+	public UnityEvent allPlayersReady;
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,7 +23,7 @@ public class CharacterLobbyButton : MonoBehaviour {
 				numReadyPlayers++;
 		}
 
-		if (numReadyPlayers > 0)	// To be changed [Graham]
+		if (numReadyPlayers > 1)	// To be changed [Graham]
 		{
 			//MatchSettings.numPlayers = 4;	// TO BE CHANGED
 			MatchSettings.numPlayers = numReadyPlayers;	
@@ -34,8 +36,10 @@ public class CharacterLobbyButton : MonoBehaviour {
 			}
 
 			// To be changed [Graham]
-			GetComponent<LoadSceneOnClick>().LoadRandom();
+			//GetComponent<LoadSceneOnClick>().LoadRandom();
 			//GetComponent<LoadSceneOnClick>().LoadByName("_Scenes/Debug/Graham_Debug");
+		
+			allPlayersReady.Invoke();
 		}
 	}
 }

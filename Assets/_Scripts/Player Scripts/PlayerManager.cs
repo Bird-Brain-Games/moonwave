@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour {
     public Unique playerPrefab; 
     public Portrait portraitPrefab;
     public PortraitManager portraitManager;
+    public LevelSelectManager levelSelectManager;
     public PlayerStats[] players;
     public int[] playerScores;
     public Color[] playerColours;
@@ -20,7 +21,7 @@ public class PlayerManager : MonoBehaviour {
     Vector3 outOfBounds;
     Vector3 spawnIn;
 
-    Controls controls;
+    Controls[] controls;
     Spawn spawn;
 
     void CreatePlayers()
@@ -31,6 +32,7 @@ public class PlayerManager : MonoBehaviour {
             numPlayers = 4;
 
         players = new PlayerStats[numPlayers];
+        controls = new Controls[numPlayers];
         for (int i = 0; i < numPlayers; i++)
         {
             Unique temp = Instantiate(playerPrefab, transform);
@@ -40,6 +42,7 @@ public class PlayerManager : MonoBehaviour {
             }
 
             players[i] = temp.GetComponentInChildren<PlayerStats>();
+            controls[i] = temp.GetComponentInChildren<Controls>();
         }
 
         
@@ -117,13 +120,62 @@ public class PlayerManager : MonoBehaviour {
         else if (mapSelect) mapSelectLobby();
 	}
 
+
+
+    public void SwitchLobbies()
+    {
+        if (selectScreen)
+        {
+            selectScreen = false;
+            mapSelect = true;
+            
+            // Blast the players out to space so they don't interfere [Graham]
+            for (int i = 0; i < numPlayers; i++)
+                players[i].transform.position = outOfBounds;
+        }
+        else if (mapSelect)
+        {
+            selectScreen = true;
+            mapSelect = false;
+
+            // If there are active players, bring them back
+            for (int i = 0; i < numPlayers; i++)
+            {
+                players[i].playerSelecting = false;
+                players[i].playerConfirmed = false;
+            } 
+        }
+    }
+
     void mapSelectLobby()
     {
-        if (selectScreen && mapSelect)
+        for (int i = 0; i < numPlayers; i++)
         {
-            mapSelectDirection = players[0].GetComponent<Controls>().GetColorChange();
+            if (players[i].playerConfirmed)
+            {
+                // Handle inputs
+                mapSelectDirection = controls[i].GetColorChange();
 
-
+                // Handle inputs
+                if (mapSelectDirection == 1)
+                    levelSelectManager.NextImage(i);
+                else if (mapSelectDirection == -1)
+                    levelSelectManager.PrevImage(i);
+                if (controls[i].GetDeselect())
+                {
+                    if (levelSelectManager.GetReady(i))
+                        levelSelectManager.SetReady(i, false);
+                    else
+                    {
+                        levelSelectManager.GoBack();
+                        SwitchLobbies();
+                    }
+                }
+                else if (controls[i].GetSelect())
+                {
+                    levelSelectManager.SetReady(i, true);
+                }
+            }
         }
     }
 
@@ -131,13 +183,11 @@ public class PlayerManager : MonoBehaviour {
     {
         for (int i = 0; i < numPlayers; i++)
         {
-            // Only get the controls once (should be a variable) [Graham]
-            Controls controls = players[i].GetComponent<Controls>();
 
             if (portraitManager.IsReady(i))    // If the player is ready [Graham]
             {
                 // Handle inputs
-                if (controls.GetDeselect())
+                if (controls[i].GetDeselect())
                 {
                     portraitManager.SetReady(i, false);
                     players[i].transform.position = outOfBounds;
@@ -147,20 +197,20 @@ public class PlayerManager : MonoBehaviour {
             }
             else if (portraitManager.IsActive(i))        // If the player is active [Graham]
             {
-                colorDirection = controls.GetColorChange();
+                colorDirection = controls[i].GetColorChange();
 
                 // Handle inputs
                 if (colorDirection == 1)
                     portraitManager.NextImage(i);
                 else if (colorDirection == -1)
                     portraitManager.PrevImage(i);
-                else if (controls.GetDeselect())
+                else if (controls[i].GetDeselect())
                 {
                     portraitManager.SetActive(i, false);
                     players[i].playerSelecting = false;
                     players[i].playerConfirmed = false;
                 }
-                else if (controls.GetSelect())
+                else if (controls[i].GetSelect())
                 {
                     portraitManager.SetReady(i, true);
                     players[i].setColour(portraitManager.GetColor(i));
@@ -174,7 +224,7 @@ public class PlayerManager : MonoBehaviour {
             }
             else                                    // If the player is neither active nor ready
             {
-                if (controls.GetSelect())
+                if (controls[i].GetSelect())
                 {
                     portraitManager.SetActive(i, true);
                     players[i].playerSelecting = true;
