@@ -9,7 +9,7 @@ public class PlayerStateManager : MonoBehaviour
     PlayerStats playerStats;
     StickToPlanet m_Gravity;
     Rigidbody m_RigidBody;
-    Animator m_Animator;
+    public Animator m_Animator;
 
     float stunTimer;
     bool isCountingDown;
@@ -41,6 +41,11 @@ public class PlayerStateManager : MonoBehaviour
         boostActiveState = gameObject.AddComponent<PlayerBoostActiveState>();
         bigHitState = gameObject.AddComponent<PLayerBigHitState>();
         respawnState = gameObject.AddComponent<RespawnState>();
+
+        // Set the animators [Graham]
+        boostActiveState.m_Animator = m_Animator;
+        bigHitState.m_Animator = m_Animator;
+        onPlanetState.m_Animator = m_Animator;
     }
 
     // Use this for initialization
@@ -49,7 +54,7 @@ public class PlayerStateManager : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         m_Gravity = GetComponent<StickToPlanet>();
         m_RigidBody = GetComponent<Rigidbody>();
-        m_Animator = GetComponentInChildren<Animator>();
+        //m_Animator = GetComponentInChildren<Animator>();
 
         movementStates.AttachDefaultState(playerStats.PlayerDriftStateString, driftState);
         movementStates.AttachState(playerStats.PlayerJumpStateString, jumpState);

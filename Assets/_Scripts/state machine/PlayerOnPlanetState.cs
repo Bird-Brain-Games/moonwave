@@ -6,7 +6,7 @@ public class PlayerOnPlanetState : State {
 
 	Vector3 m_Direction;
 
-	Animator m_Animator;
+	public Animator m_Animator;
 	Rigidbody m_RigidBody;
 	PlayerStats m_PlayerStats;
 	Controls m_Controls;
@@ -22,7 +22,7 @@ public class PlayerOnPlanetState : State {
 		m_Shoot = GetComponent<Shoot>();
 		m_Gravity = GetComponent<StickToPlanet>();
 		m_Move = GetComponent<PlayerMoveOnPlanet>();
-		m_Animator = GetComponentInChildren<Animator>();
+		//m_Animator = GetComponentInChildren<Animator>();
 	}
 
 	override public void StateEnter()

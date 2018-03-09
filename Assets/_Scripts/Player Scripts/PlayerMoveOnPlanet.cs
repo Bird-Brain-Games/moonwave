@@ -60,15 +60,15 @@ public class PlayerMoveOnPlanet : MonoBehaviour
 
                     //Debug.Log("Move counter clockwise");
                     m_RigidBody.velocity = transform.right * m_PlayerStats.walkMoveForce * 1.0f;
-                    if (transform.localScale.x == 1f)
-                        transform.localScale = new Vector3(-1f, 1f, 1f);
+                    // if (transform.localScale.x == 1f)
+                    //     transform.localScale = new Vector3(-1f, 1f, 1f);
                 }
                 else
                 {
                     //Debug.Log("Move clockwise");
                     m_RigidBody.velocity = transform.right * m_PlayerStats.walkMoveForce * -1.0f;
-                    if (transform.localScale.x == -1f)
-                        transform.localScale = new Vector3(1f, 1f, 1f);
+                    // if (transform.localScale.x == -1f)
+                    //     transform.localScale = new Vector3(1f, 1f, 1f);
                 }
             }
             else

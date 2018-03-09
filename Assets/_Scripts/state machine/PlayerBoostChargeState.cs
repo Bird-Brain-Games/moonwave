@@ -10,7 +10,7 @@ public class PlayerBoostChargeState : State
     PlayerStats m_PlayerStats;
     Controls m_Controls;
     PlayerBoost m_Boost;
-    Animator m_Animator;
+    public Animator m_Animator;
 
     // Use this for initialization
     void Start()
@@ -18,7 +18,7 @@ public class PlayerBoostChargeState : State
         m_PlayerStats = GetComponent<PlayerStats>();
         m_Controls = GetComponent<Controls>();
         m_Boost = GetComponent<PlayerBoost>();
-        m_Animator = GetComponentInChildren<Animator>();
+        //m_Animator = GetComponentInChildren<Animator>();
     }
 
     public override void StateEnter()

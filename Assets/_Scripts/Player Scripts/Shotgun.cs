@@ -5,12 +5,12 @@ using UnityEngine;
 public class Shotgun : MonoBehaviour {
 
 	public ShotgunShot shotgunShot;
+    public Animator m_Animator;
     Controls controls;
 	PlayerStats m_PlayerStats;
 	int m_PlayerNum;
 	Vector3 aimDir;
     // Animator component of the player
-    Animator m_Animator;
 
     float m_ShotgunCurrentCooldown;	// Cooldown until you can fire the shotgun again [Graham]
 	float m_ShotgunMaxCooldown;
@@ -23,7 +23,7 @@ public class Shotgun : MonoBehaviour {
 	void Start () {
 		controls = GetComponent<Controls>();
 		m_PlayerStats = GetComponent<PlayerStats>();
-        m_Animator = GetComponentInChildren<Animator>();
+        //m_Animator = GetComponentInChildren<Animator>();
 
         m_ShotgunMaxCooldown = m_PlayerStats.m_Shoot.shotgunCooldown;
 		m_ShotDistance = m_PlayerStats.m_Shoot.shotgunDistance;
