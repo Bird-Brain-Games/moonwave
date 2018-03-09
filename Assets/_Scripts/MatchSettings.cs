@@ -9,6 +9,7 @@ public static class MatchSettings {
 	public static List<Color> playerColors;
 	public static List<int> playerScores;
 	public static int minRange, maxRange;
+	public static int setNum;
 
 	static MatchSettings()
 	{
@@ -26,6 +27,7 @@ public static class MatchSettings {
 		playerScores.Clear();
 		minRange = 0;
 		maxRange = 0;
+		setNum = 0;
 	}
 	
 }

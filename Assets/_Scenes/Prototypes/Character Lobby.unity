@@ -837,7 +837,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca90f5daf1eb374a82d692eb3553a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerContainer: {fileID: 1045210509}
 --- !u!114 &482046248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1248,7 +1247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1045210510}
   m_Layer: 0
-  m_Name: Spawners
+  m_Name: Spawner holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

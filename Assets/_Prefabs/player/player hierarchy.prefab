@@ -1009,7 +1009,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1434917770399440}
-  m_LocalRotation: {x: -0.3477042, y: -0.55567956, z: 0.74265856, w: 0.13704166}
+  m_LocalRotation: {x: -0.34770417, y: -0.5556795, z: 0.7426585, w: 0.13704164}
   m_LocalPosition: {x: 0.02805575, y: 0.032621052, z: -0.00072950765}
   m_LocalScale: {x: 0.9999998, y: 1, z: 1}
   m_Children:
@@ -1675,11 +1675,14 @@ MonoBehaviour:
     key: 4096
     altKey: 0
   boost:
-    key: 256
-    altKey: 8192
+    sensitivity: 0
+    trigger: 1
   shootShotgun:
     key: 0
     altKey: 0
+  start:
+    key: 16
+    altKey: 16
   select:
     key: 4096
     altKey: 4096

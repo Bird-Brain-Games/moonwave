@@ -194,6 +194,10 @@ public class PlayerManager : MonoBehaviour {
                     players[i].playerSelecting = true;
                     players[i].playerConfirmed = false;
                 }
+                else if (controls[i].GetStart())
+                {
+                    StartMatch();
+                }
             }
             else if (portraitManager.IsActive(i))        // If the player is active [Graham]
             {
@@ -236,6 +240,36 @@ public class PlayerManager : MonoBehaviour {
             
         }
     }
+
+    void StartMatch()
+	{
+		int numReadyPlayers = 0;
+		foreach (PlayerStats stats in players)
+		{
+			if (stats.playerConfirmed)
+				numReadyPlayers++;
+		}
+
+		if (numReadyPlayers > 1)	// To be changed [Graham]
+		{
+			//MatchSettings.numPlayers = 4;	// TO BE CHANGED
+			MatchSettings.numPlayers = numReadyPlayers;	
+			MatchSettings.pointsToWin = 3;
+
+			for (int i = 0; i < MatchSettings.numPlayers; i++)
+			{
+				MatchSettings.playerColors.Add(players[i].colour);
+				MatchSettings.playerScores.Add(0);
+			}
+
+			// To be changed [Graham]
+			//GetComponent<LoadSceneOnClick>().LoadRandom();
+			//GetComponent<LoadSceneOnClick>().LoadByName("_Scenes/Debug/Graham_Debug");
+		
+			SwitchLobbies();
+            FindObjectOfType<LobbyManager>().ShowLevelSelect();
+		}
+	}
 
     /// <summary>
     /// Get the number of players [Graham]

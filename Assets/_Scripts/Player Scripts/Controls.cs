@@ -192,6 +192,7 @@ public class Controls : MonoBehaviour
     public Button jump;
     public Button boost;
     public Button shootShotgun;
+    public Button start;
 
     // Select, selects colors, changeColors changes colors [jack]
     public Button select;
@@ -200,6 +201,11 @@ public class Controls : MonoBehaviour
 
     //This region uses the above variables to fetch the controller state
     #region controls
+
+    public bool GetStart(BUTTON_DETECTION detect = BUTTON_DETECTION.GET_BUTTON_DOWN)
+    {
+        return GetButtonStruct(start, detect);
+    }
 
     //returns a vector2 of -1 to 1 values for aim analogue controls
     public Vector2 GetAim()
