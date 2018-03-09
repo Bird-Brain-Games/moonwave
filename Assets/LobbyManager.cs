@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LobbyManager : MonoBehaviour {
 
+	public GameObject moon;
 	public Text readyUpText;
 	public PortraitManager portraits;
 	public LevelSelectManager levelSelectors;
@@ -17,6 +18,7 @@ public class LobbyManager : MonoBehaviour {
 		pressToStarts.SetActive(true);
 		levelSelectors.gameObject.SetActive(false);
 		portraits.Reset();
+		moon.SetActive(true);
 	}
 
 	public void ShowLevelSelect()
@@ -26,5 +28,6 @@ public class LobbyManager : MonoBehaviour {
 		pressToStarts.SetActive(false);
 		levelSelectors.gameObject.SetActive(true);
 		levelSelectors.Reset();
+		moon.SetActive(false);
 	}
 }

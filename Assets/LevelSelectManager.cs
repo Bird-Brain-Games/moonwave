@@ -139,7 +139,8 @@ public class LevelSelectManager : MonoBehaviour {
 		yield return new WaitForSeconds(2f);
 
 		// TO BE CHANGED [Graham]
-		GetComponent<LoadSceneOnClick>().LoadRandom();
+		//GetComponent<LoadSceneOnClick>().LoadRandom();
+		GetComponent<LoadSceneOnClick>().LoadBySet(playerSelection[increment]);
 	}
 
 }
