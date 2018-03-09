@@ -72,6 +72,10 @@ public class PlayerStats : MonoBehaviour {
 
     //A colour for our bullets [cam]
     public Color ColourOfBullet { get; set; }
+
+    //The players bullet colour
+    public COLOUR m_bulletColour { get; set; }
+
     public bool Invincible { get; set; }
 
     // Score Calculations
@@ -115,7 +119,9 @@ public class PlayerStats : MonoBehaviour {
 
 
 
-	void Awake () {
+
+
+    void Awake () {
         m_HitLastBy = null;
         m_Score = 0;
         m_shieldState = true;
@@ -279,5 +285,31 @@ public class PlayerStats : MonoBehaviour {
     {
         GetComponentInParent<bulletColour>().unselectColor(colourItr);
         Debug.Log("color unselected");
+    }
+
+    public void setBulletParticleColour(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                m_bulletColour = COLOUR.green;
+                break;
+            case 1:
+                m_bulletColour = COLOUR.red;
+                break;
+            case 2:
+                m_bulletColour = COLOUR.purple;
+                break;
+            case 3:
+                m_bulletColour = COLOUR.blue;
+                break;
+            case 4:
+                m_bulletColour = COLOUR.blue;
+                break;
+            default:
+                m_bulletColour = COLOUR.green;
+                break;
+
+        }
     }
 }
