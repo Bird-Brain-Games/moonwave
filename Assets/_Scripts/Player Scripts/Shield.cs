@@ -48,7 +48,12 @@ public class Shield : MonoBehaviour
         m_playerStats = GetComponentInParent<PlayerStats>();
 
         // Set the player's outline color
-        m_playerColor = this.transform.parent.GetComponent<PlayerStats>().colour;
+        SetColor(this.transform.parent.GetComponent<PlayerStats>().colour);
+    }
+
+    public void SetColor(Color newColor)
+    {
+        m_playerColor = newColor;
         m_playerRenderer.materials[1].SetColor("_OutlineColor", m_playerColor);
     }
 
