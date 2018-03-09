@@ -8,7 +8,7 @@ public class PLayerBigHitState : State
     // Use this for initialization
     PlayerStats m_playerStats;
     Rigidbody m_rigidBody;
-    Animator m_Animator;
+    public Animator m_Animator;
     public float duration;
 
     float timer;
@@ -23,7 +23,7 @@ public class PLayerBigHitState : State
         timer = duration;
         m_playerStats = GetComponent<PlayerStats>();
         m_rigidBody = GetComponent<Rigidbody>();
-        m_Animator = GetComponentInChildren<Animator>();
+        //m_Animator = GetComponentInChildren<Animator>();
         isTarget = true;
     }
 

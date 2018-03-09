@@ -1519,6 +1519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c160fd87aa3344fadf825a9295b732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95864821486979362}
 --- !u!114 &114153156562677558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1551,6 +1552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 54031750831577956, guid: f9bdeecb836dd6a4192ca89a79dcfbfd, type: 2}
+  m_Animator: {fileID: 95864821486979362}
   m_bulletImpact: 20
   m_bulletSpeed: 150
   m_bulletDelay: 0.2
@@ -1734,6 +1736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb7f6b65abb5b74c9bd714a70c7f6dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95864821486979362}
 --- !u!114 &114753834079195974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1786,6 +1789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotgunShot: {fileID: 114055539461388566, guid: efd73956d97acd6429fd0fc11f13963c,
     type: 2}
+  m_Animator: {fileID: 95864821486979362}
 --- !u!114 &114876026398043702
 MonoBehaviour:
   m_ObjectHideFlags: 1
