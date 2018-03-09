@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour {
 
     public Unique playerPrefab; 
     public Portrait portraitPrefab;
+    public PortraitManager portraitManager;
+    public LevelSelectManager levelSelectManager;
     public PlayerStats[] players;
     public int[] playerScores;
     public Color[] playerColours;
@@ -19,7 +21,7 @@ public class PlayerManager : MonoBehaviour {
     Vector3 outOfBounds;
     Vector3 spawnIn;
 
-    Controls controls;
+    Controls[] controls;
     Spawn spawn;
 
     void CreatePlayers()
@@ -30,6 +32,7 @@ public class PlayerManager : MonoBehaviour {
             numPlayers = 4;
 
         players = new PlayerStats[numPlayers];
+        controls = new Controls[numPlayers];
         for (int i = 0; i < numPlayers; i++)
         {
             Unique temp = Instantiate(playerPrefab, transform);
@@ -39,6 +42,7 @@ public class PlayerManager : MonoBehaviour {
             }
 
             players[i] = temp.GetComponentInChildren<PlayerStats>();
+            controls[i] = temp.GetComponentInChildren<Controls>();
         }
 
         
@@ -70,8 +74,8 @@ public class PlayerManager : MonoBehaviour {
             for (int i = 0; i < numPlayers; i++)
             {
                 players[i].transform.position = outOfBounds;
-                Portrait temp = Instantiate(portraitPrefab, players[i].transform.parent);
-                temp.transform.Translate(new Vector3(i * 50f, 0f, 0f));
+                //Portrait temp = Instantiate(portraitPrefab, players[i].transform.parent);
+                //temp.transform.Translate(new Vector3(i * 50f, 0f, 0f));
             }
         }
         else
@@ -79,7 +83,7 @@ public class PlayerManager : MonoBehaviour {
             // Reset the players
             for (int i = 0; i < numPlayers; i++)
             {
-                players[i].transform.position = spawn.getSpawnPoint();
+                players[i].transform.position = spawn.getInitialSpawn(i);
             }
         }
     }
@@ -105,102 +109,131 @@ public class PlayerManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        // Update the score counters with the player scores [Graham]
+        // Update the score counters and life counters [Graham][Jack]
         for (int i = 0; i < numPlayers; i++)
         {
             playerScores[i] = players[i].getScore();
-        }
-
-        // Update the player Lives [Jack]
-        for (int i = 0; i < numPlayers; i++)
-        {
             playerLives[i] = players[i].getLives();
         }
 
-        //mapSelectLobby();
-        characterLobby();
-
+        if (selectScreen)   characterLobby();
+        else if (mapSelect) mapSelectLobby();
 	}
+
+
+
+    public void SwitchLobbies()
+    {
+        if (selectScreen)
+        {
+            selectScreen = false;
+            mapSelect = true;
+            
+            // Blast the players out to space so they don't interfere [Graham]
+            for (int i = 0; i < numPlayers; i++)
+                players[i].transform.position = outOfBounds;
+        }
+        else if (mapSelect)
+        {
+            selectScreen = true;
+            mapSelect = false;
+
+            // If there are active players, bring them back
+            for (int i = 0; i < numPlayers; i++)
+            {
+                players[i].playerSelecting = false;
+                players[i].playerConfirmed = false;
+            } 
+        }
+    }
 
     void mapSelectLobby()
     {
-        if (selectScreen && mapSelect)
+        for (int i = 0; i < numPlayers; i++)
         {
-            mapSelectDirection = players[0].GetComponent<Controls>().GetColorChange();
+            if (players[i].playerConfirmed)
+            {
+                // Handle inputs
+                mapSelectDirection = controls[i].GetColorChange();
 
-
+                // Handle inputs
+                if (mapSelectDirection == 1)
+                    levelSelectManager.NextImage(i);
+                else if (mapSelectDirection == -1)
+                    levelSelectManager.PrevImage(i);
+                if (controls[i].GetDeselect())
+                {
+                    if (levelSelectManager.GetReady(i))
+                        levelSelectManager.SetReady(i, false);
+                    else
+                    {
+                        levelSelectManager.GoBack();
+                        SwitchLobbies();
+                    }
+                }
+                else if (controls[i].GetSelect())
+                {
+                    levelSelectManager.SetReady(i, true);
+                }
+            }
         }
     }
 
     void characterLobby()        // Character color selection lobby [Jack]
     {
-        if (selectScreen && !mapSelect)
+        for (int i = 0; i < numPlayers; i++)
         {
-            GetComponentInParent<bulletColour>().freeColors();
 
-            for (int i = 0; i < numPlayers; i++)
+            if (portraitManager.IsReady(i))    // If the player is ready [Graham]
             {
-                colorDirection = players[i].GetComponent<Controls>().GetColorChange();
-                //Debug.Log("Initializing colours");
-
-                // If the player has joined the lobby
-                if (players[i].playerSelecting == true)
+                // Handle inputs
+                if (controls[i].GetDeselect())
                 {
-                    // Color select to the right
-                    if (colorDirection == 1)
-                    {
-                        playerColours[i] = players[i].selectColourRight();
-                        Debug.Log("changing colour!");
-                    }
-
-                    // Color select to the left
-                    if (colorDirection == -1)
-                    {
-                        playerColours[i] = players[i].selectColourLeft();
-                        Debug.Log("changing colour left!");
-                    }
-
-                    // Confirm color selection
-                    if (players[i].GetComponent<Controls>().GetSelect())
-                    {
-                        // Check to see if the color is free according to the array data before setting
-                        if (GetComponent<bulletColour>().colours[players[i].colourItr].isFree)
-                        {
-                            players[i].playerSelecting = false;
-                            players[i].playerConfirmed = true;
-                            players[i].transform.position = players[i].defaultSpawn;
-                            players[i].GetComponent<Rigidbody>().ResetInertiaTensor();
-                        }
-                        players[i].confirmColor();
-                    }
-
-                    // Player quit lobby
-                    if (players[i].GetComponent<Controls>().GetDeselect())
-                    {
-                        players[i].playerSelecting = false;
-                    }
-                }
-
-                if (players[i].playerConfirmed == true)
-                {
-
-                    if (players[i].GetComponent<Controls>().GetDeselect())
-                    {
-                        players[i].unconfirmColor();
-                        players[i].playerSelecting = true;
-                        players[i].playerConfirmed = false;
-                        players[i].transform.position = outOfBounds;
-                    }
-                }
-
-                // Join lobby
-                if (players[i].GetComponent<Controls>().GetSelect() && players[i].playerSelecting == false && players[i].playerConfirmed == false)
-                {
+                    portraitManager.SetReady(i, false);
+                    players[i].transform.position = outOfBounds;
                     players[i].playerSelecting = true;
+                    players[i].playerConfirmed = false;
                 }
             }
+            else if (portraitManager.IsActive(i))        // If the player is active [Graham]
+            {
+                colorDirection = controls[i].GetColorChange();
 
+                // Handle inputs
+                if (colorDirection == 1)
+                    portraitManager.NextImage(i);
+                else if (colorDirection == -1)
+                    portraitManager.PrevImage(i);
+                else if (controls[i].GetDeselect())
+                {
+                    portraitManager.SetActive(i, false);
+                    players[i].playerSelecting = false;
+                    players[i].playerConfirmed = false;
+                }
+                else if (controls[i].GetSelect())
+                {
+                    portraitManager.SetReady(i, true);
+                    players[i].setColour(portraitManager.GetColor(i));
+                    players[i].setBulletParticleColour(i);
 
+                    players[i].transform.position = players[i].defaultSpawn;
+                    players[i].GetComponent<Rigidbody>().ResetInertiaTensor();
+                    players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    players[i].playerSelecting = false;
+                    players[i].playerConfirmed = true;
+
+                }
+            }
+            else                                    // If the player is neither active nor ready
+            {
+                if (controls[i].GetSelect())
+                {
+                    portraitManager.SetActive(i, true);
+                    players[i].playerSelecting = true;
+                    players[i].playerConfirmed = false;
+                }
+            }
+            
         }
     }
 

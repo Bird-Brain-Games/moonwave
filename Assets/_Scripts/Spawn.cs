@@ -24,8 +24,11 @@ public class Spawn : MonoBehaviour {
 
         int leastCollisions = 0;
         int spot = 0;
+
+        //loop through each spawn point and check which has the least collisions
         for (int i = 0; i < spawners.Length; i++)
         {
+            //the number of players colliding with the given spawn point
             int tempColliders = spawners[i].GetNumColliders();
             if (tempColliders == 0)
             {
@@ -34,6 +37,7 @@ public class Spawn : MonoBehaviour {
             }
             else if (tempColliders < leastCollisions)
             {
+                Debug.Log("Collision less then least collisions");
                 spot = i;
                 leastCollisions = tempColliders;
             }
@@ -45,9 +49,23 @@ public class Spawn : MonoBehaviour {
         }
         return spawnPoints[spot];
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    //used to get the spawn point at a given index
+    public Vector3 getInitialSpawn(int index)
+    {
+        if (index < spawnPoints.Length)
+        {
+            return spawnPoints[index];
+        }
+        else
+        {
+            Debug.Log("Error: spawn index out of bounds, returning 0, 0, 0");
+            return new Vector3();
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

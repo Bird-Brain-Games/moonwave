@@ -18,7 +18,7 @@ public struct ColourData
 {
     public Color colour;
     public bool isFree;
-    public int playerID;
+    public int  playerID;
     public string name;
     public int itr;
 }
@@ -46,7 +46,7 @@ public class bulletColour : MonoBehaviour
         counter = 0;
         white = new Color(0, 0, 0);
         //colours = new Dictionary<COLOURS, Color>();
-        colours = new ColourData[7];
+        colours = new ColourData[5];
         AddColours();
 
     }
@@ -82,15 +82,15 @@ public class bulletColour : MonoBehaviour
         colours[4].name = "GRAY";
         colours[4].isFree = true;
 
-        //counter++;
-        //colours.Add(COLOURS.dark_purple, new Color(25 / 255.0f, 8 / 255.0f, 108 / 255.0f));
-        colours[5].colour = new Color(25 / 255.0f, 8 / 255.0f, 108 / 255.0f);
-        colours[5].name = "MIDNIGHT";
-        colours[5].isFree = true;
+        // //counter++;
+        // //colours.Add(COLOURS.dark_purple, new Color(25 / 255.0f, 8 / 255.0f, 108 / 255.0f));
+        // colours[5].colour = new Color(25 / 255.0f, 8 / 255.0f, 108 / 255.0f);
+        // colours[5].name = "MIDNIGHT";
+        // colours[5].isFree = true;
 
-        colours[6].colour = new Color(0 / 255.0f, 0 / 255.0f, 0 / 255.0f);
-        colours[6].name = "WHITE";
-        colours[6].isFree = true;
+        // colours[6].colour = new Color(1 / 255.0f, 1 / 255.0f, 1 / 255.0f);
+        // colours[6].name = "WHITE";
+        // colours[6].isFree = true;
 
     }
 
@@ -127,7 +127,7 @@ public class bulletColour : MonoBehaviour
     public ColourData SpawnColour()
     {
         ColourData r_colours = new ColourData();
-        for (int i = 0 + 1; i <= 6; i++)
+        for (int i = 0 + 1; i <= colours.Length; i++)
         {
 
             if (colours[i].isFree == true)
@@ -158,13 +158,13 @@ public class bulletColour : MonoBehaviour
     {
         //colours[startPoint].isFree = true;
 
-        if (startPoint > 5)
+        if (startPoint > colours.Length)
         {
             startPoint = -1;
         }
 
         ColourData r_colours = new ColourData();
-        for (int i = startPoint + 1; i <= 6; i++)
+        for (int i = startPoint + 1; i < colours.Length; i++)
         {
 
             if (colours[i].isFree == true)
@@ -196,7 +196,7 @@ public class bulletColour : MonoBehaviour
 
         if (startPoint == 0)
         {
-            startPoint = 7;
+            startPoint = colours.Length;
         }
 
         ColourData r_colours = new ColourData();
@@ -230,7 +230,7 @@ public class bulletColour : MonoBehaviour
     {
         if (newColors)
         {
-            for (int i = 0; i <= 6; i++)
+            for (int i = 0; i < colours.Length; i++)
             {
                 colours[i].isFree = true;
             }
@@ -245,7 +245,7 @@ public class bulletColour : MonoBehaviour
         else
         {
             ColourData r_colours = new ColourData();
-            for (int i = startPoint + 1; i <= 6; i++)
+            for (int i = startPoint + 1; i <= colours.Length; i++)
             {
                 if (startPoint > 5)
                 {

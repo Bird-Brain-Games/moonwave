@@ -42,7 +42,7 @@ Transform:
   m_GameObject: {fileID: 1525999894464254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 60}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 5.4375, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -157,7 +157,9 @@ MonoBehaviour:
   m_PlayerStats: {fileID: 0}
   m_particleManager: {fileID: 1238302421354964, guid: a2e37a3480edbd24292673e586a45499,
     type: 2}
-  m_fallGravMultiplier: 15
+  m_rigidbody: {fileID: 0}
+  m_StickToPlanet: {fileID: 0}
+  m_fallGravMultiplier: 5
   m_Gravity: {fileID: 0}
   m_gravityEnabled: 1
 --- !u!114 &114670389252880546

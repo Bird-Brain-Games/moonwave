@@ -236,7 +236,7 @@ public class StickToPlanet : MonoBehaviour
         }
     }
 
-    bool PlanetInRange()
+    public bool PlanetInRange()
     {
         return (m_PlanetsAffecting.Count > 0);
     }
@@ -305,13 +305,14 @@ public class StickToPlanet : MonoBehaviour
         return -1.0f;
     }
 
-    void RotateTowardsCurrentPlanet()
+    public void RotateTowardsCurrentPlanet()
     {
-        // Want to smoothly rotate towards new planet, this will do for now
         Vector3 planetDir = (m_RigidBody.position - m_CurrentPlanet.transform.position).normalized;
         Quaternion lookAtPlanet = Quaternion.LookRotation(transform.forward, planetDir);
         transform.rotation = Quaternion.RotateTowards(m_RigidBody.rotation, lookAtPlanet, 180.0f);
     }
+
+
 
     public Vector3 GetDirectionOfCurrentPlanet()
     {

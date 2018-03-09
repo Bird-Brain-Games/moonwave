@@ -67,6 +67,13 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 				ShowWinner(i);
 			}
 		}
+
+		if (winImage.gameObject.activeInHierarchy)
+		{
+			// We might want to store the variables before we leave
+			MatchSettings.Reset();
+		}
+		
 	}
 
 	// Increase the score of a player by 1.
@@ -100,7 +107,6 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		nextMapButton.SetActive(false);
 		toMainMenuButton.SetActive(true);
 
-		// We might want to store the variables before we leave
-		MatchSettings.Reset();
+		
 	}
 }
