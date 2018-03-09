@@ -47,11 +47,11 @@ public class PortraitManager : MonoBehaviour {
 	void SetColors()
 	{
 		colors = new Color[choosingImages.Length];
-		colors[0] = new Color32(79, 187, 255, 255);
-		colors[1] = new Color32(26, 156, 41, 255);
-		colors[2] = new Color32(250, 70, 32, 255);
-		colors[3] = new Color32(165, 36, 197, 255);
-		colors[4] = new Color32(115, 117, 128, 255);
+		colors[0] = new Color32(79, 187, 255, 255); //green
+		colors[1] = new Color32(26, 156, 41, 255); //orange
+		colors[2] = new Color32(250, 70, 32, 255); //purple
+		colors[3] = new Color32(165, 36, 197, 255); //teal????
+		colors[4] = new Color32(115, 117, 128, 255); // light blue 
 	}
 
 	public Color GetColor(int playerNum)
