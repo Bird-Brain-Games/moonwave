@@ -123,13 +123,18 @@ public class LevelSelectManager : MonoBehaviour {
 
 		// Get the selected images
 		Sprite[] chosenImages = new Sprite[numPlayers];
+		int check = playerSelection[0];
+		bool allSame = true;
 		for (int i = 0; i < numPlayers; i++)
 		{
 			chosenImages[i] = choosingImages[playerSelection[i]];
+			if (playerSelection[i] != check)	allSame = false;
 		}
 
+		
+
 		// Main loop
-		while (delay < 0.5)
+		while (delay < 0.5 && !allSame)
 		{
 			if (delay < 0.2f)
 				delay += 0.01f;
