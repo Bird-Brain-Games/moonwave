@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour {
 
-    public GameObject spawnerContainer;
+    GameObject spawnerContainer;
     Spawner_Available[] spawners;
     Vector3[] spawnPoints;
 	// Use this for initialization
-	void Start () {
+
+	void Awake ()
+    {
+        //Moved all of this code from start to Awake
+        spawnerContainer = GameObject.Find("Spawner holder");
         spawners = spawnerContainer.GetComponentsInChildren<Spawner_Available>();
         spawnPoints = new Vector3[spawners.Length];
         for (int i = 0; i < spawners.Length; i++)
