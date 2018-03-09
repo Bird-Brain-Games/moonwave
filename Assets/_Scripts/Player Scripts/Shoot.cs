@@ -9,7 +9,7 @@ public class Shoot : MonoBehaviour {
     public Rigidbody bullet;
 
     // Animator component of the player
-    Animator m_Animator;
+    public Animator m_Animator;
 
     //The impact a bullet has on a player
     public float m_bulletImpact;
@@ -51,7 +51,7 @@ public class Shoot : MonoBehaviour {
         controls = GetComponent<Controls>();
         m_playerStats = GetComponent<PlayerStats>();
         m_Shotgun = GetComponent<Shotgun>();
-        m_Animator = GetComponentInChildren<Animator>();
+        //m_Animator = GetComponentInChildren<Animator>();
         l_bullets = 0;
     }
 	
@@ -171,7 +171,7 @@ public class Shoot : MonoBehaviour {
                 GetComponent<Collider>());
             
 
-            clone.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = (COLOUR)m_playerStats.m_PlayerID;
+            clone.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = m_playerStats.m_bulletColour;
             
             
             //clone.GetComponent<Bullet>().setVelocity(clone.velocity);
@@ -238,10 +238,10 @@ public class Shoot : MonoBehaviour {
             clone3.GetComponent<Collider>(), 
             GetComponent<Collider>());
 
-        clone.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = (COLOUR)m_playerStats.m_PlayerID;
-        clone2.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = (COLOUR)m_playerStats.m_PlayerID;
-        clone3.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = (COLOUR)m_playerStats.m_PlayerID;
-            
+        clone.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = m_playerStats.m_bulletColour;
+        clone2.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = m_playerStats.m_bulletColour;
+        clone3.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = m_playerStats.m_bulletColour;
+
         //clone.GetComponent<Bullet>().setVelocity(clone.velocity);
         clone.GetComponent<MeshRenderer>().material.color = m_playerStats.ColourOfBullet;
         clone2.GetComponent<MeshRenderer>().material.color = m_playerStats.ColourOfBullet;
@@ -292,11 +292,11 @@ public class Shoot : MonoBehaviour {
                 GetComponent<Collider>());
             
 
-            clone.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = (COLOUR)m_playerStats.m_PlayerID;
-            
-            
-            //clone.GetComponent<Bullet>().setVelocity(clone.velocity);
-            clone.GetComponent<MeshRenderer>().material.color = m_playerStats.ColourOfBullet;
+            clone.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = m_playerStats.m_bulletColour;
+
+
+        //clone.GetComponent<Bullet>().setVelocity(clone.velocity);
+        clone.GetComponent<MeshRenderer>().material.color = m_playerStats.ColourOfBullet;
             
 
             // Log total shots fired [Jack]

@@ -19,16 +19,9 @@ public class Shield : MonoBehaviour
     //self explanitory
     public float m_shieldHealth;
     public float m_maxShieldHealth;
-    public float m_percentSheild;
 
     public float m_rechargeDelay;
     public int m_rechargeRatePerSecond;
-
-    public Color m_maxColor;
-    public Color m_currentColor;
-    public Color m_endColor;
-
-    public GameObject m_Explosion;
 
     //[HideInInspector]
     public float m_timeSinceLastHit;
@@ -41,13 +34,22 @@ public class Shield : MonoBehaviour
     //triggers the recharge rate counter to start. set to false when the player is hit
     public bool m_canRecharge;
 
+    // Red Outline
+    public Renderer m_playerRenderer;
+    public Material m_outlineMaterial;
+    private Material[] m_mats;
+    private Color m_playerColor;
+
     // Use this for initialization
     void Start()
     {
         m_canRecharge = false;
         m_shieldHealth = m_maxShieldHealth;
         m_playerStats = GetComponentInParent<PlayerStats>();
-        m_currentColor = m_maxColor;
+
+        // Set the player's outline color
+        m_playerColor = this.transform.parent.GetComponent<PlayerStats>().colour;
+        m_playerRenderer.materials[1].SetColor("_OutlineColor", m_playerColor);
     }
 
     //this is called whenever a player is hit and basically resets the shield recharge variables.
@@ -69,13 +71,14 @@ public class Shield : MonoBehaviour
         }
         if (m_shieldHealth <= 0)
         {
-            if (GetComponent<MeshRenderer>().enabled)
-            {
-                // SFX
-                FindObjectOfType<AudioManager>().Play("Shield Shatter");
-                Instantiate(m_Explosion, transform);
-            }
-           
+
+            // SFX
+            FindObjectOfType<AudioManager>().Play("Shield Shatter");
+            
+            // Add the player's outline
+            m_playerRenderer.materials[1].SetColor("_OutlineColor", Color.red);
+            m_playerRenderer.materials[1].SetFloat("_Outline", 0.15f);
+
             m_shieldHealth = 0;
             GetComponent<MeshRenderer>().enabled = false;
             m_playerStats.SetShieldState(false);
@@ -108,6 +111,7 @@ public class Shield : MonoBehaviour
                 {
                     //Debug.Log("hit update");
                     m_hitUpdate = Time.time;
+                    m_playerRenderer.materials[1].SetFloat("_Outline", Mathf.PingPong(Time.time, 0.15f));
                 }
                 else
                 {
@@ -122,29 +126,21 @@ public class Shield : MonoBehaviour
                 if (0.5 > m_rechargeUpdate - m_timeSinceLastRecharge)
                 {
                     m_rechargeUpdate = Time.time;
+                    m_playerRenderer.materials[1].SetFloat("_Outline", Mathf.PingPong(Time.time, 0.3f));
                 }
                 else
                 {
                     //Debug.Log("shield recharge");
                     m_shieldHealth += m_rechargeRatePerSecond;
-                    GetComponent<MeshRenderer>().enabled = true;
                     m_playerStats.SetShieldState(true);
                     m_timeSinceLastRecharge = Time.time;
+
+                    // Remove the player's outline
+                    m_playerRenderer.materials[1].SetColor("_OutlineColor", m_playerColor);
+                    m_playerRenderer.materials[1].SetFloat("_Outline", 0.15f);
                 }
             }
         }
-
-        // Calculate % Damage [Jack]
-        m_percentSheild = m_shieldHealth / m_maxShieldHealth;
-
-        // Adjust the sheild color based on % damnge taken! [Jack]
-
-        m_currentColor.b = Mathf.Lerp(m_endColor.b, m_maxColor.b, m_percentSheild);
-        m_currentColor.r = Mathf.Lerp(m_endColor.r, m_maxColor.r, m_percentSheild);
-        m_currentColor.g = Mathf.Lerp(m_endColor.g, m_maxColor.g, m_percentSheild);
-        m_currentColor.a = Mathf.Lerp(m_endColor.a, m_maxColor.a, m_percentSheild);
-
-        gameObject.GetComponent<Renderer>().material.color = m_currentColor;
     }
 
     public void ResetShield()
@@ -155,6 +151,5 @@ public class Shield : MonoBehaviour
         m_timeSinceLastHit = 0f;
         GetComponent<MeshRenderer>().enabled = true;
         m_playerStats.SetShieldState(true);
-        m_currentColor = m_maxColor;
     }
 }
