@@ -9,7 +9,7 @@ public class Shoot : MonoBehaviour {
     public Rigidbody bullet;
 
     // Animator component of the player
-    Animator m_Animator;
+    public Animator m_Animator;
 
     //The impact a bullet has on a player
     public float m_bulletImpact;
@@ -51,7 +51,7 @@ public class Shoot : MonoBehaviour {
         controls = GetComponent<Controls>();
         m_playerStats = GetComponent<PlayerStats>();
         m_Shotgun = GetComponent<Shotgun>();
-        m_Animator = GetComponentInChildren<Animator>();
+        //m_Animator = GetComponentInChildren<Animator>();
         l_bullets = 0;
     }
 	

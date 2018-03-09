@@ -5,7 +5,7 @@ using UnityEngine;
 public class AimAnimation : MonoBehaviour {
 
 	// Animator component of the player
-    Animator m_Animator;
+    public Animator m_Animator;
 	
 
 	//The accessers to our controller script
@@ -15,7 +15,7 @@ public class AimAnimation : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		m_Animator = GetComponentInChildren<Animator>();
+		//m_Animator = GetComponentInChildren<Animator>();
         controls = GetComponent<Controls>();
 	}
 	
