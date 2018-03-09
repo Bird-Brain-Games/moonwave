@@ -25,7 +25,6 @@ public class LoadSceneOnClick : MonoBehaviour {
 
     public void LoadBySet(int setNum)
     {
-        //SceneManager.
-        //SceneManager.LoadScene("_Scenes/Completed Maps/Set" + setNum);
+        SceneManager.LoadScene(Random.Range(MatchSettings.minRange, MatchSettings.maxRange));
     }
 }
