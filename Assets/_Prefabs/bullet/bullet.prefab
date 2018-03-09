@@ -157,6 +157,8 @@ MonoBehaviour:
   m_PlayerStats: {fileID: 0}
   m_particleManager: {fileID: 1238302421354964, guid: a2e37a3480edbd24292673e586a45499,
     type: 2}
+  m_rigidbody: {fileID: 0}
+  m_StickToPlanet: {fileID: 0}
   m_fallGravMultiplier: 5
   m_Gravity: {fileID: 0}
   m_gravityEnabled: 1

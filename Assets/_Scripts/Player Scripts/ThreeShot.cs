@@ -134,9 +134,9 @@ public class ThreeShot : MonoBehaviour {
                 GetComponent<Collider>());
             
 
-            clone.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = (COLOUR)m_playerStats.m_PlayerID;
-            
-            
+            clone.GetComponent<Bullet>().m_bulletParticles.m_spriteColour = m_playerStats.m_bulletColour;
+
+
             //clone.GetComponent<Bullet>().setVelocity(clone.velocity);
             clone.GetComponent<MeshRenderer>().material.color = m_playerStats.ColourOfBullet;
             

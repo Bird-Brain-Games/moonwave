@@ -164,6 +164,8 @@ public class PlayerManager : MonoBehaviour {
                 {
                     portraitManager.SetReady(i, true);
                     players[i].setColour(portraitManager.GetColor(i));
+                    players[i].setBulletParticleColour(i);
+
                     players[i].transform.position = players[i].defaultSpawn;
                     players[i].GetComponent<Rigidbody>().ResetInertiaTensor();
                     players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
