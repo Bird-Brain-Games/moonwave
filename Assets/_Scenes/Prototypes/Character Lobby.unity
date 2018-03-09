@@ -167,7 +167,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ae1842b89cdbd924ca1316f3d9c95fc6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cbbd98265dffe24082af477165877e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -415,7 +415,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ae1842b89cdbd924ca1316f3d9c95fc6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cbbd98265dffe24082af477165877e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b59fbc3657139c5429e5d3b63c085559, type: 3}
   - {fileID: 21300000, guid: 51591ce2f6eec434a91336e3868f0acb, type: 3}
   - {fileID: 21300000, guid: c9b99e2ae4ce26645a6692f9028f2339, type: 3}
-  - {fileID: 21300000, guid: 21eab9b16ef8d32428a22babdddeeec9, type: 3}
+  - {fileID: 21300000, guid: 43456b8aa6b229042afde968f79cad9f, type: 3}
 --- !u!222 &936293981
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1414,7 +1414,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ae1842b89cdbd924ca1316f3d9c95fc6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cbbd98265dffe24082af477165877e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1849,7 +1849,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ae1842b89cdbd924ca1316f3d9c95fc6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cbbd98265dffe24082af477165877e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1942,8 +1942,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6cbbd98265dffe24082af477165877e8, type: 3}
   - {fileID: 21300000, guid: 864b474400f79c442a48380f147b2f73, type: 3}
   readyImages:
-  - {fileID: 21300000, guid: 291da4dd21b3d8a44825fb45c02c55bc, type: 3}
-  - {fileID: 21300000, guid: bb5c168e8522a714bba9e754d6234814, type: 3}
+  - {fileID: 21300000, guid: 7ca8226cc0e1b684ab3bc5cd7bad03b5, type: 3}
+  - {fileID: 21300000, guid: 746b17a6ed83a7341baa1a8b65f6f6c8, type: 3}
 --- !u!114 &1676705994
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public static class MatchSettings {
 	public static int pointsToWin;
 	public static List<Color> playerColors;
 	public static List<int> playerScores;
+	public static int minRange, maxRange;
 
 	static MatchSettings()
 	{
@@ -23,6 +24,8 @@ public static class MatchSettings {
 		pointsToWin = 0;
 		playerColors.Clear();
 		playerScores.Clear();
+		minRange = 0;
+		maxRange = 0;
 	}
 	
 }

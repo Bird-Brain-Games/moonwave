@@ -118,8 +118,15 @@ public class LevelSelectManager : MonoBehaviour {
 	IEnumerator RandomStageSelect(int minTime, int maxTime)
 	{
 		float countdownTime = Random.Range((float)minTime, (float)maxTime);	// Not currently used
-		float delay = 0f;
+		float delay = 0f + Random.Range(0f, 0.03f);
 		int increment = 0;
+
+		// Get the selected images
+		Sprite[] chosenImages = new Sprite[numPlayers];
+		for (int i = 0; i < numPlayers; i++)
+		{
+			chosenImages[i] = choosingImages[playerSelection[i]];
+		}
 
 		// Main loop
 		while (delay < 0.5)
@@ -131,15 +138,29 @@ public class LevelSelectManager : MonoBehaviour {
 
 			increment++;
 			if (increment >= numPlayers) increment = 0;
-			chosenStageImage.sprite = readyImages[increment];
+			chosenStageImage.sprite = chosenImages[increment];
 			yield return new WaitForSeconds(delay);
 		}
 		
+		// Set the chosen stage as true
+		chosenStageImage.sprite = readyImages[playerSelection[increment]];
+
 		// Start using the chosen stage selections
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(4f);
 
 		// TO BE CHANGED [Graham]
 		//GetComponent<LoadSceneOnClick>().LoadRandom();
+		if (playerSelection[increment] == 0)
+		{
+			MatchSettings.minRange = 2;
+			MatchSettings.maxRange = 6;
+		}
+		else if (playerSelection[increment] == 1)
+		{
+			MatchSettings.minRange = 7;
+			MatchSettings.maxRange = 11;
+		}
+			
 		GetComponent<LoadSceneOnClick>().LoadBySet(playerSelection[increment]);
 	}
 
