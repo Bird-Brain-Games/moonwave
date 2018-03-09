@@ -5,6 +5,8 @@ using UnityEngine;
 public class Bullet : Projectile
 {
     public GameObject m_particleManager;
+    public Rigidbody m_rigidbody;
+    public StickToPlanet m_StickToPlanet;
     public BulletParticles m_bulletParticles { get; set; }
     public float m_fallGravMultiplier;
     public StickToPlanet m_Gravity;
@@ -19,9 +21,10 @@ public class Bullet : Projectile
         m_bulletParticles.transform.position = transform.position;
         m_bulletParticles.velocity = -GetComponent<Rigidbody>().velocity / 5;
         m_bulletParticles.random = -m_bulletParticles.velocity.normalized;
+        m_rigidbody = GetComponent<Rigidbody>();
+        m_StickToPlanet = GetComponent<StickToPlanet>();
         m_Gravity = GetComponent<StickToPlanet>();
     }
-
 
 
 
@@ -31,7 +34,17 @@ public class Bullet : Projectile
         m_bulletParticles.transform.position = transform.position;
         if (true == m_gravityEnabled)
         {
+            //rotate towards planet
+            if (m_StickToPlanet.PlanetInRange())
+                m_StickToPlanet.RotateTowardsCurrentPlanet();
+
+            //update forces on bullet based on rotation
             m_Rigidbody.AddForce(m_Gravity.DriftingUpdate() * m_fallGravMultiplier / 100000000);
+
+            //unrotate bullet
+            Quaternion rotateToVelocity = Quaternion.LookRotation(transform.forward, m_Direction);
+            transform.rotation = Quaternion.RotateTowards(m_rigidbody.rotation, rotateToVelocity, 180.0f);
+            transform.rotation *= Quaternion.Euler(0, 0, 90);
         }
         m_Direction = m_Rigidbody.velocity.normalized;
     }
@@ -96,5 +109,10 @@ public class Bullet : Projectile
     private void OnDestroy()
     {
         m_bulletParticles.Alive = false;
+    }
+
+    public void SetDirection(Vector3 dir)
+    {
+        m_Direction = dir;
     }
 }
