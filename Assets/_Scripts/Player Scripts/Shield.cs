@@ -154,7 +154,7 @@ public class Shield : MonoBehaviour
         m_canRecharge = false;
         m_shieldHealth = m_maxShieldHealth;
         m_timeSinceLastHit = 0f;
-        GetComponent<MeshRenderer>().enabled = true;
+        //GetComponent<MeshRenderer>().enabled = true;
         m_playerStats.SetShieldState(true);
     }
 }

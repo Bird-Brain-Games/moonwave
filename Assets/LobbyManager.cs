@@ -28,6 +28,6 @@ public class LobbyManager : MonoBehaviour {
 		pressToStarts.SetActive(false);
 		levelSelectors.gameObject.SetActive(true);
 		levelSelectors.Reset();
-		moon.SetActive(false);
+		moon.SetActive(false);	
 	}
 }

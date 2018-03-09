@@ -165,6 +165,7 @@ public class LevelSelectManager : MonoBehaviour {
 			MatchSettings.minRange = 7;
 			MatchSettings.maxRange = 11;
 		}
+		MatchSettings.setNum = playerSelection[increment];
 			
 		GetComponent<LoadSceneOnClick>().LoadBySet(playerSelection[increment]);
 	}

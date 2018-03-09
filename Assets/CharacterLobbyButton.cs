@@ -9,10 +9,6 @@ public class CharacterLobbyButton : MonoBehaviour {
 	public UnityEvent allPlayersReady;
 	
 	// Update is called once per frame
-	void Update () {
-		if (Input.GetButtonDown("START"))
-			StartMatch();
-	}
 
 	void StartMatch()
 	{
