@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54169158684174494}
   - component: {fileID: 135889638235994090}
   - component: {fileID: 114048669963799532}
-  - component: {fileID: 114715662411594338}
+  - component: {fileID: 114873675577072234}
   m_Layer: 12
   m_Name: sun_round
   m_TagString: Hazard
@@ -40,8 +40,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1995069326950748}
   m_LocalRotation: {x: -0.707023, y: 0.010884971, z: -0.707023, w: -0.010884971}
-  m_LocalPosition: {x: -0.4561472, y: 238.2, z: 0}
-  m_LocalScale: {x: 206.44446, y: 206.44446, z: 206.44446}
+  m_LocalPosition: {x: 0.8, y: -19.9, z: 0}
+  m_LocalScale: {x: 17.280054, y: 17.280056, z: 17.280056}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -61,6 +61,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 1c3566818f1c2d54cbd0252c22218e2d, type: 2}
+  - {fileID: 2100000, guid: 0376d3df999b4f144ae658aee8e71fc7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,19 +115,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GravityStrength: 450
---- !u!114 &114715662411594338
+--- !u!114 &114873675577072234
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1995069326950748}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484fc94be1e0d954f910b84c24c4bbf1, type: 3}
+  m_Script: {fileID: 11500000, guid: 53e676ba859ece04bb7949576b71f4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollX: 0.05
-  scrollY: 0.02
+  m_SunRenderer: {fileID: 23431035920537342}
+  m_timeScale: 0.05
+  m_glowBrightness: 0.05
 --- !u!135 &135880481262066128
 SphereCollider:
   m_ObjectHideFlags: 1
