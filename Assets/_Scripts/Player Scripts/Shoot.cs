@@ -227,6 +227,10 @@ public class Shoot : MonoBehaviour {
         // Initialize the bullet
         clone.GetComponent<Bullet>().Init(
             forward, m_bulletImpact, m_playerStats);
+        clone2.GetComponent<Bullet>().Init(
+            forward, m_bulletImpact, m_playerStats);
+        clone3.GetComponent<Bullet>().Init(
+            forward, m_bulletImpact, m_playerStats);
             
         Physics.IgnoreCollision(
             clone.GetComponent<Collider>(), 
