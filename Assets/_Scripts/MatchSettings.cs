@@ -17,6 +17,7 @@ public static class MatchSettings {
 		pointsToWin = 0;
 		playerColors = new List<Color>();
 		playerScores = new List<int>();
+		Reset();
 	}
 
 	public static void Reset()
@@ -25,8 +26,8 @@ public static class MatchSettings {
 		pointsToWin = 0;
 		playerColors.Clear();
 		playerScores.Clear();
-		minRange = 0;
-		maxRange = 0;
+		minRange = 3;
+		maxRange = 3;
 		setNum = 0;
 	}
 	
