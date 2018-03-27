@@ -63,6 +63,16 @@ public struct Trigger
 }
 
 [System.Serializable]
+public struct Trigger_Button
+{
+    //The sensitivity we need to be above to return true
+    public Trigger trigger;
+    public bool currentState;
+    public bool lastState;
+    public Button button;
+}
+
+[System.Serializable]
 public struct Aim
 {
     public ANALOGSTICKS aimX;
@@ -188,9 +198,9 @@ public class Controls : MonoBehaviour
     //The controls for the player
     public Aim aimControls;
     public Move moveControls;
-    public Trigger shootLaser;
+    public Trigger_Button shootLaser;
     public Button jump;
-    public Button boost;
+    public Trigger_Button boost;
     public Button shootShotgun;
     public Button start;
 
@@ -222,15 +232,6 @@ public class Controls : MonoBehaviour
         result.x = getAnalogInput(moveControls.moveX);
         result.y = getAnalogInput(moveControls.moveY);
         return result;
-    }
-    //returns true or false using the shoot laser controls.
-    public bool GetShootLaser()
-    {
-        if (shootLaser.sensitivity < GetTrigger(shootLaser.trigger))
-        {
-            return true;
-        }
-        return false;
     }
     //returns true or false using the shotgun controls
     public bool GetShootShotgun(BUTTON_DETECTION detect = BUTTON_DETECTION.GET_BUTTON)
@@ -280,10 +281,96 @@ public class Controls : MonoBehaviour
         else
             return 0;
     }
+
+    public bool GetShootLaser(BUTTON_DETECTION detect = BUTTON_DETECTION.GET_BUTTON)
+    {
+        //set last state equal the current state
+        shootLaser.lastState = shootLaser.currentState;
+
+        //find out the trigger state
+        if (shootLaser.trigger.sensitivity < GetTrigger(shootLaser.trigger.trigger))
+        {
+            shootLaser.currentState = true;
+        }
+        else
+        {
+            shootLaser.currentState = false;
+        }
+
+        //if the button is being pressed return true
+        if (GetButtonStruct(shootLaser.button, detect))
+        {
+            return true;
+        }
+        switch (detect)
+        {
+            case BUTTON_DETECTION.GET_BUTTON:
+                return shootLaser.currentState;
+
+            case BUTTON_DETECTION.GET_BUTTON_DOWN:
+                if (shootLaser.currentState == true && shootLaser.lastState == false)
+                    return true;
+                else
+                    return false;
+
+            case BUTTON_DETECTION.GET_BUTTON_UP:
+                if (shootLaser.currentState == false && shootLaser.lastState == true)
+                    return true;
+                else
+                    return false;
+
+            default:
+                Debug.Log("error no button_detection selected");
+                return false;
+
+        }
+
+    }
+
     //returns true or false using the boost controls.
     public bool GetBoost(BUTTON_DETECTION detect = BUTTON_DETECTION.GET_BUTTON)
     {
-        return GetButtonStruct(boost, detect);
+        //set last state equal the current state
+        boost.lastState = boost.currentState;
+
+        //find out the trigger state
+        if (boost.trigger.sensitivity < GetTrigger(boost.trigger.trigger))
+        {
+            boost.currentState = true;
+        }
+        else
+        {
+            boost.currentState = false;
+        }
+
+        //if the button is being pressed return true
+        if (GetButtonStruct(boost.button, detect))
+        {
+            return true;
+        }
+        switch (detect)
+        {
+            case BUTTON_DETECTION.GET_BUTTON:
+                return boost.currentState;
+
+            case BUTTON_DETECTION.GET_BUTTON_DOWN:
+                if (boost.currentState == true && boost.lastState == false)
+                    return true;
+                else
+                    return false;
+
+            case BUTTON_DETECTION.GET_BUTTON_UP:
+                if (boost.currentState == false && boost.lastState == true)
+                    return true;
+                else
+                    return false;
+
+            default:
+                Debug.Log("error no button_detection selected");
+                return false; 
+
+        }
+
     }
     
 
@@ -319,6 +406,7 @@ public class Controls : MonoBehaviour
 
         }
     }
+
     #endregion
     //temp variables to differentiate players
 
