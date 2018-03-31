@@ -128,7 +128,12 @@ ModelImporter:
     7400000: Default Take
     9500000: //RootNode
     13700000: Body_Mesh
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default
+    second: {fileID: 2100000, guid: 3b63b93462f120e42b4b106e8faf6ff8, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
