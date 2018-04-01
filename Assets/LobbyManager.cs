@@ -13,6 +13,7 @@ public class LobbyManager : MonoBehaviour {
 	public GameObject pressToStarts;
 	public GameObject quickInfo;
 	public GameObject border;
+	public GameObject infoPanel;
 
 	public void ShowCharacterSelect()
 	{
@@ -39,5 +40,6 @@ public class LobbyManager : MonoBehaviour {
 		moon.SetActive(false);	
 		quickInfo.SetActive(false);
 		border.SetActive(false);
+		infoPanel.SetActive(true);
 	}
 }
