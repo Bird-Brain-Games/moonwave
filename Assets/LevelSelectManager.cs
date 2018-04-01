@@ -37,7 +37,16 @@ public class LevelSelectManager : MonoBehaviour {
 		// Only enable the images for the active players
 		foreach(Image image in levelImages) image.gameObject.SetActive(false);
 		for (int i = 0; i < numPlayers; i++)
+		{
 			levelImages[i].gameObject.SetActive(true);
+			levelImages[i].sprite = MatchSettings.playerImages[i];
+			//playerSelection[i] = i;
+
+			// Enable all the players (I don't know where they're diabling. T_T) [Graham]
+			playerManager.players[i].gameObject.SetActive(true);
+		}
+
+
 
 	}
 	
@@ -112,7 +121,9 @@ public class LevelSelectManager : MonoBehaviour {
 	{
 		IEnumerator randomStageSelect = RandomStageSelect(3,5);
 		chosenStageImage.gameObject.SetActive(true);
-		StartCoroutine(randomStageSelect);
+		//StartCoroutine(randomStageSelect);
+
+		GetComponent<LoadSceneOnClick>().LoadRandom();
 	}
 
 	IEnumerator RandomStageSelect(int minTime, int maxTime)

@@ -155,9 +155,7 @@ public class PlayerManager : MonoBehaviour {
         {
             if (players[i].playerConfirmed)
             {
-                // Handle inputs
-                mapSelectDirection = controls[i].GetColorChange();
-
+                Debug.Log(controls[i].GetColorChange());
                 if (controls[i].GetSelect())
                 {
                     levelSelectManager.SetReady(i, true);

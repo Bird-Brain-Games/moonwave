@@ -10,6 +10,8 @@ public class LobbyManager : MonoBehaviour {
 	public PortraitManager portraits;
 	public LevelSelectManager levelSelectors;
 	public GameObject pressToStarts;
+	public GameObject quickInfo;
+	public GameObject border;
 
 	public void ShowCharacterSelect()
 	{
@@ -19,15 +21,21 @@ public class LobbyManager : MonoBehaviour {
 		levelSelectors.gameObject.SetActive(false);
 		portraits.Reset();
 		moon.SetActive(true);
+		quickInfo.SetActive(true);
+		border.SetActive(true);
+		
 	}
 
 	public void ShowLevelSelect()
 	{
-		readyUpText.text = "Choose a Level Set";
+		readyUpText.gameObject.SetActive(false);
+		portraits.SavePortraits();
 		portraits.gameObject.SetActive(false);
 		pressToStarts.SetActive(false);
 		levelSelectors.gameObject.SetActive(true);
 		levelSelectors.Reset();
 		moon.SetActive(false);	
+		quickInfo.SetActive(false);
+		border.SetActive(false);
 	}
 }
