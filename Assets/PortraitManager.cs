@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PortraitManager : MonoBehaviour {
 
+	// Bad coupling
+	public Text readyText;
+
 	// Portrait resources
 	public Sprite[] choosingImages;
 	public Sprite[] readyImages;
@@ -17,14 +20,14 @@ public class PortraitManager : MonoBehaviour {
 
 	// Portrait variables
 	bool[] available;
-	Image[] portraits;
+	public Image[] portraits;
 	Color[] colors;
 
 	// Use this for initialization
 	void Awake () {
 		numPlayers = 4;
 
-		portraits = GetComponentsInChildren<Image>();
+		//portraits = GetComponentsInChildren<Image>();
 		
 		playerReady = new bool[numPlayers];
 		playerActive = new bool[numPlayers];
@@ -109,11 +112,19 @@ public class PortraitManager : MonoBehaviour {
 
 		available[playerSelection[playerNum]] = !isReady;	// Set if the portrait is available for picking
 
+		// Turn the arrows on if not ready
+		var children = portraits[playerNum].GetComponentsInChildren<Image>();
+		foreach (var child in children)
+		{
+			if (child != portraits[playerNum])
+				child.enabled = !isReady;
+		}
+
 		// Set the portrait image
 		if (isReady)
 		{
 			portraits[playerNum].sprite = readyImages[playerSelection[playerNum]];	
-
+		
 			// If other unready players are on this portrait, move them.
 			for (int i = 0; i < numPlayers; i++)
 			{
@@ -123,6 +134,10 @@ public class PortraitManager : MonoBehaviour {
 		}
 		else
 			portraits[playerNum].sprite = choosingImages[playerSelection[playerNum]];
+
+		// Check if there are enough ready to show the "Press start to continue" text [Graham]
+		readyText.gameObject.SetActive(enoughPlayersReady());
+
 	}
 
 	public void SetActive(int playerNum, bool isActive)
@@ -130,7 +145,7 @@ public class PortraitManager : MonoBehaviour {
 		// Set the state of the portrait, if the player is active in the scene or not.
 		if (playerActive[playerNum] == isActive) return;
 		playerActive[playerNum] = isActive;
-		portraits[playerNum].enabled = isActive;
+		portraits[playerNum].gameObject.SetActive(isActive);
 		
 		if (isActive) NextImage(playerNum);
 	}
@@ -143,5 +158,26 @@ public class PortraitManager : MonoBehaviour {
 	public bool IsReady(int playerNum)
 	{
 		return playerReady[playerNum];
+	}
+
+	public void SavePortraits()
+	{
+		// Save the chosen portraits to the match settings
+		for(int i = 0; i < numPlayers; i++)
+		{
+			MatchSettings.playerImages.Add(choosingImages[playerSelection[i]]);
+			MatchSettings.playerReadyImages.Add(choosingImages[playerSelection[i]]);
+		}
+	}
+
+	bool enoughPlayersReady()
+	{
+		int numReadyPlayers = 0;
+		for (int i = 0; i < numPlayers; i++)
+		{
+			if (IsReady(i)) numReadyPlayers++;
+		}
+
+		return (numReadyPlayers >= 2);
 	}
 }
