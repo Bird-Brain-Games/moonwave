@@ -29,7 +29,14 @@ public class PlayerManager : MonoBehaviour {
         // Create our players
         numPlayers = MatchSettings.numPlayers;
         if (numPlayers == 0)    // Debug 
+        {
             numPlayers = 4;
+            for (int i = 0; i < numPlayers; i++)
+            {
+                MatchSettings.playerImages.Add(new Sprite());
+                MatchSettings.playerReadyImages.Add(new Sprite());
+            }
+        }
 
         players = new PlayerStats[numPlayers];
         controls = new Controls[numPlayers];
