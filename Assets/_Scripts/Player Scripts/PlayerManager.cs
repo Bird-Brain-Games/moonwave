@@ -149,6 +149,8 @@ public class PlayerManager : MonoBehaviour {
 
     void mapSelectLobby()
     {
+        // Actually the info screen [Graham]
+
         for (int i = 0; i < numPlayers; i++)
         {
             if (players[i].playerConfirmed)
@@ -156,27 +158,41 @@ public class PlayerManager : MonoBehaviour {
                 // Handle inputs
                 mapSelectDirection = controls[i].GetColorChange();
 
-                // Handle inputs
-                if (mapSelectDirection == 1)
-                    levelSelectManager.NextImage(i);
-                else if (mapSelectDirection == -1)
-                    levelSelectManager.PrevImage(i);
-                if (controls[i].GetDeselect())
-                {
-                    if (levelSelectManager.GetReady(i))
-                        levelSelectManager.SetReady(i, false);
-                    else
-                    {
-                        levelSelectManager.GoBack();
-                        SwitchLobbies();
-                    }
-                }
-                else if (controls[i].GetSelect())
+                if (controls[i].GetSelect())
                 {
                     levelSelectManager.SetReady(i, true);
                 }
             }
         }
+
+        // for (int i = 0; i < numPlayers; i++)
+        // {
+        //     if (players[i].playerConfirmed)
+        //     {
+        //         // Handle inputs
+        //         mapSelectDirection = controls[i].GetColorChange();
+
+        //         // Handle inputs
+        //         if (mapSelectDirection == 1)
+        //             levelSelectManager.NextImage(i);
+        //         else if (mapSelectDirection == -1)
+        //             levelSelectManager.PrevImage(i);
+        //         if (controls[i].GetDeselect())
+        //         {
+        //             if (levelSelectManager.GetReady(i))
+        //                 levelSelectManager.SetReady(i, false);
+        //             else
+        //             {
+        //                 levelSelectManager.GoBack();
+        //                 SwitchLobbies();
+        //             }
+        //         }
+        //         else if (controls[i].GetSelect())
+        //         {
+        //             levelSelectManager.SetReady(i, true);
+        //         }
+        //     }
+        // }
     }
 
     void characterLobby()        // Character color selection lobby [Jack]

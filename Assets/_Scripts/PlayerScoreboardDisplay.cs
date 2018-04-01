@@ -30,6 +30,7 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		{
 			sections[i] = Instantiate(sectionPrefab, transform);
 			sections[i].image.color = playerManager.players[i].colour;
+			sections[i].image.sprite = MatchSettings.playerImages[i];
 
 		}
 
@@ -58,6 +59,10 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		{
 			UpdateScores(i);
 		}
+
+		// Set the portrait of the person in the lead
+		int highestIndex = GetHighestScoreIndex();
+		sections[highestIndex].image.sprite = MatchSettings.playerReadyImages[highestIndex];
 
 		// Check for a winner
 		for(int i = 0; i < numPlayers; i++)
@@ -108,5 +113,21 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		toMainMenuButton.SetActive(true);
 
 		
+	}
+
+	int GetHighestScoreIndex()
+	{
+		int index = 0;
+		int highestScore = 0;
+		for (int i = 0; i < numPlayers; i++)
+		{
+			if (sections[i].Score > highestScore)
+			{
+				highestScore = sections[i].Score;
+				index = i;
+			}
+		}
+
+		return index;
 	}
 }

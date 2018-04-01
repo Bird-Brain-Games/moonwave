@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 224470375015100772}
   - component: {fileID: 222486800070223892}
   - component: {fileID: 114864077521499136}
+  - component: {fileID: 95639992243183746}
   m_Layer: 5
   m_Name: Scoreboard
   m_TagString: Untagged
@@ -270,6 +271,23 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c30e6f8971223544dbbe12f3fbeb1bd3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95639992243183746
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436836505590810}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46ed4bc64264b2544a285d109084ae74, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
