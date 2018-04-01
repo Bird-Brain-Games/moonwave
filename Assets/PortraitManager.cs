@@ -162,6 +162,9 @@ public class PortraitManager : MonoBehaviour {
 
 	public void SavePortraits()
 	{
+		MatchSettings.playerImages.Clear();
+		MatchSettings.playerReadyImages.Clear();
+		
 		// Save the chosen portraits to the match settings
 		for(int i = 0; i < numPlayers; i++)
 		{
