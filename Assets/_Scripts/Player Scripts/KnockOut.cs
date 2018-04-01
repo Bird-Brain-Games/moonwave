@@ -89,7 +89,8 @@ public class KnockOut : MonoBehaviour {
                 m_scoringType.playersInGame--;
 
                 // Disable the player
-                m_rigidBody.transform.parent.gameObject.SetActive(false);
+                if (!GetComponentInParent<PlayerManager>().mapSelect && !GetComponentInParent<PlayerManager>().selectScreen)
+                    m_rigidBody.transform.parent.gameObject.SetActive(false);
             }
         }
         if (m_PlayerStats.playerConfirmed && GetComponentInParent<PlayerManager>().selectScreen)

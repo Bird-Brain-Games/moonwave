@@ -7,6 +7,7 @@ public class LobbyManager : MonoBehaviour {
 
 	public GameObject moon;
 	public Text readyUpText;
+	public Text titleText;
 	public PortraitManager portraits;
 	public LevelSelectManager levelSelectors;
 	public GameObject pressToStarts;
@@ -28,6 +29,7 @@ public class LobbyManager : MonoBehaviour {
 
 	public void ShowLevelSelect()
 	{
+		titleText.text = "Elimination   Match";
 		readyUpText.gameObject.SetActive(false);
 		portraits.SavePortraits();
 		portraits.gameObject.SetActive(false);
