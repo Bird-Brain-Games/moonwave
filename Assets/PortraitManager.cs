@@ -169,7 +169,7 @@ public class PortraitManager : MonoBehaviour {
 		for(int i = 0; i < numPlayers; i++)
 		{
 			MatchSettings.playerImages.Add(choosingImages[playerSelection[i]]);
-			MatchSettings.playerReadyImages.Add(choosingImages[playerSelection[i]]);
+			MatchSettings.playerReadyImages.Add(readyImages[playerSelection[i]]);
 		}
 	}
 
