@@ -69,7 +69,7 @@ public class PlayerScoreboardSection : MonoBehaviour {
 		light.color = color;
 
 		//light.color = color;
-		yield return new WaitForSeconds(1f);
+		//yield return new WaitForSeconds(1f);
 		doneAnimating.Invoke();
 	}
 }
