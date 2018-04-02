@@ -11,22 +11,49 @@ public class BoostCollider : MonoBehaviour
     PlayerStats m_stats;
     Transform m_parentTransform;
     BoxCollider m_BoxCollider;
-    MeshRenderer m_MeshRender;
+    SpriteRenderer m_SpriteRenderer;
+    Animator m_Animator;
     Renderer m_Rend;
+    private Color color;
 
     private bool fixedUpdate;
     private Vector3 m_offset;
     private Quaternion m_rotation;
     public float setOffset;
+    public bool fullyCharged;
 
     void Awake()
     {
 
         m_BoxCollider = GetComponent<BoxCollider>();
-        m_MeshRender = GetComponent<MeshRenderer>();
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        m_Animator = GetComponent<Animator>();
         m_Rend = GetComponent<Renderer>();
         fixedUpdate = false;
+        fullyCharged = false;
     }
+
+    // public void SetCharged(bool isCharged)
+    // {
+    //     fullyCharged = isCharged;
+    //     if (isCharged)
+    //         m_Rend.material.color = color;
+    //     else
+    //         m_Rend.material.color = Color.white;
+    // }
+
+    public void SetCharged(int _isCharged)
+    {
+        // Workaround to use ints and bools
+        bool isCharged = (_isCharged == 1);
+
+        fullyCharged = isCharged;
+        if (isCharged)
+            m_Rend.material.color = color;
+        else
+            m_Rend.material.color = Color.white;
+    }
+
     public void PlayerLink(PlayerStats p_player)
     {
         m_stats = p_player;
@@ -37,12 +64,7 @@ public class BoostCollider : MonoBehaviour
 
     public void setColour(Color colour)
     {
-        m_Rend.material.color = colour;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
+        color = colour;
     }
 
     public void setCollider(Vector3 transform, Quaternion rotation, bool collision = true)
@@ -53,7 +75,8 @@ public class BoostCollider : MonoBehaviour
         //hacky way to update the position and then make it visisble.
         FixedUpdate();
         m_BoxCollider.enabled = collision;
-        m_MeshRender.enabled = true;
+        m_SpriteRenderer.enabled = true;
+        m_Animator.SetBool("Boosting", true);
     }
 
     private void FixedUpdate()
@@ -64,7 +87,7 @@ public class BoostCollider : MonoBehaviour
             transform.rotation = Quaternion.identity;
             transform.Translate(m_offset * setOffset);
             transform.rotation = m_rotation;
-            transform.Rotate(new Vector3(0.0f, 0.0f, 90.0f));
+            //transform.Rotate(new Vector3(0.0f, 0.0f, 90.0f));
         }
     }
 
@@ -74,7 +97,8 @@ public class BoostCollider : MonoBehaviour
         m_offset = new Vector3();
         fixedUpdate = false;
         m_BoxCollider.enabled = false;
-        m_MeshRender.enabled = false;
+        m_SpriteRenderer.enabled = false;
+        m_Animator.SetBool("Boosting", false);
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -125,7 +149,7 @@ public class BoostCollider : MonoBehaviour
                         m_state.isTarget = false;
 
                         m_BoxCollider.enabled = false;
-                        m_MeshRender.enabled = false;
+                        m_SpriteRenderer.enabled = false;
                     }
                 }
             }

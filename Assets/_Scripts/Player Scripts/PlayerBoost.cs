@@ -127,11 +127,11 @@ public class PlayerBoost : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(transform.forward, new Vector3(m_Direction.x, m_Direction.y, 0.0f));
         //transform.Rotate(new Vector3(0, 0, 270));
 
-        if (m_TimeCharging >= m_PlayerStats.m_boost.timeToMaxCharge)
-        {
+        //if (m_TimeCharging >= m_PlayerStats.m_boost.timeToMaxCharge)
+        //{
             // set the position of the players boost collider;
-            m_BoostCollider.setCollider(m_Direction, Quaternion.LookRotation(transform.forward, new Vector3(m_Direction.x, m_Direction.y, 0.0f)), false);
-        }
+        m_BoostCollider.setCollider(m_Direction, Quaternion.LookRotation(transform.forward, new Vector3(m_Direction.x, m_Direction.y, 0.0f)), false);
+        //}
 
         //Setup Inertia canceling.
         Vector3 l_Inertia = (-1 * m_RigidBody.velocity);
@@ -173,12 +173,19 @@ public class PlayerBoost : MonoBehaviour
         {
             maxForce = m_PlayerStats.m_boost.MaxForce;
         }
-        if (m_TimeCharging >= m_PlayerStats.m_boost.timeToMaxCharge)
+        //if (m_TimeCharging >= m_PlayerStats.m_boost.timeToMaxCharge)
+        if (m_BoostCollider.fullyCharged)
         {
             // set the position of the players boost collider;
             m_BoostCollider.setCollider(m_Direction, Quaternion.LookRotation(transform.forward, new Vector3(m_Direction.x, m_Direction.y, 0.0f)));
-
+            
         }
+        else
+        {
+            m_BoostCollider.BoostEnded();
+        }
+
+
 
         //Adding boost velocity.
         m_RigidBody.AddForce(m_BoostForce * m_Direction, ForceMode.Impulse);
@@ -217,6 +224,9 @@ public class PlayerBoost : MonoBehaviour
         m_startCooldown = true;
         m_CooldownDuration = m_PlayerStats.m_boost.Cooldown;
         m_BoostCollider.BoostEnded();
+
+        // Turn off the charge
+        m_BoostCollider.SetCharged(0);
     }
 
     public void Update()

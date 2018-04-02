@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8c6ef9b9f030e6a408df82edd9120239
-timeCreated: 1522549637
+timeCreated: 1522694466
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -34,6 +34,8 @@ TextureImporter:
     21300054: arrow_27
     21300056: arrow_28
     21300058: arrow_29
+    21300060: arrow_30
+    21300062: arrow_31
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -523,6 +525,34 @@ TextureImporter:
         y: 92
         width: 128
         height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: arrow_30
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 93
+        width: 128
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: arrow_31
+      rect:
+        serializedVersion: 2
+        x: 1857
+        y: 93
+        width: 128
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
