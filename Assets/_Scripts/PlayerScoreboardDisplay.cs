@@ -26,17 +26,35 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		numPlayers = playerManager.GetNumPlayers();
 		sections = new PlayerScoreboardSection[numPlayers];
 
+		// Debug, empty initialization [Graham]
+		if (MatchSettings.numPlayers == 0)
+		{
+			for (int i = 0; i < numPlayers; i++)
+            {
+                MatchSettings.playerImages.Add(new Sprite());
+                MatchSettings.playerReadyImages.Add(new Sprite());
+            }
+		}
+
 		for (int i = 0; i < numPlayers; i++)
 		{
 			sections[i] = Instantiate(sectionPrefab, transform);
-			sections[i].image.color = playerManager.players[i].colour;
 			sections[i].image.sprite = MatchSettings.playerImages[i];
+			sections[i].color = playerManager.players[i].colour;
+			sections[i].image.color = playerManager.players[i].colour;
+			sections[i].doneAnimating.AddListener(delegate{SetButtonActive();});
 
+			// Show the color if in debug [Graham]
+			if (MatchSettings.numPlayers == 0) 
+				sections[i].image.color = playerManager.players[i].colour;
 		}
 
-		nextMapButton.SetActive(true);
-
 		UpdateAllScores();
+	}
+
+	void SetButtonActive()
+	{
+		nextMapButton.SetActive(true);
 	}
 
 	public void UpdateAllScores()
@@ -57,6 +75,7 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 
 		for(int i = 0; i < numPlayers; i++)
 		{
+			sections[i].Populate();
 			UpdateScores(i);
 		}
 
@@ -88,13 +107,17 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		// Safety, can't exceed array
 		if (playerNum > numPlayers) return;
 
+		int oldScore = MatchSettings.playerScores[playerNum];
+
 		// Choose how many points to add
 		if (scoreDisplay.stockMode && scoreDisplay.pointPerKill)
 			MatchSettings.playerScores[playerNum] += playerManager.players[playerNum].getScore();
 		else if (scoreDisplay.stockMode)
 			MatchSettings.playerScores[playerNum] += ((playerManager.playerLives[playerNum] >= 0) ? 1 : 0);
-
+		
 		sections[playerNum].Score = MatchSettings.playerScores[playerNum];
+		if (oldScore < sections[playerNum].Score)
+			sections[playerNum].AnimateLastLight();
 	}
 
 	void ShowWinner(int playerNum)
