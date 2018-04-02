@@ -82,10 +82,15 @@ public class KnockOut : MonoBehaviour {
             }
             if (m_scoringType.stockMode && m_PlayerStats.m_lives < 1)
             {
+
                 m_rigidBody.ResetInertiaTensor();
                 m_rigidBody.velocity = Vector3.zero;
-                m_rigidBody.position = new Vector3(200, 200, 200);
+                m_rigidBody.position = new Vector3(2000, 2000, 2000);
                 m_scoringType.playersInGame--;
+
+                // Disable the player
+                if (!GetComponentInParent<PlayerManager>().mapSelect && !GetComponentInParent<PlayerManager>().selectScreen)
+                    m_rigidBody.transform.parent.gameObject.SetActive(false);
             }
         }
         if (m_PlayerStats.playerConfirmed && GetComponentInParent<PlayerManager>().selectScreen)
