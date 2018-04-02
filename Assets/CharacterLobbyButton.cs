@@ -10,32 +10,32 @@ public class CharacterLobbyButton : MonoBehaviour {
 	
 	// Update is called once per frame
 
-	void StartMatch()
-	{
-		int numReadyPlayers = 0;
-		foreach (PlayerStats stats in playerManager.players)
-		{
-			if (stats.playerConfirmed)
-				numReadyPlayers++;
-		}
+	// void StartMatch()
+	// {
+	// 	int numReadyPlayers = 0;
+	// 	foreach (PlayerStats stats in playerManager.players)
+	// 	{
+	// 		if (stats.playerConfirmed)
+	// 			numReadyPlayers++;
+	// 	}
 
-		if (numReadyPlayers > 1)	// To be changed [Graham]
-		{
-			//MatchSettings.numPlayers = 4;	// TO BE CHANGED
-			MatchSettings.numPlayers = numReadyPlayers;	
-			MatchSettings.pointsToWin = 3;
+	// 	if (numReadyPlayers > 1)	// To be changed [Graham]
+	// 	{
+	// 		//MatchSettings.numPlayers = 4;	// TO BE CHANGED
+	// 		MatchSettings.numPlayers = numReadyPlayers;	
+	// 		MatchSettings.pointsToWin = 3;
 
-			for (int i = 0; i < MatchSettings.numPlayers; i++)
-			{
-				MatchSettings.playerColors.Add(playerManager.players[i].colour);
-				MatchSettings.playerScores.Add(0);
-			}
+	// 		for (int i = 0; i < MatchSettings.numPlayers; i++)
+	// 		{
+	// 			MatchSettings.playerColors.Add(playerManager.players[i].colour);
+	// 			MatchSettings.playerScores.Add(0);
+	// 		}
 
-			// To be changed [Graham]
-			//GetComponent<LoadSceneOnClick>().LoadRandom();
-			//GetComponent<LoadSceneOnClick>().LoadByName("_Scenes/Debug/Graham_Debug");
+	// 		// To be changed [Graham]
+	// 		//GetComponent<LoadSceneOnClick>().LoadRandom();
+	// 		//GetComponent<LoadSceneOnClick>().LoadByName("_Scenes/Debug/Graham_Debug");
 		
-			allPlayersReady.Invoke();
-		}
-	}
+	// 		allPlayersReady.Invoke();
+	// 	}
+	// }
 }

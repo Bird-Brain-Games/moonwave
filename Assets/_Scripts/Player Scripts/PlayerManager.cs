@@ -268,6 +268,8 @@ public class PlayerManager : MonoBehaviour {
 
 		if (numReadyPlayers > 1)	// To be changed [Graham]
 		{
+            MatchSettings.Reset();
+            
 			//MatchSettings.numPlayers = 4;	// TO BE CHANGED
 			MatchSettings.numPlayers = numReadyPlayers;	
 			MatchSettings.pointsToWin = 3;
