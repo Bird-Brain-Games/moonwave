@@ -37,8 +37,12 @@ public class LevelSelectManager : MonoBehaviour {
 		// Only enable the images for the active players
 		foreach(Image image in levelImages) image.gameObject.SetActive(false);
 		for (int i = 0; i < numPlayers; i++)
+		{
 			levelImages[i].gameObject.SetActive(true);
-
+			levelImages[i].sprite = MatchSettings.playerImages[i];
+			readyImages[i] = MatchSettings.playerReadyImages[i];
+			//playerSelection[i] = i;
+		}
 	}
 	
 	public void NextImage(int playerNum)
@@ -80,7 +84,7 @@ public class LevelSelectManager : MonoBehaviour {
 		// Set the portrait image
 		if (isReady)
 		{
-			levelImages[playerNum].sprite = readyImages[playerSelection[playerNum]];	
+			levelImages[playerNum].sprite = readyImages[playerNum];	
 		}
 		else
 			levelImages[playerNum].sprite = choosingImages[playerSelection[playerNum]];
@@ -111,63 +115,67 @@ public class LevelSelectManager : MonoBehaviour {
 	void StartGame()
 	{
 		IEnumerator randomStageSelect = RandomStageSelect(3,5);
-		chosenStageImage.gameObject.SetActive(true);
+		//chosenStageImage.gameObject.SetActive(true);
 		StartCoroutine(randomStageSelect);
+
+		
 	}
 
 	IEnumerator RandomStageSelect(int minTime, int maxTime)
 	{
-		float countdownTime = Random.Range((float)minTime, (float)maxTime);	// Not currently used
-		float delay = 0f + Random.Range(0f, 0.03f);
-		int increment = 0;
+		yield return new WaitForSeconds(1f);
+		GetComponent<LoadSceneOnClick>().LoadRandom();
+		// float countdownTime = Random.Range((float)minTime, (float)maxTime);	// Not currently used
+		// float delay = 0f + Random.Range(0f, 0.03f);
+		// int increment = 0;
 
-		// Get the selected images
-		Sprite[] chosenImages = new Sprite[numPlayers];
-		int check = playerSelection[0];
-		bool allSame = true;
-		for (int i = 0; i < numPlayers; i++)
-		{
-			chosenImages[i] = choosingImages[playerSelection[i]];
-			if (playerSelection[i] != check)	allSame = false;
-		}
+		// // Get the selected images
+		// Sprite[] chosenImages = new Sprite[numPlayers];
+		// int check = playerSelection[0];
+		// bool allSame = true;
+		// for (int i = 0; i < numPlayers; i++)
+		// {
+		// 	chosenImages[i] = choosingImages[playerSelection[i]];
+		// 	if (playerSelection[i] != check)	allSame = false;
+		// }
 
 		
 
-		// Main loop
-		while (delay < 0.5 && !allSame)
-		{
-			if (delay < 0.2f)
-				delay += 0.01f;
-			else
-				delay += 0.05f;
+		// // Main loop
+		// while (delay < 0.5 && !allSame)
+		// {
+		// 	if (delay < 0.2f)
+		// 		delay += 0.01f;
+		// 	else
+		// 		delay += 0.05f;
 
-			increment++;
-			if (increment >= numPlayers) increment = 0;
-			chosenStageImage.sprite = chosenImages[increment];
-			yield return new WaitForSeconds(delay);
-		}
+		// 	increment++;
+		// 	if (increment >= numPlayers) increment = 0;
+		// 	chosenStageImage.sprite = chosenImages[increment];
+		// 	yield return new WaitForSeconds(delay);
+		// }
 		
-		// Set the chosen stage as true
-		chosenStageImage.sprite = readyImages[playerSelection[increment]];
+		// // Set the chosen stage as true
+		// chosenStageImage.sprite = readyImages[playerSelection[increment]];
 
-		// Start using the chosen stage selections
-		yield return new WaitForSeconds(4f);
+		// // Start using the chosen stage selections
+		// yield return new WaitForSeconds(4f);
 
-		// TO BE CHANGED [Graham]
-		//GetComponent<LoadSceneOnClick>().LoadRandom();
-		if (playerSelection[increment] == 0)
-		{
-			MatchSettings.minRange = 2;
-			MatchSettings.maxRange = 6;
-		}
-		else if (playerSelection[increment] == 1)
-		{
-			MatchSettings.minRange = 7;
-			MatchSettings.maxRange = 11;
-		}
-		MatchSettings.setNum = playerSelection[increment];
+		// // TO BE CHANGED [Graham]
+		// //GetComponent<LoadSceneOnClick>().LoadRandom();
+		// if (playerSelection[increment] == 0)
+		// {
+		// 	MatchSettings.minRange = 2;
+		// 	MatchSettings.maxRange = 6;
+		// }
+		// else if (playerSelection[increment] == 1)
+		// {
+		// 	MatchSettings.minRange = 7;
+		// 	MatchSettings.maxRange = 11;
+		// }
+		// MatchSettings.setNum = playerSelection[increment];
 			
-		GetComponent<LoadSceneOnClick>().LoadBySet(playerSelection[increment]);
+		// GetComponent<LoadSceneOnClick>().LoadBySet(playerSelection[increment]);
 	}
 
 }
