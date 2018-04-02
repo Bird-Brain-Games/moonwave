@@ -9,9 +9,11 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 	public PlayerScoreboardSection sectionPrefab;
 	public Image winImage;
 	public Text winText;
-	
+
+	public GameObject scoreTitle;
     public GameObject nextMapButton;
 	public GameObject toMainMenuButton;
+	public GameObject continueText;
 
 	PlayerManager playerManager;
 	PlayerScoreboardSection[] sections;
@@ -41,8 +43,7 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 			sections[i] = Instantiate(sectionPrefab, transform);
 			sections[i].image.sprite = MatchSettings.playerImages[i];
 			sections[i].color = playerManager.players[i].colour;
-			sections[i].image.color = playerManager.players[i].colour;
-			sections[i].doneAnimating.AddListener(delegate{SetButtonActive();});
+			sections[i].doneAnimating.AddListener(delegate{FinishScoreboard();});
 
 			// Show the color if in debug [Graham]
 			if (MatchSettings.numPlayers == 0) 
@@ -52,9 +53,19 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		UpdateAllScores();
 	}
 
-	void SetButtonActive()
+	void FinishScoreboard()
 	{
 		nextMapButton.SetActive(true);
+		continueText.SetActive(true);
+
+		// Check for a winner
+		for(int i = 0; i < numPlayers; i++)
+		{
+			if(MatchSettings.playerScores[i] >= MatchSettings.pointsToWin)
+			{
+				ShowWinner(i);
+			}
+		}
 	}
 
 	public void UpdateAllScores()
@@ -75,22 +86,15 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 
 		for(int i = 0; i < numPlayers; i++)
 		{
+			sections[i].Score = MatchSettings.playerScores[i];
 			sections[i].Populate();
 			UpdateScores(i);
 		}
 
 		// Set the portrait of the person in the lead
 		int highestIndex = GetHighestScoreIndex();
-		sections[highestIndex].image.sprite = MatchSettings.playerReadyImages[highestIndex];
-
-		// Check for a winner
-		for(int i = 0; i < numPlayers; i++)
-		{
-			if(MatchSettings.playerScores[i] >= MatchSettings.pointsToWin)
-			{
-				ShowWinner(i);
-			}
-		}
+		if (highestIndex >= 0)
+			sections[highestIndex].image.sprite = MatchSettings.playerReadyImages[highestIndex];
 
 		if (winImage.gameObject.activeInHierarchy)
 		{
@@ -122,9 +126,11 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 
 	void ShowWinner(int playerNum)
 	{
+		scoreTitle.gameObject.SetActive(false);
 		winImage.gameObject.SetActive(true);
+		winImage.sprite = MatchSettings.playerReadyImages[playerNum];
 		winText.gameObject.SetActive(true);
-		winImage.color = MatchSettings.playerColors[playerNum];
+		//winImage.color = MatchSettings.playerColors[playerNum];
 
 		// Disable all the player sections so you can't see the score (possible to change) [Graham]
 		foreach (var section in sections)
@@ -134,8 +140,6 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 
 		nextMapButton.SetActive(false);
 		toMainMenuButton.SetActive(true);
-
-		
 	}
 
 	int GetHighestScoreIndex()
@@ -149,6 +153,8 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 				highestScore = sections[i].Score;
 				index = i;
 			}
+			else if (sections[i].Score == highestScore)
+				return -1;
 		}
 
 		return index;
