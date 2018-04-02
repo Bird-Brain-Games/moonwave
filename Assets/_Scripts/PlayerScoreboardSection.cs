@@ -12,6 +12,7 @@ public class PlayerScoreboardSection : MonoBehaviour {
 	public Text scoreText;
 	public Image image;
 	public Color color;
+	public float brightnessAdd = 0.3f;
 	[SerializeField] int score;
 
 	public int Score {get{return score;} set{score = value;}}
@@ -66,7 +67,7 @@ public class PlayerScoreboardSection : MonoBehaviour {
 			elapsedTime += 0.05f;
 		}
 
-		light.color = color;
+		light.color = color + new Color(brightnessAdd,brightnessAdd,brightnessAdd,0.0f);
 
 		//light.color = color;
 		//yield return new WaitForSeconds(1f);

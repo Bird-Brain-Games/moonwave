@@ -15,6 +15,7 @@ public class BoostCollider : MonoBehaviour
     Animator m_Animator;
     Renderer m_Rend;
     private Color color;
+    public float brightnessAdd;
 
     private bool fixedUpdate;
     private Vector3 m_offset;
@@ -64,7 +65,7 @@ public class BoostCollider : MonoBehaviour
 
     public void setColour(Color colour)
     {
-        color = colour;
+        color = colour + new Color(brightnessAdd,brightnessAdd,brightnessAdd,0.0f);
     }
 
     public void setCollider(Vector3 transform, Quaternion rotation, bool collision = true)
