@@ -20,7 +20,7 @@ public class BoostCollider : MonoBehaviour
     private Vector3 m_offset;
     private Quaternion m_rotation;
     public float setOffset;
-    public bool fullyCharged;
+    [HideInInspector] public bool fullyCharged;
 
     void Awake()
     {
