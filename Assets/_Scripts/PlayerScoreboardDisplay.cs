@@ -95,13 +95,6 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		int highestIndex = GetHighestScoreIndex();
 		if (highestIndex >= 0)
 			sections[highestIndex].image.sprite = MatchSettings.playerReadyImages[highestIndex];
-
-		if (winImage.gameObject.activeInHierarchy)
-		{
-			// We might want to store the variables before we leave
-			MatchSettings.Reset();
-		}
-		
 	}
 
 	// Increase the score of a player by 1.
@@ -145,7 +138,7 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 	int GetHighestScoreIndex()
 	{
 		int index = 0;
-		int highestScore = 0;
+		int highestScore = -1;
 		for (int i = 0; i < numPlayers; i++)
 		{
 			if (sections[i].Score > highestScore)
