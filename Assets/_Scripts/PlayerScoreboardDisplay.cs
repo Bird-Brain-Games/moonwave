@@ -75,7 +75,7 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 		if (Application.isEditor && MatchSettings.numPlayers == 0)
         {
 			MatchSettings.numPlayers = numPlayers;
-			MatchSettings.pointsToWin = 2;
+			MatchSettings.pointsToWin = 3;
 
 			for(int i = 0; i < numPlayers; i++)
 			{
