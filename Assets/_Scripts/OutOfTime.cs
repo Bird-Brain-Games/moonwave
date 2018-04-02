@@ -19,11 +19,15 @@ public class OutOfTime : MonoBehaviour {
 	void Awake () {
         timer = timerObject.GetComponent<Timer>();
         m_Animator = GetComponent<Animator>();
-        m_scoringType = GameObject.Find("Player Score Panel").GetComponent<ScoreDisplay>();
-        players = FindObjectsOfType<PlayerStateManager>();
         matchActive = true;
         
 	}
+
+    void Start()
+    {
+        m_scoringType = GameObject.Find("Player Score Panel").GetComponent<ScoreDisplay>();
+        players = FindObjectsOfType<PlayerStateManager>();
+    }
 	
 	// Update is called once per frame
 	void Update () {

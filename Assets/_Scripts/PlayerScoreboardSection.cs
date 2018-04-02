@@ -18,17 +18,16 @@ public class PlayerScoreboardSection : MonoBehaviour {
 
 	public void Populate()
 	{
+		lights = new Image[MatchSettings.pointsToWin];
 
-		lights = new Image[MatchSettings.pointsToWin+1];
-
-		for (int i = 0; i <= MatchSettings.pointsToWin; i++)
+		for (int i = 0; i < MatchSettings.pointsToWin; i++)
 		{
 			lights[i] = Instantiate(lightPrefab, transform);
 			
 			if (Score > i)	
-				lights[i].color = MatchSettings.playerColors[i];
+				lights[i].color = color;
 			else
-				lights[i].color = MatchSettings.playerColors[i];
+				lights[i].color = Color.black;
 		}
 	}
 
@@ -51,23 +50,26 @@ public class PlayerScoreboardSection : MonoBehaviour {
 		while (elapsedTime < timeToMove)
 		{
 			light.color = Color.Lerp(Color.black, Color.white, elapsedTime / timeToMove);
-			yield return new WaitForFixedUpdate();
-			elapsedTime += Time.fixedDeltaTime;
+			yield return new WaitForSeconds(0.05f);
+			elapsedTime += 0.05f;
 		}
 
 		light.color = Color.white;
 
 		elapsedTime = 0f;
-		timeToMove = 0.3f;
+		timeToMove = 0.2f;
 
 		while (elapsedTime < timeToMove)
 		{
 			light.color = Color.Lerp(Color.white, color, elapsedTime / timeToMove);
-			yield return new WaitForFixedUpdate();
-			elapsedTime += Time.fixedDeltaTime;
+			yield return new WaitForSeconds(0.05f);
+			elapsedTime += 0.05f;
 		}
 
 		light.color = color;
+
+		//light.color = color;
+		yield return new WaitForSeconds(1f);
 		doneAnimating.Invoke();
 	}
 }

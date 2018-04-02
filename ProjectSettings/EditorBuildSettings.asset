@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Completed Maps/Set1/4 Moons.unity
     guid: 7a374e2d2f6aad742bb8680808ce6695
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Completed Maps/Set1/Cage.unity
     guid: 38bb5c28c2609ef4aa74356147de85fd
   - enabled: 1
@@ -32,10 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Completed Maps/Set2/1 Sun 4 Moons.unity
     guid: f5ed05c1f8f7ba842876ce21e54e0dba
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Completed Maps/Set2/4 Moons X.unity
     guid: 229f0c1acdbb195408f23c57bbe87fe7
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Completed Maps/Set2/DEATH.unity
     guid: 49f5108451d60b44293c97ba1be2c3ce
   - enabled: 1
