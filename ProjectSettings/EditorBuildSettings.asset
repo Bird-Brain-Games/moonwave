@@ -12,32 +12,62 @@ EditorBuildSettings:
     path: Assets/_Scenes/Prototypes/Character Lobby.unity
     guid: 27e0dd2e176e40b4ba850ea6a80f8500
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/Set1/1 Moon.unity
-    guid: e5c89d2c3e67a3b418a63df426b617ff
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/1 Moon.unity
+    guid: 7b943e07825f00a42aae492479c678dd
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/Set1/1-1 TL.unity
-    guid: 2049f3401a7c95d42b4126cce523c2b1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/1 Moon 4 Suns.unity
+    guid: 0571cfbdc9e55b84d86dcd79f3a71c3a
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/Set1/2 Moons.unity
-    guid: 787967f4e4b480d47af8c0ac76a72b3d
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/1 Sun.unity
+    guid: 0f49ba947701d5f4c8f6c6ce02414f99
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/Set1/4 Moons.unity
-    guid: 7a374e2d2f6aad742bb8680808ce6695
-  - enabled: 0
-    path: Assets/_Scenes/Completed Maps/Set1/Cage.unity
-    guid: 38bb5c28c2609ef4aa74356147de85fd
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/1 Sun 4 Moons.unity
+    guid: 6312d0bc186bd4545aa5fb9a8adf648c
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/Set2/1 Moon 4 Suns.unity
-    guid: 40db40a5d0c957d46bb13f8dc8ff024b
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/1-1 BL.unity
+    guid: febb88a27c800fd48b224375240c8783
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/Set2/1 Sun 4 Moons.unity
-    guid: f5ed05c1f8f7ba842876ce21e54e0dba
-  - enabled: 0
-    path: Assets/_Scenes/Completed Maps/Set2/4 Moons X.unity
-    guid: 229f0c1acdbb195408f23c57bbe87fe7
-  - enabled: 0
-    path: Assets/_Scenes/Completed Maps/Set2/DEATH.unity
-    guid: 49f5108451d60b44293c97ba1be2c3ce
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/1-1 BR.unity
+    guid: 91a80d415e5a3274f95b3804d88311bd
   - enabled: 1
-    path: Assets/_Scenes/Completed Maps/Set2/Floor and Sun.unity
-    guid: d4921c5e7bd2bba4e9e2af743091444a
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/1-1 TL.unity
+    guid: 996311a9140a4794982dbbf56735de34
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/1-1 TR.unity
+    guid: 75bbabff0e8f7754494628b45ff229be
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/2 Moons.unity
+    guid: 31a3cd74d628dc1428896776a6c7f538
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/2 Moons 1 sun.unity
+    guid: 4b897cd0007520f47a095c1a1f0641e7
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/2 Moons 1 sun alt.unity
+    guid: b6ae6ccf7828c5442a5206dc5d5f50b1
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/2 Moons alt.unity
+    guid: 71e7fe210776519458693cbc4cdce873
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/2 Moons alt 1 sun.unity
+    guid: b2a932b462190fd44a0d9c27f7b53cd4
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/2 Moons alt 1 sun alt.unity
+    guid: d8346faca33ddbd4f965b4013b25c78d
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/2 Moons alt 2.unity
+    guid: 0f0f0e766746523479b1c35a38d19574
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/2 Moons alt 3.unity
+    guid: 0c8dde8c4918a4d439d5ad4afd4b14ba
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/2 suns.unity
+    guid: ca5aa9bfb2bf1664d92f154e6ebb7ec2
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/2 suns 1 moon.unity
+    guid: 2c487a84cd0569b4cb1df1bafbd1b4e5
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/4 Moons.unity
+    guid: 5272dba468868914a9d0ddcef0f382ae
+  - enabled: 1
+    path: Assets/_Scenes/Completed Maps/Maps 1.0/4 Suns.unity
+    guid: adbc33640f6843144b6d04bb3849aa1d
