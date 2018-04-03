@@ -61,8 +61,9 @@ public class Shield : MonoBehaviour
 
     public void ShieldHit(BULLET_TYPE bullet)
     {
-        if (m_shieldHealth > 0)
+        if (m_shieldHealth > 0f)
         {
+            float oldHealth = m_shieldHealth;
             switch (bullet)
             {
                 case BULLET_TYPE.plasma:
@@ -73,12 +74,17 @@ public class Shield : MonoBehaviour
                     break;
             }
 
+            if (oldHealth > 0f && m_shieldHealth <= 0f) // The hit that caused the shield to shatter
+                StartCoroutine(GetComponentInParent<Controls>().RumbleFor(0.2f, 1.0f));
+            else if (m_shieldHealth > 0f)
+                StartCoroutine(GetComponentInParent<Controls>().RumbleFor(0.1f, 0.25f));
         }
         if (m_shieldHealth <= 0)
         {
 
             // SFX
             FindObjectOfType<AudioManager>().Play("Shield Shatter");
+            StartCoroutine(GetComponentInParent<Controls>().RumbleFor(0.1f, 0.3f));
             
             // Add the player's outline
             m_playerRenderer.materials[1].SetColor("_OutlineColor", Color.red);
@@ -87,6 +93,7 @@ public class Shield : MonoBehaviour
             m_shieldHealth = 0;
             GetComponent<MeshRenderer>().enabled = false;
             m_playerStats.SetShieldState(false);
+            
 
             // Stun the player if they are hit when shield down
             if (bullet == BULLET_TYPE.shotgun)

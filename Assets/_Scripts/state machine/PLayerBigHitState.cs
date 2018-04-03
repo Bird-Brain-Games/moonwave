@@ -63,6 +63,7 @@ public class PLayerBigHitState : State
             m_rigidBody.AddForce(Force, ForceMode.Impulse);
             m_playerStats.stunTrigger = true;
             m_playerStats.StunTimer = m_playerStats.maxBoostStunTime;
+           StartCoroutine(m_playerStats.GetComponent<Controls>().RumbleFor(0.4f, 1.0f));
         }
         isTarget = true;
         //GetComponent<PlayerBoost>().ResetBoostCollider();

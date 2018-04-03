@@ -28,6 +28,7 @@ public class PlayerOnPlanetState : State {
 	override public void StateEnter()
 	{
 		m_Animator.SetBool("OnPlanet", true);
+		StartCoroutine(m_Controls.RumbleFor(0.1f, 0.3f));
 	}
 
 	override public void StateUpdate()

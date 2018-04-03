@@ -188,7 +188,34 @@ public class Controls : MonoBehaviour
     //sets the rumble of the controller. NOTE to self could overload the function to have a duration version.
     public void SetRumble(float leftRumble, float rightRumble)
     {
-        SetRumble(leftRumble, rightRumble);
+        SetRumble(playerNumber, leftRumble, rightRumble);
+    }
+
+    
+
+    // A coroutine to have a rumble over a duration with decreasing intensity [Graham]
+    // Intensity between 0-1, duration in seconds
+    public IEnumerator RumbleFor(float duration, float intensity)
+    {
+        if (duration <= 0f) yield break;
+
+        float elapsed = 0f;
+        while(elapsed < duration)
+        {
+            float t = elapsed / duration;
+            t = t * t;     // For an exponential decline [Graham]
+            float newIntensity = Mathf.Lerp(intensity, 0f, t);
+            Debug.Log(newIntensity);
+            SetRumble(newIntensity, newIntensity);
+
+            //elapsed += 0.05f;
+            //yield return new WaitForSeconds(0.05f);
+            elapsed += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        SetRumble(0f, 0f);
+        yield return null;
     }
     #endregion
 

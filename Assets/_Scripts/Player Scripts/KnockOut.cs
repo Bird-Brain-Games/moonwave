@@ -63,7 +63,9 @@ public class KnockOut : MonoBehaviour {
 
         ResetPlayer();
         
-
+        // Make the player FEEL their death [Graham]
+        //m_PlayerStats.GetComponent<Controls>().SetRumble(1.0f, 1.0f);
+        StartCoroutine(m_PlayerStats.GetComponent<Controls>().RumbleFor(0.2f, 1.0f));
         // Logging
         l_deaths++;
     }
