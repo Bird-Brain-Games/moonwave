@@ -8,6 +8,7 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 
 	public PlayerScoreboardSection sectionPrefab;
 	public Image winImage;
+	public Image winPortrait;
 	public Text winText;
 
 	public GameObject scoreTitle;
@@ -121,7 +122,7 @@ public class PlayerScoreboardDisplay : MonoBehaviour {
 	{
 		scoreTitle.gameObject.SetActive(false);
 		winImage.gameObject.SetActive(true);
-		winImage.sprite = MatchSettings.playerReadyImages[playerNum];
+		winPortrait.sprite = MatchSettings.playerReadyImages[playerNum];
 		winText.gameObject.SetActive(true);
 		//winImage.color = MatchSettings.playerColors[playerNum];
 
