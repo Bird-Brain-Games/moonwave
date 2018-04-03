@@ -28,8 +28,9 @@ public class PlayerManager : MonoBehaviour {
     {
         // Create our players
         numPlayers = MatchSettings.numPlayers;
-        if (numPlayers == 0)    // Debug 
+        if (numPlayers == 0 || selectScreen || mapSelect)    // Debug, for looping
         {
+            MatchSettings.Reset();
             numPlayers = 4;
         }
 
@@ -105,8 +106,6 @@ public class PlayerManager : MonoBehaviour {
 
 	void Start () {
         SetUpPlayers();
-
-        
     }
 
     // Update is called once per frame
