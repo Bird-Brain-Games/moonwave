@@ -26,7 +26,7 @@ public class PlayerScoreboardSection : MonoBehaviour {
 			lights[i] = Instantiate(lightPrefab, transform);
 			
 			if (Score > i)	
-				lights[i].color = color;
+				lights[i].color = color + new Color(brightnessAdd,brightnessAdd,brightnessAdd,0.0f);
 			else
 				lights[i].color = Color.black;
 		}
@@ -59,15 +59,16 @@ public class PlayerScoreboardSection : MonoBehaviour {
 
 		elapsedTime = 0f;
 		timeToMove = 0.2f;
+		Color newColor = color + new Color(brightnessAdd,brightnessAdd,brightnessAdd,0.0f);
 
 		while (elapsedTime < timeToMove)
 		{
-			light.color = Color.Lerp(Color.white, color, elapsedTime / timeToMove);
+			light.color = Color.Lerp(Color.white, newColor, elapsedTime / timeToMove);
 			yield return new WaitForSeconds(0.05f);
 			elapsedTime += 0.05f;
 		}
 
-		light.color = color + new Color(brightnessAdd,brightnessAdd,brightnessAdd,0.0f);
+		light.color = newColor;
 
 		//light.color = color;
 		//yield return new WaitForSeconds(1f);
