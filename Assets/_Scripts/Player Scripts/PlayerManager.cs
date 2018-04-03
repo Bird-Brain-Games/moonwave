@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
 
-    public Unique playerPrefab; 
+    public Unique playerPrefab;
     public Portrait portraitPrefab;
     public PortraitManager portraitManager;
     public LevelSelectManager levelSelectManager;
